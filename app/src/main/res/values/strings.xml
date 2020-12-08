@@ -4,4 +4,5 @@
     <string name="age_rate">13+</string>
     <string name="film_name">Avengers: End Game</string>
     <string name="genres">Action, Adventure, Fantasy</string>
+    <string name="reviews_number">125 Reviews</string>
 </resources>

@@ -36,18 +36,19 @@
             android:id="@+id/button_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="38dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_back"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/guideline_top"
+            app:layout_constraintTop_toTopOf="@id/tv_back"
             app:srcCompat="@drawable/button_back" />
 
         <TextView
             android:id="@+id/tv_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="8dp"
             android:text="@string/back"
-            android:textColor="@color/white"
+            android:textColor="@color/white_opacity_50"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@+id/button_back"
             app:layout_constraintTop_toTopOf="@id/guideline_top" />
@@ -104,9 +105,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="4dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_reviews_number"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_genres"
+            app:layout_constraintTop_toTopOf="@+id/tv_reviews_number"
             app:srcCompat="@drawable/star_icon_full" />
 
         <ImageView
@@ -114,9 +115,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="4dp"
+            app:layout_constraintBottom_toBottomOf="@+id/img_star1"
             app:layout_constraintStart_toEndOf="@id/img_star1"
-            app:layout_constraintTop_toBottomOf="@id/tv_genres"
+            app:layout_constraintTop_toTopOf="@+id/img_star1"
             app:srcCompat="@drawable/star_icon_full" />
 
         <ImageView
@@ -124,9 +125,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="4dp"
+            app:layout_constraintBottom_toBottomOf="@+id/img_star1"
             app:layout_constraintStart_toEndOf="@id/img_star2"
-            app:layout_constraintTop_toBottomOf="@id/tv_genres"
+            app:layout_constraintTop_toTopOf="@+id/img_star1"
             app:srcCompat="@drawable/star_icon_full" />
 
         <ImageView
@@ -134,9 +135,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="4dp"
+            app:layout_constraintBottom_toBottomOf="@+id/img_star1"
             app:layout_constraintStart_toEndOf="@id/img_star3"
-            app:layout_constraintTop_toBottomOf="@id/tv_genres"
+            app:layout_constraintTop_toTopOf="@+id/img_star1"
             app:srcCompat="@drawable/star_icon_full" />
 
         <ImageView
@@ -144,10 +145,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="4dp"
+            app:layout_constraintBottom_toBottomOf="@+id/img_star1"
             app:layout_constraintStart_toEndOf="@id/img_star4"
-            app:layout_constraintTop_toBottomOf="@id/tv_genres"
+            app:layout_constraintTop_toTopOf="@+id/img_star1"
             app:srcCompat="@drawable/star_icon_empty" />
+
+        <TextView
+            android:id="@+id/tv_reviews_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:text="@string/reviews_number"
+            android:textColor=" #6D6D80"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@+id/img_star5"
+            app:layout_constraintTop_toBottomOf="@+id/tv_genres" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
