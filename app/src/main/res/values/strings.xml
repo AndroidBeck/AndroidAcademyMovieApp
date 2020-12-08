@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AndroidAcademyMovieApp</string>
+    <string name="back">Back</string>
+    <string name="age_rate">13+</string>
 </resources>
