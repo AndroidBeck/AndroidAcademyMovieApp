@@ -5,12 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_color">
+    android:background="@color/background_color"
+    android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         tools:context=".MovieDetailsActivity">
 
 
@@ -55,10 +56,8 @@
             android:id="@+id/guideline_top2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
-            app:layout_constraintGuide_end="55dp"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="@id/img_logo" />
+            app:layout_constraintGuide_percent="0.37"/>
 
         <TextView
             android:id="@+id/tv_age_rate"
@@ -70,6 +69,86 @@
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/guideline_top2" />
+
+        <TextView
+            android:id="@+id/tv_film_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/film_name"
+            android:textColor="@color/white"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_age_rate" />
+
+        <TextView
+            android:id="@+id/tv_genres"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/genres"
+            android:textColor="@color/color_text_genres"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_film_name" />
+
+        <ImageView
+            android:id="@+id/img_star1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_genres"
+            app:srcCompat="@drawable/star_icon_full" />
+
+        <ImageView
+            android:id="@+id/img_star2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toEndOf="@id/img_star1"
+            app:layout_constraintTop_toBottomOf="@id/tv_genres"
+            app:srcCompat="@drawable/star_icon_full" />
+
+        <ImageView
+            android:id="@+id/img_star3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toEndOf="@id/img_star2"
+            app:layout_constraintTop_toBottomOf="@id/tv_genres"
+            app:srcCompat="@drawable/star_icon_full" />
+
+        <ImageView
+            android:id="@+id/img_star4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toEndOf="@id/img_star3"
+            app:layout_constraintTop_toBottomOf="@id/tv_genres"
+            app:srcCompat="@drawable/star_icon_full" />
+
+        <ImageView
+            android:id="@+id/img_star5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toEndOf="@id/img_star4"
+            app:layout_constraintTop_toBottomOf="@id/tv_genres"
+            app:srcCompat="@drawable/star_icon_empty" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
