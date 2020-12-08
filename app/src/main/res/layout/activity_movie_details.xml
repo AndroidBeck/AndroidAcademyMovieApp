@@ -157,10 +157,24 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
             android:text="@string/reviews_number"
-            android:textColor=" #6D6D80"
+            android:textColor="#6D6D80"
             android:textSize="14sp"
             app:layout_constraintStart_toEndOf="@+id/img_star5"
             app:layout_constraintTop_toBottomOf="@+id/tv_genres" />
+
+        <TextView
+            android:id="@+id/tv_storyline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/storyline"
+            android:textColor=" #ECECEC"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_reviews_number" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

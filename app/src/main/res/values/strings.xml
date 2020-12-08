@@ -5,4 +5,5 @@
     <string name="film_name">Avengers: End Game</string>
     <string name="genres">Action, Adventure, Fantasy</string>
     <string name="reviews_number">125 Reviews</string>
+    <string name="storyline">Storyline</string>
 </resources>
