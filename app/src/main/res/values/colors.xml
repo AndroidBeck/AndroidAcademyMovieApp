@@ -10,4 +10,5 @@
     <color name="white_opacity_50">#80FFFFFF</color>
     <color name="background_color">#191926</color>
     <color name="color_text_genres">#FF3466</color>
+    <color name="color_actor_name">#D8D8D8</color>
 </resources>
