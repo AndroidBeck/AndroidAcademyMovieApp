@@ -5,8 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_color"
-    android:fillViewport="true">
+    android:background="@color/background_color">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout"
@@ -22,15 +21,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/logo" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline_top"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_begin="55dp"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:srcCompat="@drawable/logo"
+            tools:ignore="ContentDescription" />
 
         <ImageView
             android:id="@+id/button_back"
@@ -40,7 +32,110 @@
             app:layout_constraintBottom_toBottomOf="@+id/tv_back"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/tv_back"
-            app:srcCompat="@drawable/button_back" />
+            app:srcCompat="@drawable/button_back"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/img_star1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_reviews_number"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_reviews_number"
+            app:srcCompat="@drawable/star_icon_full"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/img_star2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/img_star1"
+            app:layout_constraintStart_toEndOf="@id/img_star1"
+            app:layout_constraintTop_toTopOf="@+id/img_star1"
+            app:srcCompat="@drawable/star_icon_full"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/img_star3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/img_star1"
+            app:layout_constraintStart_toEndOf="@id/img_star2"
+            app:layout_constraintTop_toTopOf="@+id/img_star1"
+            app:srcCompat="@drawable/star_icon_full"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/img_star4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/img_star1"
+            app:layout_constraintStart_toEndOf="@id/img_star3"
+            app:layout_constraintTop_toTopOf="@+id/img_star1"
+            app:srcCompat="@drawable/star_icon_full"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/img_star5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/img_star1"
+            app:layout_constraintStart_toEndOf="@id/img_star4"
+            app:layout_constraintTop_toTopOf="@+id/img_star1"
+            app:srcCompat="@drawable/star_icon_empty"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/img_actor1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintEnd_toStartOf="@+id/img_actor2"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_cast"
+            app:srcCompat="@drawable/movie_actor_1"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/img_actor2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/img_actor1"
+            app:layout_constraintEnd_toStartOf="@+id/img_actor3"
+            app:layout_constraintStart_toEndOf="@id/img_actor1"
+            app:layout_constraintTop_toTopOf="@+id/img_actor1"
+            app:srcCompat="@drawable/movie_actor_2"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/img_actor3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/img_actor1"
+            app:layout_constraintEnd_toStartOf="@+id/img_actor4"
+            app:layout_constraintStart_toEndOf="@+id/img_actor2"
+            app:layout_constraintTop_toTopOf="@+id/img_actor1"
+            app:srcCompat="@drawable/movie_actor_3"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/img_actor4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/img_actor1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/img_actor3"
+            app:layout_constraintTop_toTopOf="@+id/img_actor1"
+            app:srcCompat="@drawable/movie_actor_4"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/tv_back"
@@ -52,13 +147,6 @@
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@+id/button_back"
             app:layout_constraintTop_toTopOf="@id/guideline_top" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline_top2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.37"/>
 
         <TextView
             android:id="@+id/tv_age_rate"
@@ -99,56 +187,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_film_name" />
-
-        <ImageView
-            android:id="@+id/img_star1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_reviews_number"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_reviews_number"
-            app:srcCompat="@drawable/star_icon_full" />
-
-        <ImageView
-            android:id="@+id/img_star2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/img_star1"
-            app:layout_constraintStart_toEndOf="@id/img_star1"
-            app:layout_constraintTop_toTopOf="@+id/img_star1"
-            app:srcCompat="@drawable/star_icon_full" />
-
-        <ImageView
-            android:id="@+id/img_star3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/img_star1"
-            app:layout_constraintStart_toEndOf="@id/img_star2"
-            app:layout_constraintTop_toTopOf="@+id/img_star1"
-            app:srcCompat="@drawable/star_icon_full" />
-
-        <ImageView
-            android:id="@+id/img_star4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/img_star1"
-            app:layout_constraintStart_toEndOf="@id/img_star3"
-            app:layout_constraintTop_toTopOf="@+id/img_star1"
-            app:srcCompat="@drawable/star_icon_full" />
-
-        <ImageView
-            android:id="@+id/img_star5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/img_star1"
-            app:layout_constraintStart_toEndOf="@id/img_star4"
-            app:layout_constraintTop_toTopOf="@+id/img_star1"
-            app:srcCompat="@drawable/star_icon_empty" />
 
         <TextView
             android:id="@+id/tv_reviews_number"
@@ -204,6 +242,28 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_description" />
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="55dp"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_top2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.37" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_vertical_50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
