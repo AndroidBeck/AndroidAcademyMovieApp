@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 
 class FragmentMoviesList: Fragment() {
 
+    private var clickListener: TransactionsFragmentClicks? = null
+
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
                               savedInstanceState: Bundle?
@@ -15,6 +17,17 @@ class FragmentMoviesList: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        view.apply {
+            setOnClickListener {clickListener?.showDetails()}
+        }
+    }
+
+    fun setClickListener(listener: TransactionsFragmentClicks?) {
+        clickListener = listener
+    }
+
+    interface TransactionsFragmentClicks {
+        fun showDetails()
     }
 
 }

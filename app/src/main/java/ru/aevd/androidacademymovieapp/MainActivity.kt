@@ -1,12 +1,11 @@
 package ru.aevd.androidacademymovieapp
 
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
-class MainActivity: AppCompatActivity() {
+class MainActivity: AppCompatActivity(), FragmentMoviesList.TransactionsFragmentClicks {
     private val moviesListFragment = FragmentMoviesList()
+        .apply { setClickListener(this@MainActivity) }
     private val moviesDetailsFragment = FragmentMoviesDetails()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,4 +17,14 @@ class MainActivity: AppCompatActivity() {
                 commit()
             }
     }
+
+    override fun showDetails() {
+        supportFragmentManager.beginTransaction()
+            .apply {
+                add(R.id.fragments_container, moviesDetailsFragment)
+                commit()
+            }
+    }
+
+
 }
