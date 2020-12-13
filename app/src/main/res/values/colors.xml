@@ -11,4 +11,5 @@
     <color name="background_color">#191926</color>
     <color name="color_text_genres">#FF3466</color>
     <color name="color_actor_name">#D8D8D8</color>
+    <color name="color_film_length">#565665</color>
 </resources>

@@ -3,9 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/black">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/black"
+    android:paddingBottom="@dimen/start_end_margin"
+    android:paddingEnd="@dimen/start_end_margin"
+    android:paddingTop="@dimen/start_end_margin">
 
     <ImageView
         android:id="@+id/img_aim"
@@ -23,7 +26,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="55dp"
         android:text="@string/movies_list"
         android:textColor="@color/white"
         android:textSize="@dimen/text_size_bigger"
@@ -144,5 +146,32 @@
         app:layout_constraintStart_toEndOf="@id/img_star5_small"
         app:layout_constraintTop_toTopOf="@id/img_star1_small"
         tools:ignore="ContentDescription"/>
+
+    <TextView
+        android:id="@+id/tv_film_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/film_name"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_bigger"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/img_movie_logo_small"
+        app:layout_constraintTop_toBottomOf="@id/img_movie_logo_small" />
+
+    <TextView
+        android:id="@+id/tv_film_time_length"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/film_length"
+        android:textColor="@color/color_film_length"
+        android:textSize="8sp"
+        app:layout_constraintEnd_toEndOf="@id/img_movie_logo_small"
+        app:layout_constraintStart_toStartOf="@id/img_movie_logo_small"
+        app:layout_constraintTop_toBottomOf="@id/tv_film_name" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
