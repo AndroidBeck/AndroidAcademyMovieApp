@@ -1,33 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
-    android:padding="@dimen/start_end_margin">
+    android:layout_width="match_parent"
+    android:background="@color/black">
 
-    <TextView
-        android:id="@+id/tv_movies_list"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/movies_list"
-        android:textColor="@color/white"
-        android:textSize="@dimen/text_size_bigger"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:drawableStartCompat="@drawable/aim"
-        android:drawablePadding="8dp"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        android:padding="@dimen/start_end_margin">
 
-    <include
-        android:id="@+id/movies_list_item_1"
-        layout="@layout/movies_list_item"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="@+id/tv_movies_list"
-        app:layout_constraintTop_toBottomOf="@+id/tv_movies_list" />
+        <TextView
+            android:id="@+id/tv_movies_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/movies_list"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_bigger"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:drawableStartCompat="@drawable/aim"
+            android:drawablePadding="8dp"/>
 
+        <include
+            android:id="@+id/movies_list_item_1"
+            layout="@layout/movies_list_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="@+id/tv_movies_list"
+            app:layout_constraintTop_toBottomOf="@+id/tv_movies_list" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
