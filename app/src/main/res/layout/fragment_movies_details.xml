@@ -47,26 +47,17 @@
             android:scaleType="centerCrop"
             tools:ignore="ContentDescription" />
 
-        <ImageView
-            android:id="@+id/button_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/start_end_margin"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_back"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tv_back"
-            app:srcCompat="@drawable/button_back"
-            tools:ignore="ContentDescription" />
-
         <TextView
             android:id="@+id/tv_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="@dimen/start_end_margin"
+            android:drawablePadding="8dp"
             android:text="@string/back"
             android:textColor="@color/white_opacity_50"
             android:textSize="@dimen/text_size_normal"
-            app:layout_constraintStart_toEndOf="@+id/button_back"
+            app:drawableStartCompat="@drawable/button_back"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/guideline_top" />
 
         <TextView

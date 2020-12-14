@@ -30,4 +30,8 @@ class MainActivity: AppCompatActivity(), TransactionsFragmentClicks {
             }
     }
 
+    override fun navigateBack() {
+        supportFragmentManager.popBackStack()
+    }
+
 }

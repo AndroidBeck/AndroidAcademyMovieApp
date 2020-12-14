@@ -3,40 +3,27 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@color/black"
-    android:paddingBottom="@dimen/start_end_margin"
-    android:paddingEnd="@dimen/start_end_margin"
-    android:paddingTop="@dimen/start_end_margin">
-
-    <ImageView
-        android:id="@+id/img_aim"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/start_end_margin"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_movies_list"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_movies_list"
-        app:srcCompat="@drawable/aim"
-        tools:ignore="ContentDescription" />
+    android:padding="@dimen/start_end_margin">
 
     <TextView
         android:id="@+id/tv_movies_list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:text="@string/movies_list"
         android:textColor="@color/white"
         android:textSize="@dimen/text_size_bigger"
-        app:layout_constraintStart_toEndOf="@id/img_aim"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:drawableStartCompat="@drawable/aim"
+        android:drawablePadding="8dp"/>
 
     <ImageView
         android:id="@+id/img_movie_logo_small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/start_end_margin"
         android:layout_marginTop="27dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_movies_list"
