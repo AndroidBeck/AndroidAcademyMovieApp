@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 
-class MainActivity: AppCompatActivity(), FragmentMoviesList.TransactionsFragmentClicks {
+class MainActivity: AppCompatActivity(), TransactionsFragmentClicks {
     private val moviesListFragment: FragmentMoviesList
             = FragmentMoviesList().apply { setClickListener(this@MainActivity) }
     private val moviesDetailsFragment: FragmentMoviesDetails = FragmentMoviesDetails()
@@ -16,12 +16,8 @@ class MainActivity: AppCompatActivity(), FragmentMoviesList.TransactionsFragment
             supportFragmentManager.beginTransaction()
                 .apply {
                     add(R.id.fragments_container, moviesListFragment)
-                    //addToBackStack(null)
                     commit()
                     }
-        }
-        else {
-            //moviesListFragment = supportFragmentManager.findFragmentByTag(FragmentMoviesList.FRAGMENT_TAG) as? FragmentMoviesList
         }
     }
 
@@ -33,9 +29,5 @@ class MainActivity: AppCompatActivity(), FragmentMoviesList.TransactionsFragment
                 commit()
             }
     }
-
-//    companion object {
-//        const val SOME_FRAGMENT_TAG = "Some fragment"
-//    }
 
 }

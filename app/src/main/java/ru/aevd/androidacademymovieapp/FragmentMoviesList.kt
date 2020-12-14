@@ -27,10 +27,6 @@ class FragmentMoviesList: Fragment() {
         clickListener = listener
     }
 
-    interface TransactionsFragmentClicks {
-        fun showDetails()
-    }
-
     override fun onAttach(context: Context) {
         super.onAttach(context)
         if (context is TransactionsFragmentClicks) {
@@ -42,16 +38,5 @@ class FragmentMoviesList: Fragment() {
         super.onDetach()
         clickListener = null
     }
-
-//    companion object {
-//        const val FRAGMENT_TAG = "Fragment MoviesList"
-//
-//        fun newInstance(): FragmentMoviesList {
-//            val fragment = FragmentMoviesList()
-//            val args = Bundle()
-//            fragment.arguments = args
-//            return fragment
-//        }
-//    }
 
 }
