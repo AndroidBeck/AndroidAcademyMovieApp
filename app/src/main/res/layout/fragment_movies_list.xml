@@ -21,7 +21,7 @@
         android:drawablePadding="8dp"/>
 
     <include
-        android:id="@+id/tv_movies_list_item_1"
+        android:id="@+id/movies_list_item_1"
         layout="@layout/movies_list_item"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

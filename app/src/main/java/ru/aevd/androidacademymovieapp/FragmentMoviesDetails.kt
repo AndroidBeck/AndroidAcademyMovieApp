@@ -20,7 +20,7 @@ class FragmentMoviesDetails: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         view.findViewById<TextView>(R.id.tv_back).apply {
-            setOnClickListener {clickListener?.navigateBack()}
+            setOnClickListener { clickListener?.navigateBack() }
         }
     }
 
