@@ -30,4 +30,15 @@ class FragmentMoviesList: Fragment() {
         fun showDetails()
     }
 
+//    companion object {
+//        const val FRAGMENT_TAG = "Fragment MoviesList"
+//
+//        fun newInstance(): FragmentMoviesList {
+//            val fragment = FragmentMoviesList()
+//            val args = Bundle()
+//            fragment.arguments = args
+//            return fragment
+//        }
+//    }
+
 }

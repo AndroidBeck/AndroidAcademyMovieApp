@@ -17,5 +17,16 @@ class FragmentMoviesDetails: Fragment() {
         super.onViewCreated(view, savedInstanceState)
     }
 
+//    companion object {
+//        const val FRAGMENT_TAG = "Fragment MoviesDetails"
+//
+//        fun newInstance(): FragmentMoviesDetails {
+//            val fragment = FragmentMoviesDetails()
+//            val args = Bundle()
+//            fragment.arguments = args
+//            return fragment
+//        }
+//    }
+
 }
 
