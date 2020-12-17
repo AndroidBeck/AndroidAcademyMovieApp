@@ -1,19 +1,28 @@
 <resources>
     <string name="app_name">AndroidAcademyMovieApp</string>
     <string name="back">Back</string>
-    <string name="age_rate">13+</string>
-    <string name="film_name">Avengers: End Game</string>
-    <string name="genres">Action, Adventure, Fantasy</string>
-    <string name="reviews_number">125 Reviews</string>
     <string name="storyline">Storyline</string>
-    <string name="description">After the devastating events of Avengers: Infinity War,
+    <string name="cast">Cast</string>
+    <string name="movies_list">Movies list</string>
+
+    <string name="age_rate">%1$d+</string>
+    <string name="age_rate_tools">13+</string>
+    <string name="reviews_number">%1$d Reviews</string>
+    <string name="reviews_number_tools">125 Reviews</string>
+    <string name="movie_duration_in_minutes">%1$d MIN</string>
+    <string name="movie_duration_in_minutes_tools">137 MIN</string>
+    <string name="film_name">%1$s</string>
+    <string name="film_name_tools">Avengers: End Game</string>
+    <string name="genres">%1$s</string>
+    <string name="genres_tools">Action, Adventure, Fantasy</string>
+    <string name="description">%1$s</string>
+    <string name="description_tools">After the devastating events of Avengers: Infinity War,
         the universe is in ruins. With the help of remaining allies, the Avengers assemble
         once more in order to reverse Thanos\' actions and restore balance to the universe.</string>
-    <string name="cast">Cast</string>
-    <string name="actor1_name">Robert Downey Jr.</string>
-    <string name="actor2_name">Chris Evans</string>
-    <string name="actor3_name">Mark Ruffalo</string>
-    <string name="actor4_name">Chris Hemsworth</string>
-    <string name="movies_list">Movies list</string>
-    <string name="film_length">137 MIN</string>
+
+    <string name="actor_name">%1$s</string>
+    <string name="actor_name_tools">Robert Downey Jr.</string>
+    <string name="actor2_name_tools">Chris Evans</string>
+    <string name="actor3_name_tools">Mark Ruffalo</string>>
+    <string name="actor4_name_tools">Chris Hemsworth</string>
 </resources>
