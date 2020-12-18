@@ -27,19 +27,16 @@ class MoviesDataSource {
 
                 Movie(
                         name = "Tenet",
-                        description = "After the devastating events of Avengers: Infinity War, " +
-                                "the universe is in ruins. With the help of remaining allies, " +
-                                "the Avengers assemble once more in order to reverse Thanos' " +
-                                "actions and restore balance to the universe.",
-                        genres = "Action, Adventure, Drama",
-                        rateInStars = 4,
-                        reviewsNumber = 125,
-                        ageRate = 13,
-                        timeDurationInMinutes = 137,
-                        isLiked = false,
+                        description = "---",
+                        genres = "Action, Sci-Fi, Thriller",
+                        rateInStars = 5,
+                        reviewsNumber = 98,
+                        ageRate = 16,
+                        timeDurationInMinutes = 97,
+                        isLiked = true,
                         cast = listOf(
                                 Actor(
-                                        name = "Robert Downey Jr.",
+                                        name = "---",
                                         img_path = R.drawable.actor_avatar_robert_downey_jr
                                 )
                         ),
@@ -49,19 +46,16 @@ class MoviesDataSource {
 
                 Movie(
                         name = "Black Widow",
-                        description = "After the devastating events of Avengers: Infinity War, " +
-                                "the universe is in ruins. With the help of remaining allies, " +
-                                "the Avengers assemble once more in order to reverse Thanos' " +
-                                "actions and restore balance to the universe.",
-                        genres = "Action, Adventure, Drama",
+                        description = "---",
+                        genres = "Action, Adventure, Sci-Fi",
                         rateInStars = 4,
-                        reviewsNumber = 125,
+                        reviewsNumber = 38,
                         ageRate = 13,
-                        timeDurationInMinutes = 137,
+                        timeDurationInMinutes = 102,
                         isLiked = false,
                         cast = listOf(
                                 Actor(
-                                        name = "Robert Downey Jr.",
+                                        name = "---",
                                         img_path = R.drawable.actor_avatar_robert_downey_jr
                                 )
                         ),
@@ -71,19 +65,16 @@ class MoviesDataSource {
 
                 Movie(
                         name = "Wonder Woman 1984",
-                        description = "After the devastating events of Avengers: Infinity War, " +
-                                "the universe is in ruins. With the help of remaining allies, " +
-                                "the Avengers assemble once more in order to reverse Thanos' " +
-                                "actions and restore balance to the universe.",
-                        genres = "Action, Adventure, Drama",
-                        rateInStars = 4,
-                        reviewsNumber = 125,
+                        description = "---",
+                        genres = "Action, Adventure, Fantasy",
+                        rateInStars = 5,
+                        reviewsNumber = 74,
                         ageRate = 13,
-                        timeDurationInMinutes = 137,
+                        timeDurationInMinutes = 120,
                         isLiked = false,
                         cast = listOf(
                                 Actor(
-                                        name = "Robert Downey Jr.",
+                                        name = "---",
                                         img_path = R.drawable.actor_avatar_robert_downey_jr
                                 )
                         ),
@@ -96,17 +87,6 @@ class MoviesDataSource {
 }
 
 /*
-data class Movie (
-    val name: String,
-    val description: String,
-    val rateInStars: Int,
-    val reviewsNumber: Int,
-    val ageRate: Int,
-    val timeDurationInMinutes: Int,
-    val isLiked: Boolean,
-    val cast: List<Actor>,
-    val logo_path: String,
-    val logo_small_path: String
 
 data class Actor (
     val name: String,
