@@ -6,12 +6,13 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@drawable/movie_shape"
+    android:layout_margin="8dp"
     android:padding="@dimen/padding_movies_list_item_shape">
 
     <ImageView
         android:id="@+id/img_movie_logo_small"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="166dp"
+        android:layout_height="246dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@drawable/movie_avengers_end_game_logo_small"
@@ -55,8 +56,8 @@
 
     <ImageView
         android:id="@+id/img_like"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/img_like_width"
+        android:layout_height="@dimen/img_like_height"
         android:layout_marginEnd="6dp"
         app:layout_constraintBottom_toBottomOf="@id/tv_age_rate"
         app:layout_constraintEnd_toEndOf="@id/img_movie_logo_small"
@@ -68,8 +69,8 @@
 
     <ImageView
         android:id="@+id/img_star1_small"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/star_small_width_height"
+        android:layout_height="@dimen/star_small_width_height"
         android:layout_marginStart="6dp"
         android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="@id/img_movie_logo_small"
@@ -79,8 +80,8 @@
 
     <ImageView
         android:id="@+id/img_star2_small"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/star_small_width_height"
+        android:layout_height="@dimen/star_small_width_height"
         android:layout_marginStart="@dimen/small_star_margin"
         app:layout_constraintBottom_toBottomOf="@id/img_star1_small"
         app:layout_constraintStart_toEndOf="@id/img_star1_small"
@@ -90,8 +91,8 @@
 
     <ImageView
         android:id="@+id/img_star3_small"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/star_small_width_height"
+        android:layout_height="@dimen/star_small_width_height"
         android:layout_marginStart="@dimen/small_star_margin"
         app:layout_constraintBottom_toBottomOf="@id/img_star1_small"
         app:layout_constraintStart_toEndOf="@id/img_star2_small"
@@ -101,8 +102,8 @@
 
     <ImageView
         android:id="@+id/img_star4_small"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/star_small_width_height"
+        android:layout_height="@dimen/star_small_width_height"
         android:layout_marginStart="@dimen/small_star_margin"
         app:layout_constraintBottom_toBottomOf="@id/img_star1_small"
         app:layout_constraintStart_toEndOf="@id/img_star3_small"
@@ -112,8 +113,8 @@
 
     <ImageView
         android:id="@+id/img_star5_small"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/star_small_width_height"
+        android:layout_height="@dimen/star_small_width_height"
         android:layout_marginStart="@dimen/small_star_margin"
         app:layout_constraintBottom_toBottomOf="@id/img_star1_small"
         app:layout_constraintStart_toEndOf="@id/img_star4_small"

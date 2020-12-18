@@ -10,4 +10,7 @@
     <dimen name="film_name_top_margin">254dp</dimen>
     <dimen name="small_star_margin">2dp</dimen>
     <dimen name="padding_movies_list_item_shape">2dp</dimen>
+    <dimen name="star_small_width_height">8dp</dimen>
+    <dimen name="img_like_width">16dp</dimen>
+    <dimen name="img_like_height">14dp</dimen>
 </resources>
