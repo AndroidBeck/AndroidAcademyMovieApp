@@ -9,6 +9,6 @@ data class Movie (
     val timeDurationInMinutes: Int,
     val isLiked: Boolean,
     val cast: List<Actor>,
-    val logo_path: String,
-    val logo_small_path: String
+    val logo_path: Int,
+    val logo_small_path: Int
 )

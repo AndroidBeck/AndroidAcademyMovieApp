@@ -2,5 +2,5 @@ package ru.aevd.androidacademymovieapp
 
 data class Actor (
     val name: String,
-    val img_path: String
+    val img_path: Int
 )

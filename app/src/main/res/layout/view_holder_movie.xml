@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/movie_logo_small"
+        tools:src="@drawable/movie_avengers_end_game_logo_small"
         tools:ignore="ContentDescription" />
 
     <View

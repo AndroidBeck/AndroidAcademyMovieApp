@@ -26,4 +26,7 @@ class MoviesAdapter: RecyclerView.Adapter<MovieViewHolder>() {
     fun bindMovies(newMovies: List<Movie>) {
         movies = newMovies
     }
+
+    //Perfomance optimization - adapter.setHasStableIds(true)
+    //override fun getItemId(position: Int): Long = position.toLong()
 }

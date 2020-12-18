@@ -16,7 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintDimensionRatio="1,1"
-        tools:src="@drawable/movie_actor_1"
+        tools:src="@drawable/actor_avatar_robert_downey_jr"
         tools:ignore="ContentDescription" />
 
     <TextView
