@@ -3,6 +3,7 @@
     <dimen name="guideline_top">56dp</dimen>
     <dimen name="start_end_margin">16dp</dimen>
     <dimen name="star_margin">8dp</dimen>
+    <dimen name="text_size_small">10sp</dimen>
     <dimen name="text_size_normal">12sp</dimen>
     <dimen name="text_size_bigger">14sp</dimen>
     <dimen name="text_size_large">40sp</dimen>
@@ -13,4 +14,5 @@
     <dimen name="star_small_width_height">8dp</dimen>
     <dimen name="img_like_width">16dp</dimen>
     <dimen name="img_like_height">14dp</dimen>
+
 </resources>

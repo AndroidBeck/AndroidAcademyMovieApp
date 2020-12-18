@@ -19,6 +19,7 @@ class MovieViewHolder(itemView: View):  RecyclerView.ViewHolder(itemView) {
     )
     private val reviewsNumber: TextView = itemView.findViewById(R.id.tv_reviews_number)
     private val durationInMinutes: TextView = itemView.findViewById(R.id.tv_film_time_length)
+    private val genres: TextView = itemView.findViewById(R.id.tv_genres)
     private val liked: ImageView = itemView.findViewById(R.id.img_like)
 
     fun onBind(movie: Movie) {
@@ -26,6 +27,7 @@ class MovieViewHolder(itemView: View):  RecyclerView.ViewHolder(itemView) {
         ageRate.text = context.getString(R.string.age_rate, movie.ageRate)
         reviewsNumber.text = context.getString(R.string.reviews_number, movie.reviewsNumber)
         durationInMinutes.text = context.getString(R.string.movie_duration_in_minutes,  movie.timeDurationInMinutes)
+        genres.text = movie.genres
         liked.visibility = when (movie.isLiked) {
             true -> View.VISIBLE
             false -> View.GONE

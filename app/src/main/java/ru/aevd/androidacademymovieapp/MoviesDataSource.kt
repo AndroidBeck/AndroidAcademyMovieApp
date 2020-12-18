@@ -9,6 +9,7 @@ class MoviesDataSource {
                                 "the universe is in ruins. With the help of remaining allies, " +
                                 "the Avengers assemble once more in order to reverse Thanos' " +
                                 "actions and restore balance to the universe.",
+                        genres = "Action, Adventure, Drama",
                         rateInStars = 4,
                         reviewsNumber = 125,
                         ageRate = 13,
@@ -30,6 +31,7 @@ class MoviesDataSource {
                                 "the universe is in ruins. With the help of remaining allies, " +
                                 "the Avengers assemble once more in order to reverse Thanos' " +
                                 "actions and restore balance to the universe.",
+                        genres = "Action, Adventure, Drama",
                         rateInStars = 4,
                         reviewsNumber = 125,
                         ageRate = 13,
@@ -51,6 +53,7 @@ class MoviesDataSource {
                                 "the universe is in ruins. With the help of remaining allies, " +
                                 "the Avengers assemble once more in order to reverse Thanos' " +
                                 "actions and restore balance to the universe.",
+                        genres = "Action, Adventure, Drama",
                         rateInStars = 4,
                         reviewsNumber = 125,
                         ageRate = 13,
@@ -72,6 +75,7 @@ class MoviesDataSource {
                                 "the universe is in ruins. With the help of remaining allies, " +
                                 "the Avengers assemble once more in order to reverse Thanos' " +
                                 "actions and restore balance to the universe.",
+                        genres = "Action, Adventure, Drama",
                         rateInStars = 4,
                         reviewsNumber = 125,
                         ageRate = 13,
