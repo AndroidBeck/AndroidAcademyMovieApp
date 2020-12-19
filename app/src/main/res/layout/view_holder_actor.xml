@@ -4,7 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/black"
+    android:layout_margin="8dp"
+    android:padding="2dp">
 
     <ImageView
         android:id="@+id/img_actor"
@@ -16,6 +19,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintDimensionRatio="1,1"
+        tools:layout_width="wrap_content"
+        tools:layout_height="wrap_content"
         tools:src="@drawable/actor_avatar_robert_downey_jr"
         tools:ignore="ContentDescription" />
 
@@ -23,7 +28,7 @@
         android:id="@+id/actor_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        tools:text="@string/actor_name_tools"
+        tools:text="@string/actor1_name_tools"
         android:textSize="@dimen/text_size_normal"
         android:textColor="@color/color_actor_name"
         app:layout_constraintEnd_toEndOf="@+id/img_actor"

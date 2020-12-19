@@ -14,5 +14,7 @@
     <dimen name="star_small_width_height">8dp</dimen>
     <dimen name="img_like_width">16dp</dimen>
     <dimen name="img_like_height">14dp</dimen>
+    <dimen name="star_width">14dp</dimen>
+    <dimen name="star_height">12dp</dimen>
 
 </resources>
