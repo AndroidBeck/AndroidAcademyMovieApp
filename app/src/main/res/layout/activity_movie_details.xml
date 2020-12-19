@@ -244,7 +244,7 @@
             app:layout_constraintEnd_toStartOf="@+id/img_actor3"
             app:layout_constraintStart_toEndOf="@id/img_actor1"
             app:layout_constraintTop_toTopOf="@+id/img_actor1"
-            app:srcCompat="@drawable/movie1_actor_2"
+            app:srcCompat="@drawable/actor_avatar_chris_evans"
             tools:ignore="ContentDescription" />
 
         <ImageView
@@ -257,7 +257,7 @@
             app:layout_constraintEnd_toStartOf="@+id/img_actor4"
             app:layout_constraintStart_toEndOf="@+id/img_actor2"
             app:layout_constraintTop_toTopOf="@+id/img_actor1"
-            app:srcCompat="@drawable/movie1_actor_3"
+            app:srcCompat="@drawable/actor_avatar_chris_hemsworth"
             tools:ignore="ContentDescription" />
 
         <ImageView
@@ -271,7 +271,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/img_actor3"
             app:layout_constraintTop_toTopOf="@+id/img_actor1"
-            app:srcCompat="@drawable/movie1_actor_4"
+            app:srcCompat="@drawable/actor_avatar_mark_ruffalo"
             tools:ignore="ContentDescription" />
 
         <TextView

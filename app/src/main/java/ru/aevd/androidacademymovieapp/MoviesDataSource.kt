@@ -19,6 +19,18 @@ class MoviesDataSource {
                                 Actor(
                                         name = "Robert Downey Jr.",
                                         img_path = R.drawable.actor_avatar_robert_downey_jr
+                                ),
+                                Actor(
+                                        name = "Chris Evans",
+                                        img_path = R.drawable.actor_avatar_chris_evans
+                                ),
+                                Actor(
+                                        name = "Mark Ruffalo",
+                                        img_path = R.drawable.actor_avatar_mark_ruffalo
+                                ),
+                                Actor(
+                                        name = "Chris Hemsworth",
+                                        img_path = R.drawable.actor_avatar_chris_hemsworth
                                 )
                         ),
                         logo_path = R.drawable.movie_avengers_end_game_logo,
@@ -41,7 +53,7 @@ class MoviesDataSource {
                                 )
                         ),
                         logo_path = R.drawable.movie_avengers_end_game_logo,
-                        logo_small_path = R.drawable.movie_avengers_end_game_logo_small
+                        logo_small_path = R.drawable.movie_tenet_logo_small
                 ),
 
                 Movie(
@@ -60,7 +72,7 @@ class MoviesDataSource {
                                 )
                         ),
                         logo_path = R.drawable.movie_avengers_end_game_logo,
-                        logo_small_path = R.drawable.movie_avengers_end_game_logo_small
+                        logo_small_path = R.drawable.movie_black_widow_logo_small
                 ),
 
                 Movie(
@@ -79,23 +91,9 @@ class MoviesDataSource {
                                 )
                         ),
                         logo_path = R.drawable.movie_avengers_end_game_logo,
-                        logo_small_path = R.drawable.movie_avengers_end_game_logo_small
+                        logo_small_path = R.drawable.movie_wonder_woman_1984_logo_small
                 )
         )
     }
 
 }
-
-/*
-
-data class Actor (
-    val name: String,
-    val img_path: String
-)
-
-<string name="actor_name_tools">Robert Downey Jr.</string>
-<string name="actor2_name_tools">Chris Evans</string>
-<string name="actor3_name_tools">Mark Ruffalo</string>>
-<string name="actor4_name_tools">Chris Hemsworth</string>
-
- */

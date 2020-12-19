@@ -8,7 +8,7 @@ data class Movie (
     val reviewsNumber: Int,
     val ageRate: Int,
     val timeDurationInMinutes: Int,
-    var isLiked: Boolean = false,
+    var isLiked: Boolean,
     val cast: List<Actor>,
     val logo_path: Int,
     val logo_small_path: Int
