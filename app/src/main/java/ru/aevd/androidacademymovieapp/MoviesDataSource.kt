@@ -4,6 +4,7 @@ class MoviesDataSource {
     fun getMovies(): List<Movie> {
         return listOf(
                 Movie(
+                        id = 1,
                         name = "Avengers: End Game",
                         description = "After the devastating events of Avengers: Infinity War, " +
                                 "the universe is in ruins. With the help of remaining allies, " +
@@ -17,18 +18,22 @@ class MoviesDataSource {
                         isLiked = false,
                         cast = listOf(
                                 Actor(
+                                        id = 1,
                                         name = "Robert Downey Jr.",
                                         img_path = R.drawable.actor_avatar_robert_downey_jr
                                 ),
                                 Actor(
+                                        id = 2,
                                         name = "Chris Evans",
                                         img_path = R.drawable.actor_avatar_chris_evans
                                 ),
                                 Actor(
+                                        id = 3,
                                         name = "Mark Ruffalo",
                                         img_path = R.drawable.actor_avatar_mark_ruffalo
                                 ),
                                 Actor(
+                                        id = 4,
                                         name = "Chris Hemsworth",
                                         img_path = R.drawable.actor_avatar_chris_hemsworth
                                 )
@@ -38,6 +43,7 @@ class MoviesDataSource {
                 ),
 
                 Movie(
+                        id = 2,
                         name = "Tenet",
                         description = "---",
                         genres = "Action, Sci-Fi, Thriller",
@@ -48,6 +54,7 @@ class MoviesDataSource {
                         isLiked = true,
                         cast = listOf(
                                 Actor(
+                                        id = 1,
                                         name = "---",
                                         img_path = R.drawable.actor_avatar_robert_downey_jr
                                 )
@@ -57,6 +64,7 @@ class MoviesDataSource {
                 ),
 
                 Movie(
+                        id = 3,
                         name = "Black Widow",
                         description = "---",
                         genres = "Action, Adventure, Sci-Fi",
@@ -67,6 +75,7 @@ class MoviesDataSource {
                         isLiked = false,
                         cast = listOf(
                                 Actor(
+                                        id = 1,
                                         name = "---",
                                         img_path = R.drawable.actor_avatar_robert_downey_jr
                                 )
@@ -76,6 +85,7 @@ class MoviesDataSource {
                 ),
 
                 Movie(
+                        id = 4,
                         name = "Wonder Woman 1984",
                         description = "---",
                         genres = "Action, Adventure, Fantasy",
@@ -86,6 +96,7 @@ class MoviesDataSource {
                         isLiked = false,
                         cast = listOf(
                                 Actor(
+                                        id = 1,
                                         name = "---",
                                         img_path = R.drawable.actor_avatar_robert_downey_jr
                                 )

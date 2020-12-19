@@ -20,6 +20,8 @@ class MoviesAdapter: RecyclerView.Adapter<MovieViewHolder>() {
 
     override fun getItemCount(): Int = movies.size
 
+    fun getItem(position: Int): Movie = movies[position]
+
     //TODO: think - do I need this?
     fun getMovies(): List<Movie> = movies
 
