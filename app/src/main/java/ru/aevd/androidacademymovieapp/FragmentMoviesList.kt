@@ -28,10 +28,6 @@ class FragmentMoviesList: Fragment() {
         //Perfomance optimization
         //recycler.setHasFixedSize(true)
         //adapter.setHasStableIds(true)
-
-//        view.findViewById<View>(R.id.movies_list_item_1).apply {
-//            setOnClickListener { clickListener?.showDetails() }
-//        }
     }
 
     private val recyclerClickListener = object: OnMoviesItemClicked {
