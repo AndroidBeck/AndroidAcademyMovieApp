@@ -32,7 +32,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_movies_list"
-        tools:itemCount="1"
+        tools:itemCount="2"
         tools:listitem="@layout/view_holder_movie" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

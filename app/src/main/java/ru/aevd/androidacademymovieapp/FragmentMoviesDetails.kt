@@ -17,6 +17,7 @@ class FragmentMoviesDetails: Fragment() {
     private var clickListener: TransactionsFragmentClicks? = null
     private var movie: Movie = MoviesDataSource().movies[0]
     private lateinit var actorsAdapter: ActorsAdapter
+    private lateinit var layoutManager: RecyclerView.LayoutManager
 
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
@@ -53,7 +54,9 @@ class FragmentMoviesDetails: Fragment() {
         //Create recyclerView with actors
         val actorsRecycler: RecyclerView = view.findViewById(R.id.rv_actors)
         actorsAdapter = ActorsAdapter()
-        actorsRecycler.layoutManager = LinearLayoutManager(requireContext())
+        layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL,
+                false)
+        actorsRecycler.layoutManager = layoutManager
         actorsRecycler.adapter = actorsAdapter
     }
 
