@@ -2,7 +2,7 @@ package ru.aevd.androidacademymovieapp
 
 class MoviesDataSource {
 
-    private val movies = listOf(
+    val movies = listOf(
             Movie(
                     id = 1,
                     name = "Avengers: End Game",
@@ -87,7 +87,10 @@ class MoviesDataSource {
             Movie(
                     id = 4,
                     name = "Wonder Woman 1984",
-                    description = "---",
+                    description = "Continuation of the fantastic exploits of the Amazon warrior " +
+                            "Diana, who left her secluded island to save humanity. After " +
+                            "overcoming the tragedy of World War I, Wonder Woman is embroiled " +
+                            "in a new international battle of the mid-1980s.",
                     genres = "Action, Adventure, Fantasy",
                     rateInStars = 5,
                     reviewsNumber = 74,
@@ -106,12 +109,8 @@ class MoviesDataSource {
             )
     )
 
-    fun getMovies(): List<Movie> {
-        return movies
-    }
-    
-    fun getMovie(id: Long): Movie? {
-        return movies.find { it.id == id }
+    fun getMovieById(id: Long?): Movie {
+        return movies.find { it.id == id } ?: movies[0]
     }
 
 }

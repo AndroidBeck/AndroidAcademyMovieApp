@@ -46,7 +46,7 @@ class FragmentMoviesList: Fragment() {
     }
 
     private fun updateData() {
-        adapter.bindMovies(MoviesDataSource().getMovies())
+        adapter.bindMovies(MoviesDataSource().movies)
         adapter.notifyDataSetChanged()
     }
 

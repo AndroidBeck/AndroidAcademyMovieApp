@@ -42,7 +42,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/movie_avengers_end_game_logo"
+            tools:srcCompat="@drawable/movie_avengers_end_game_logo"
             android:scaleType="centerCrop"
             tools:ignore="ContentDescription" />
 
