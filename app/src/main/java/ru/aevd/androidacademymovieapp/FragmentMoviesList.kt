@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -23,7 +22,7 @@ class FragmentMoviesList: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val recycler: RecyclerView = view.findViewById(R.id.rv_movies)
-        adapter = MoviesAdapter()
+        adapter = MoviesAdapter(recyclerClickListener)
         recycler.layoutManager = GridLayoutManager(requireContext(), 2)
         recycler.adapter = adapter
         //Perfomance optimization
@@ -33,6 +32,12 @@ class FragmentMoviesList: Fragment() {
 //        view.findViewById<View>(R.id.movies_list_item_1).apply {
 //            setOnClickListener { clickListener?.showDetails() }
 //        }
+    }
+
+    private val recyclerClickListener = object: onMoviesItemClicked {
+        override fun onClick(movie_id: Long) {
+            clickListener?.showMovieDetails(movie_id)
+        }
     }
 
     override fun onStart() {
