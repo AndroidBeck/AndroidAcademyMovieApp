@@ -15,8 +15,8 @@
         android:layout_height="@dimen/img_movie_logo_small_height"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/movie_avengers_end_game_logo_small"
-        tools:ignore="ContentDescription" />
+        tools:ignore="ContentDescription"
+        tools:src="@drawable/movie_avengers_end_game_logo_small" />
 
     <View
         android:id="@+id/img_movie_gradient_mask"

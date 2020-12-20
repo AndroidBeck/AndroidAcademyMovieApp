@@ -5,6 +5,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 
 class MovieViewHolder(itemView: View):  RecyclerView.ViewHolder(itemView) {
     private val name: TextView = itemView.findViewById(R.id.tv_film_name)
@@ -35,6 +36,7 @@ class MovieViewHolder(itemView: View):  RecyclerView.ViewHolder(itemView) {
 
         Glide.with(context)
                 .load(movie.logo_small_path)
+                .apply(imageOption)
                 .into(movieLogoSmall)
 
         //Fulfill stars
@@ -47,6 +49,14 @@ class MovieViewHolder(itemView: View):  RecyclerView.ViewHolder(itemView) {
                     .load(starImg)
                     .into(into)
         }
+    }
+
+    //Dont need it now
+    companion object {
+        private val imageOption = RequestOptions()
+                .placeholder(R.drawable.movie_shape)
+                .fallback(R.drawable.movie_shape)
+                .centerCrop()
     }
 
 }
