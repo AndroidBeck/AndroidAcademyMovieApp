@@ -8,11 +8,15 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
 class FragmentMoviesDetails: Fragment() {
     private var clickListener: TransactionsFragmentClicks? = null
     private var movie: Movie = MoviesDataSource().movies[0]
+    private lateinit var actorsAdapter: ActorsAdapter
 
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
@@ -45,6 +49,22 @@ class FragmentMoviesDetails: Fragment() {
         Glide.with(context)
                 .load(movie.logo_path)
                 .into(movieLogo)
+
+        //Create recyclerView with actors
+        val actorsRecycler: RecyclerView = view.findViewById(R.id.rv_actors)
+        actorsAdapter = ActorsAdapter()
+        actorsRecycler.layoutManager = LinearLayoutManager(requireContext())
+        actorsRecycler.adapter = actorsAdapter
+    }
+
+    override fun onStart() {
+        super.onStart()
+        updateData()
+    }
+
+    private fun updateData() {
+        actorsAdapter.bindActors(movie.cast)
+        actorsAdapter.notifyDataSetChanged()
     }
 
     override fun onAttach(context: Context) {
