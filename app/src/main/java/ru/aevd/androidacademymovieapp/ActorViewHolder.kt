@@ -1,5 +1,6 @@
 package ru.aevd.androidacademymovieapp
 
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -12,6 +13,7 @@ class ActorViewHolder(itemView: View):  RecyclerView.ViewHolder(itemView) {
 
     fun onBind(actor: Actor) {
         actorName.text = actor.name
+//        Log.d("ActorViewHolder", "actor.name ="+actorName.text)
 
         Glide.with(context)
                 .load(actor.img_path)

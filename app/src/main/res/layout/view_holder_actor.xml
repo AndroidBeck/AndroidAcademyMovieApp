@@ -5,22 +5,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@color/black"
-    android:layout_margin="8dp"
-    android:padding="2dp">
+    android:background="@color/background_color"
+    android:layout_marginStart="@dimen/start_end_margin"
+    android:layout_marginEnd="@dimen/start_end_margin"
+    android:layout_marginBottom="8dp">
 
     <ImageView
         android:id="@+id/img_actor"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/actor_avatar_width"
+        android:layout_height="@dimen/actor_avatar_height"
         android:layout_marginStart="@dimen/start_end_margin"
         android:layout_marginTop="6dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintDimensionRatio="1,1"
-        tools:layout_width="wrap_content"
-        tools:layout_height="wrap_content"
         tools:src="@drawable/actor_avatar_robert_downey_jr"
         tools:ignore="ContentDescription" />
 

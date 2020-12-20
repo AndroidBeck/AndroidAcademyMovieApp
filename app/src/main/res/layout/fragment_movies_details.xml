@@ -210,13 +210,12 @@
             android:textSize="@dimen/text_size_bigger"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-
             app:layout_constraintTop_toBottomOf="@+id/tv_description" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_actors"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
             android:layout_marginBottom="16dp"
             android:background="@color/black"
@@ -224,7 +223,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_cast"
-            tools:itemCount="4"
+            tools:itemCount="2"
             tools:layout_height="wrap_content"
             tools:layout_width="match_parent"
             tools:listitem="@layout/view_holder_actor" />
