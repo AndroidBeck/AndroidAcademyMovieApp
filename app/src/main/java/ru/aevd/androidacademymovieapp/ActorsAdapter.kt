@@ -1,6 +1,5 @@
 package ru.aevd.androidacademymovieapp
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,14 +16,12 @@ class ActorsAdapter: RecyclerView.Adapter<ActorViewHolder>() {
 
     override fun onBindViewHolder(holder: ActorViewHolder, position: Int) {
         holder.onBind(actors[position])
-        //Log.d("ActorsAdapter", "onBindVH(): " + actors[position])
     }
 
     override fun getItemCount(): Int = actors.size
 
     fun bindActors(newActors: List<Actor>) {
         actors = newActors
-        Log.d("ActorsAdapter", "bindActors(), actors: " + actors)
     }
 
 }

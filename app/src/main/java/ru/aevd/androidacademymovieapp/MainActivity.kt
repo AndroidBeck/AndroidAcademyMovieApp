@@ -2,7 +2,6 @@ package ru.aevd.androidacademymovieapp
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 
 class MainActivity: AppCompatActivity(), TransactionsFragmentClicks {
     private val moviesListFragment: FragmentMoviesList = FragmentMoviesList()

@@ -18,22 +18,15 @@ class MoviesAdapter(private val recyclerClickListener: OnMoviesItemClicked):
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         holder.onBind(movies[position])
-        holder.itemView.setOnClickListener() {
+        holder.itemView.setOnClickListener {
             recyclerClickListener.onClick(movies[position].id)
         }
     }
 
     override fun getItemCount(): Int = movies.size
 
-    fun getItem(position: Int): Movie = movies[position]
-
-    //TODO: think - do I need this?
-    fun getMovies(): List<Movie> = movies
-
     fun bindMovies(newMovies: List<Movie>) {
         movies = newMovies
     }
 
-    //Perfomance optimization - adapter.setHasStableIds(true)
-    //override fun getItemId(position: Int): Long = position.toLong()
 }
