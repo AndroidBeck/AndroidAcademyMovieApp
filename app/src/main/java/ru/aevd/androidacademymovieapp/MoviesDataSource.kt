@@ -45,7 +45,10 @@ class MoviesDataSource {
             Movie(
                     id = 2,
                     name = "Tenet",
-                    description = "---",
+                    description = "Armed with only one word, Tenet, and fighting for the " +
+                            "survival of the entire world, a Protagonist journeys through a " +
+                            "twilight world of international espionage on a mission that will " +
+                            "unfold in something beyond real time.",
                     genres = "Action, Sci-Fi, Thriller",
                     rateInStars = 5,
                     reviewsNumber = 98,
@@ -55,7 +58,17 @@ class MoviesDataSource {
                     cast = listOf(
                             Actor(
                                     id = 1,
-                                    name = "---",
+                                    name = "John David Washington",
+                                    img_path = R.drawable.actor_avatar_robert_downey_jr
+                            ),
+                            Actor(
+                                    id = 2,
+                                    name = "Robert Pattinson",
+                                    img_path = R.drawable.actor_avatar_robert_downey_jr
+                            ),
+                            Actor(
+                                    id = 3,
+                                    name = "Elizabeth Debicki",
                                     img_path = R.drawable.actor_avatar_robert_downey_jr
                             )
                     ),
@@ -66,7 +79,8 @@ class MoviesDataSource {
             Movie(
                     id = 3,
                     name = "Black Widow",
-                    description = "---",
+                    description = "A film about Natasha Romanoff in her quests between the " +
+                            "films Civil War and Infinity War.",
                     genres = "Action, Adventure, Sci-Fi",
                     rateInStars = 4,
                     reviewsNumber = 38,
@@ -76,7 +90,27 @@ class MoviesDataSource {
                     cast = listOf(
                             Actor(
                                     id = 1,
-                                    name = "---",
+                                    name = "Scarlett Johansson",
+                                    img_path = R.drawable.actor_avatar_robert_downey_jr
+                            ),
+                            Actor(
+                                    id = 2,
+                                    name = "Florence Pugh",
+                                    img_path = R.drawable.actor_avatar_robert_downey_jr
+                            ),
+                            Actor(
+                                    id = 3,
+                                    name = "Rachel Weisz",
+                                    img_path = R.drawable.actor_avatar_robert_downey_jr
+                            ),
+                            Actor(
+                                    id = 4,
+                                    name = "David Harbour",
+                                    img_path = R.drawable.actor_avatar_robert_downey_jr
+                            ),
+                            Actor(
+                                    id = 5,
+                                    name = "Ray Winstone",
                                     img_path = R.drawable.actor_avatar_robert_downey_jr
                             )
                     ),
@@ -100,9 +134,20 @@ class MoviesDataSource {
                     cast = listOf(
                             Actor(
                                     id = 1,
-                                    name = "---",
+                                    name = "Gal Gadot",
+                                    img_path = R.drawable.actor_avatar_robert_downey_jr
+                            ),
+                            Actor(
+                                    id = 1,
+                                    name = "Chris Pine",
+                                    img_path = R.drawable.actor_avatar_robert_downey_jr
+                            ),
+                            Actor(
+                                    id = 1,
+                                    name = "Kristen Wiig",
                                     img_path = R.drawable.actor_avatar_robert_downey_jr
                             )
+
                     ),
                     logo_path = R.drawable.movie_avengers_end_game_logo,
                     logo_small_path = R.drawable.movie_wonder_woman_1984_logo_small
