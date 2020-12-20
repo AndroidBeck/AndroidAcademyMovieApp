@@ -11,7 +11,7 @@ class MovieViewHolder(itemView: View):  RecyclerView.ViewHolder(itemView) {
     private val movieLogoSmall: ImageView = itemView.findViewById(R.id.img_movie_logo_small)
     private val ageRate: TextView = itemView.findViewById(R.id.tv_age_rate)
     private val rateStars: Array<ImageView> = arrayOf(
-            itemView.findViewById<ImageView>(R.id.img_star1_small),
+            itemView.findViewById(R.id.img_star1_small),
             itemView.findViewById(R.id.img_star2_small),
             itemView.findViewById(R.id.img_star3_small),
             itemView.findViewById(R.id.img_star4_small),
