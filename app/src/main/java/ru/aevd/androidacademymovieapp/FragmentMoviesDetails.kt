@@ -9,7 +9,6 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 
 class FragmentMoviesDetails: Fragment() {
-
     private var clickListener: TransactionsFragmentClicks? = null
     private var movie: Movie? = null
 
@@ -24,11 +23,21 @@ class FragmentMoviesDetails: Fragment() {
             setOnClickListener { clickListener?.navigateBack() }
         }
 
-        var movieId: Long = arguments?.getLong(KEY_MOVIE_ID) ?: 1
+        //Get info from bundle and fulfill the view
+        val movieId: Long = arguments?.getLong(KEY_MOVIE_ID) ?: 1
         movie = MoviesDataSource().getMovie(movieId)
-        var name = view.findViewById<TextView>(R.id.tv_film_name)
-        name.text = movie?.name
 
+        val name = view.findViewById<TextView>(R.id.tv_film_name)
+        val ageRate: TextView = view.findViewById(R.id.tv_age_rate)
+        val genres: TextView = view.findViewById(R.id.tv_genres)
+        val reviewsNumber: TextView = view.findViewById(R.id.tv_reviews_number)
+        val description: TextView = view.findViewById(R.id.tv_description)
+
+        name.text = movie?.name
+        ageRate.text = context?.getString(R.string.age_rate, movie?.ageRate)
+        genres.text = movie?.genres
+        reviewsNumber.text = context?.getString(R.string.reviews_number, movie?.reviewsNumber)
+        description.text = movie?.description
     }
 
     override fun onAttach(context: Context) {

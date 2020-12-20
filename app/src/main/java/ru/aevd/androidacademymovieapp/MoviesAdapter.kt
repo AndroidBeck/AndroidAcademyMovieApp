@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class MoviesAdapter(private val recyclerClickListener: onMoviesItemClicked):
+class MoviesAdapter(private val recyclerClickListener: OnMoviesItemClicked):
         RecyclerView.Adapter<MovieViewHolder>() {
 
     private var movies: List<Movie> = listOf()

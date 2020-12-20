@@ -1,5 +1,5 @@
 package ru.aevd.androidacademymovieapp
 
-interface onMoviesItemClicked {
+interface OnMoviesItemClicked {
     fun onClick(movie_id: Long)
 }
