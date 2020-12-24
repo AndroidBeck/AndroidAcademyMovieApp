@@ -35,11 +35,11 @@ class MovieViewHolder(itemView: View):  RecyclerView.ViewHolder(itemView) {
             false -> View.GONE
         }
 
-        val cornerRadius = 70.0f
+        val cornerRadius = 30.0f
         val imageOption = RequestOptions()
                 .transform(
-                        CenterCrop(),
-                        GranularRoundedCorners(
+                        CenterInside()
+                        , GranularRoundedCorners(
                                 cornerRadius, cornerRadius, 0f, 0f)
                 )
         Glide.with(context)
