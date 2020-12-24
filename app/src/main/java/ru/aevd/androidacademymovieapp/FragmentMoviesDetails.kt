@@ -46,7 +46,7 @@ class FragmentMoviesDetails: Fragment() {
         ageRate.text = context?.getString(R.string.age_rate, movie.ageRate)
         reviewsNumber.text = context?.getString(R.string.reviews_number, movie.reviewsNumber)
 
-        Glide.with(context)
+        Glide.with(context!!)
                 .load(movie.logo_path)
                 .into(movieLogo)
 

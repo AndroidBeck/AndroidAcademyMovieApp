@@ -5,6 +5,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.*
+import com.bumptech.glide.request.RequestOptions
 
 class MovieViewHolder(itemView: View):  RecyclerView.ViewHolder(itemView) {
     private val name: TextView = itemView.findViewById(R.id.tv_film_name)
@@ -33,8 +35,16 @@ class MovieViewHolder(itemView: View):  RecyclerView.ViewHolder(itemView) {
             false -> View.GONE
         }
 
+        val cornerRadius = 70.0f
+        val imageOption = RequestOptions()
+                .transform(
+                        CenterCrop(),
+                        GranularRoundedCorners(
+                                cornerRadius, cornerRadius, 0f, 0f)
+                )
         Glide.with(context)
                 .load(movie.logo_small_path)
+                .apply(imageOption)
                 .into(movieLogoSmall)
 
         //Fulfill stars
@@ -48,6 +58,7 @@ class MovieViewHolder(itemView: View):  RecyclerView.ViewHolder(itemView) {
                     .into(into)
         }
     }
+
 
 }
 
