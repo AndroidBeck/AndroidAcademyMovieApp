@@ -47,9 +47,9 @@ class FragmentMoviesDetails: Fragment() {
                 name?.text = movie_it.title
                 description?.text = movie_it.overview
                 ageRate?.text = context_it.getString(R.string.age_rate, movie_it.minimumAge)
-                genres?.text = gerGenresText(movie_it.genres)
                 reviewsNumber?.text = context_it.getString(R.string.reviews_number,
                     movie_it.numberOfRatings)
+                genres?.text = gerGenresText(movie_it.genres)
 
                 movieLogo?.let {
                     Glide.with(context_it)
@@ -131,7 +131,7 @@ class FragmentMoviesDetails: Fragment() {
     private fun gerGenresText(genres: List<Genre>): String {
         var genresText = ""
         for(genre in genres) {
-            genresText += genre
+            genresText += genre.name
             genresText += ", "
         }
         return genresText

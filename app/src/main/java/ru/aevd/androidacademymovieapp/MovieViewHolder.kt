@@ -56,7 +56,7 @@ class MovieViewHolder(itemView: View):  RecyclerView.ViewHolder(itemView) {
     private fun gerGenresText(genres: List<Genre>): String {
         var genresText = ""
         for(genre in genres) {
-            genresText += genre
+            genresText += genre.name
             genresText += ", "
         }
         return genresText
@@ -85,9 +85,6 @@ class MovieViewHolder(itemView: View):  RecyclerView.ViewHolder(itemView) {
     }
 
 }
-
-
-
 
 private val RecyclerView.ViewHolder.context
     get() = this.itemView.context

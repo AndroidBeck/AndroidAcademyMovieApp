@@ -2,6 +2,7 @@ package ru.aevd.androidacademymovieapp
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,19 +27,12 @@ class FragmentMoviesList: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        coroutineScope.launch {
-            movies = loadMovies(requireContext())
-        }
         val recycler: RecyclerView = view.findViewById(R.id.rv_movies)
         adapter = MoviesAdapter(recyclerClickListener)
         recycler.layoutManager = GridLayoutManager(requireContext(), 2)
         recycler.adapter = adapter
         //Performance optimization
         recycler.setHasFixedSize(true)
-    }
-
-    private suspend fun updateMoviesList() = withContext(Dispatchers.Main) {
-        //TODO
     }
 
     private val recyclerClickListener = object: OnMoviesItemClicked {
@@ -49,6 +43,20 @@ class FragmentMoviesList: Fragment() {
 
     override fun onStart() {
         super.onStart()
+        coroutineScope.launch {
+            try {
+                movies = loadMovies(requireContext())
+                Log.d("Fragment ML", movies[1].title)
+                updateMoviesList()
+                Log.d("Fragment ML", movies[1].poster)
+            } catch (throwable: Throwable) {
+                Log.e("Fragment ML", ".. failed", throwable)
+            }
+
+        }
+    }
+
+    private suspend fun updateMoviesList() = withContext(Dispatchers.Main) {
         updateData()
     }
 
