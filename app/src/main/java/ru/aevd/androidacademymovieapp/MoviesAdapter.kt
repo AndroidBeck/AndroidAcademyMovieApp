@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import ru.aevd.androidacademymovieapp.data.Movie
 
 class MoviesAdapter(private val recyclerClickListener: OnMoviesItemClicked):
         RecyclerView.Adapter<MovieViewHolder>() {

@@ -18,7 +18,7 @@ class MainActivity: AppCompatActivity(), TransactionsFragmentClicks {
         }
     }
 
-    override fun showMovieDetails(movie_id: Long) {
+    override fun showMovieDetails(movie_id: Int) {
         supportFragmentManager.beginTransaction()
             .apply {
                 add(R.id.fragments_container, FragmentMoviesDetails.newInstance(movie_id))

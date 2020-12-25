@@ -1,6 +1,6 @@
 package ru.aevd.androidacademymovieapp
 
-data class Movie (
+data class MovieOld (
     val id: Long,
     val name: String,
     val description: String,
