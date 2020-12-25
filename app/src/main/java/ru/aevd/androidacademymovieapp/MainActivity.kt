@@ -2,6 +2,7 @@ package ru.aevd.androidacademymovieapp
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import ru.aevd.androidacademymovieapp.data.Movie
 
 class MainActivity: AppCompatActivity(), TransactionsFragmentClicks {
     private val moviesListFragment: FragmentMoviesList = FragmentMoviesList()
@@ -18,10 +19,10 @@ class MainActivity: AppCompatActivity(), TransactionsFragmentClicks {
         }
     }
 
-    override fun showMovieDetails(movie_id: Int) {
+    override fun showMovieDetails(movie: Movie) {
         supportFragmentManager.beginTransaction()
             .apply {
-                add(R.id.fragments_container, FragmentMoviesDetails.newInstance(movie_id))
+                add(R.id.fragments_container, FragmentMoviesDetails.newInstance(movie))
                 addToBackStack(null)
                 commit()
             }

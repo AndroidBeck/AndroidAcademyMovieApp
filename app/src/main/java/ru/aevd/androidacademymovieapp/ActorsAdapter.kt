@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import ru.aevd.androidacademymovieapp.data.Actor
 
 class ActorsAdapter: RecyclerView.Adapter<ActorViewHolder>() {
     private var actors: List<Actor> = listOf()

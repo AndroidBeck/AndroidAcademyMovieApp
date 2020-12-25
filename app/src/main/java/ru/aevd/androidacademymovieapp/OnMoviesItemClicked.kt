@@ -1,5 +1,7 @@
 package ru.aevd.androidacademymovieapp
 
+import ru.aevd.androidacademymovieapp.data.Movie
+
 interface OnMoviesItemClicked {
-    fun onClick(movie_id: Int)
+    fun onClick(movie: Movie)
 }

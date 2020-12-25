@@ -5,6 +5,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import ru.aevd.androidacademymovieapp.data.Actor
 
 class ActorViewHolder(itemView: View):  RecyclerView.ViewHolder(itemView) {
     private val imgActor = itemView.findViewById<ImageView>(R.id.img_actor)
@@ -14,7 +15,7 @@ class ActorViewHolder(itemView: View):  RecyclerView.ViewHolder(itemView) {
         actorName.text = actor.name
 
         Glide.with(context)
-                .load(actor.img_path)
+                .load(actor.picture)
                 .into(imgActor)
     }
 }
