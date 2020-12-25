@@ -46,9 +46,11 @@ class FragmentMoviesDetails: Fragment() {
         ageRate.text = context?.getString(R.string.age_rate, movie.ageRate)
         reviewsNumber.text = context?.getString(R.string.reviews_number, movie.reviewsNumber)
 
-        Glide.with(context!!)
+        context?.let {
+            Glide.with(it)
                 .load(movie.logo_path)
                 .into(movieLogo)
+        }
 
         //Create recyclerView with actors
         val actorsRecycler: RecyclerView = view.findViewById(R.id.rv_actors)
