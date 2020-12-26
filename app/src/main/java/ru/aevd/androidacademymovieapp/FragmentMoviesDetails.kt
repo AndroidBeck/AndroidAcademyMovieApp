@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import kotlinx.coroutines.*
 import ru.aevd.androidacademymovieapp.data.Genre
 import ru.aevd.androidacademymovieapp.data.Movie
 
@@ -18,6 +19,8 @@ class FragmentMoviesDetails: Fragment() {
     private var clickListener: TransactionsFragmentClicks? = null
     private lateinit var actorsAdapter: ActorsAdapter
     private lateinit var layoutManager: RecyclerView.LayoutManager
+    private val coroutineScope = CoroutineScope(Dispatchers.Main)
+
     private var movie: Movie? = null
 
     private var name: TextView? = null
@@ -26,6 +29,7 @@ class FragmentMoviesDetails: Fragment() {
     private var reviewsNumber: TextView? = null
     private var description: TextView? = null
     private var movieLogo: ImageView? = null
+    private var actorsRecycler: RecyclerView? = null
 
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
@@ -40,8 +44,8 @@ class FragmentMoviesDetails: Fragment() {
             }
         }
 
-        movie = arguments?.getParcelable(KEY_MOVIE)
         findViews(view)
+        movie = arguments?.getParcelable(KEY_MOVIE)
         movie?.let { movie_it ->
             context?.let { context_it ->
                 name?.text = movie_it.title
@@ -50,7 +54,6 @@ class FragmentMoviesDetails: Fragment() {
                 reviewsNumber?.text = context_it.getString(R.string.reviews_number,
                     movie_it.numberOfRatings)
                 genres?.text = gerGenresText(movie_it.genres)
-
                 movieLogo?.let {
                     Glide.with(context_it)
                         .load(movie_it.backdrop)
@@ -60,23 +63,24 @@ class FragmentMoviesDetails: Fragment() {
         }
 
         //Create recyclerView with actors
-        val actorsRecycler: RecyclerView = view.findViewById(R.id.rv_actors)
         actorsAdapter = ActorsAdapter()
         layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL,
                 false)
-        actorsRecycler.layoutManager = layoutManager
-        actorsRecycler.adapter = actorsAdapter
+        actorsRecycler?.layoutManager = layoutManager
+        actorsRecycler?.adapter = actorsAdapter
 
         //Performance optimization
-        actorsRecycler.setHasFixedSize(true)
+        actorsRecycler?.setHasFixedSize(true)
     }
 
     override fun onStart() {
         super.onStart()
-        updateData()
+        coroutineScope.launch {
+            updateData()
+        }
     }
 
-    private fun updateData() {
+    private suspend fun updateData() {
         movie?.actors?.let { actorsAdapter.bindActors(it) }
         actorsAdapter.notifyDataSetChanged()
     }
@@ -95,6 +99,7 @@ class FragmentMoviesDetails: Fragment() {
 
     override fun onDestroyView() {
         clearViews()
+        coroutineScope.cancel()
         super.onDestroyView()
     }
 
@@ -116,6 +121,7 @@ class FragmentMoviesDetails: Fragment() {
         reviewsNumber = view.findViewById(R.id.tv_reviews_number)
         description = view.findViewById(R.id.tv_description)
         movieLogo = view.findViewById(R.id.img_logo)
+        actorsRecycler = view.findViewById(R.id.rv_actors)
     }
 
     private fun clearViews() {
@@ -125,6 +131,7 @@ class FragmentMoviesDetails: Fragment() {
         reviewsNumber = null
         description = null
         movieLogo = null
+        actorsRecycler = null
     }
 
     //TODO: make it more elegant - and remove redundancy
@@ -136,7 +143,6 @@ class FragmentMoviesDetails: Fragment() {
         }
         return genresText
     }
-
 
 }
 
