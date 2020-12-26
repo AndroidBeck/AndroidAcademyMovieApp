@@ -7,6 +7,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterInside
+import com.bumptech.glide.load.resource.bitmap.GranularRoundedCorners
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 import ru.aevd.androidacademymovieapp.data.Actor
 
 class ActorsAdapter: RecyclerView.Adapter<ActorViewHolder>() {
@@ -37,8 +41,15 @@ class ActorViewHolder(itemView: View):  RecyclerView.ViewHolder(itemView) {
     fun onBind(actor: Actor) {
         actorName.text = actor.name
 
+        val cornerRadius = 30
+        val imageOption = RequestOptions()
+                .transform(
+                        CenterInside(),
+                        RoundedCorners(cornerRadius)
+                )
         Glide.with(context)
                 .load(actor.picture)
+                .apply(imageOption)
                 .into(imgActor)
     }
 }
