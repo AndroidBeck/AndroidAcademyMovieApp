@@ -46,9 +46,7 @@ class FragmentMoviesList: Fragment() {
         coroutineScope.launch {
             try {
                 movies = loadMovies(requireContext())
-                Log.d("Fragment ML", movies[1].title)
                 updateData()
-                Log.d("Fragment ML", movies[1].poster)
             } catch (throwable: Throwable) {
                 Log.e("Fragment ML", ".. failed", throwable)
             }
@@ -56,7 +54,7 @@ class FragmentMoviesList: Fragment() {
         }
     }
 
-    private suspend fun updateData() {
+    private fun updateData() {
         adapter.bindMovies(movies)
         adapter.notifyDataSetChanged()
     }

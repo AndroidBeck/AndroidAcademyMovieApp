@@ -80,7 +80,7 @@ class FragmentMoviesDetails: Fragment() {
         }
     }
 
-    private suspend fun updateData() {
+    private fun updateData() {
         movie?.actors?.let { actorsAdapter.bindActors(it) }
         actorsAdapter.notifyDataSetChanged()
     }
