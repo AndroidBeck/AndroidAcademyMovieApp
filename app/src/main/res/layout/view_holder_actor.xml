@@ -12,14 +12,14 @@
 
     <ImageView
         android:id="@+id/img_actor"
-        android:layout_width="@dimen/actor_avatar_width"
-        android:layout_height="@dimen/actor_avatar_height"
-        app:layout_constraintDimensionRatio="1,1"
+        android:layout_width="80dp"
+        android:layout_height="120dp"
+        app:layout_constraintDimensionRatio="2,3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ContentDescription"
-        tools:src="@drawable/tools_actor_avatar" />
+        tools:src="@drawable/tools_actor_avatar_new" />
 
     <TextView
         android:id="@+id/actor_name"

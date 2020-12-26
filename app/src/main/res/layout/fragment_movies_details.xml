@@ -226,8 +226,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_cast"
             tools:itemCount="2"
-            tools:layout_height="wrap_content"
             tools:layout_width="match_parent"
+            tools:layout_height="wrap_content"
             tools:listitem="@layout/view_holder_actor" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
