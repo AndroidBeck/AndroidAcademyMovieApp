@@ -19,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ContentDescription"
-        tools:src="@drawable/movie_avengers_end_game_logo_small" />
+        tools:src="@drawable/tools_movie_logo_small" />
 
     <View
         android:id="@+id/img_movie_gradient_mask"

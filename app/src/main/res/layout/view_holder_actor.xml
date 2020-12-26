@@ -19,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ContentDescription"
-        tools:src="@drawable/actor_avatar_robert_downey_jr" />
+        tools:src="@drawable/tools_actor_avatar" />
 
     <TextView
         android:id="@+id/actor_name"

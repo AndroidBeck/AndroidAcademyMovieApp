@@ -42,8 +42,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@drawable/movie_avengers_end_game_logo"
             android:scaleType="centerCrop"
+            tools:srcCompat="@drawable/tools_movie_logo"
             tools:ignore="ContentDescription" />
 
         <TextView
