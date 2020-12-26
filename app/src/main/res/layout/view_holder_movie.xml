@@ -60,7 +60,7 @@
         app:layout_constraintTop_toTopOf="@id/img_movie_logo_small" />
 
     <ImageView
-        android:id="@+id/img_like"
+        android:id="@+id/img_like_empty"
         android:layout_width="@dimen/img_like_width"
         android:layout_height="@dimen/img_like_height"
         android:layout_marginEnd="8dp"
@@ -68,7 +68,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/tv_age_rate"
         app:srcCompat="@drawable/like"
-        android:visibility="gone"
+        android:visibility="visible"
         tools:visibility="visible"
         tools:ignore="ContentDescription" />
 

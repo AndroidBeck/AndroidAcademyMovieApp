@@ -53,7 +53,6 @@ class MovieViewHolder(itemView: View):  RecyclerView.ViewHolder(itemView) {
     private val reviewsNumber: TextView = itemView.findViewById(R.id.tv_reviews_number)
     private val durationInMinutes: TextView = itemView.findViewById(R.id.tv_film_time_length)
     private val genres: TextView = itemView.findViewById(R.id.tv_genres)
-    private val liked: ImageView = itemView.findViewById(R.id.img_like)
 
     fun onBind(movie: Movie) {
         name.text = movie.title
@@ -64,7 +63,6 @@ class MovieViewHolder(itemView: View):  RecyclerView.ViewHolder(itemView) {
         genres.text = movie.genres.joinToString(", ") { genre ->  genre.name }
         drawMovieLogo(movie.poster)
         fulfillStars(movie.ratings)
-        drawLike()
     }
 
     private fun fulfillStars(ratings: Float) {
@@ -94,14 +92,6 @@ class MovieViewHolder(itemView: View):  RecyclerView.ViewHolder(itemView) {
                 .load(poster)
                 .apply(imageOption)
                 .into(movieLogoSmall)
-    }
-
-    //TODO: draw like
-    private fun drawLike() {
-//        liked.visibility = when (movie.isLiked) {
-//            true -> View.VISIBLE
-//            false -> View.GONE
-//        }
     }
 
 }
