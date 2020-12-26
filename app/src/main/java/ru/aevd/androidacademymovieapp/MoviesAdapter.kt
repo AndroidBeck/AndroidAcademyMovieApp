@@ -10,7 +10,6 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterInside
 import com.bumptech.glide.load.resource.bitmap.GranularRoundedCorners
 import com.bumptech.glide.request.RequestOptions
-import ru.aevd.androidacademymovieapp.data.Genre
 import ru.aevd.androidacademymovieapp.data.Movie
 import kotlin.math.round
 
@@ -62,7 +61,7 @@ class MovieViewHolder(itemView: View):  RecyclerView.ViewHolder(itemView) {
         reviewsNumber.text = context.getString(R.string.reviews_number, movie.numberOfRatings)
         durationInMinutes.text = context.getString(R.string.movie_duration_in_minutes,
                 movie.runtime)
-        genres.text = gerGenresText(movie.genres)
+        genres.text = movie.genres.joinToString(", ") { genre ->  genre.name }
         drawMovieLogo(movie.poster)
         fulfillStars(movie.ratings)
         drawLike()
@@ -84,6 +83,8 @@ class MovieViewHolder(itemView: View):  RecyclerView.ViewHolder(itemView) {
     private fun drawMovieLogo(poster: String) {
         val cornerRadius = 30.0f
         val imageOption = RequestOptions()
+//                .placeholder(R.drawable.ic_avatar_placeholder)
+//                .fallback(R.drawable.ic_avatar_placeholder)
                 .transform(
                         CenterInside(),
                         GranularRoundedCorners(
@@ -93,16 +94,6 @@ class MovieViewHolder(itemView: View):  RecyclerView.ViewHolder(itemView) {
                 .load(poster)
                 .apply(imageOption)
                 .into(movieLogoSmall)
-    }
-
-    //TODO: make it more elegant
-    private fun gerGenresText(genres: List<Genre>): String {
-        var genresText = ""
-        for(genre in genres) {
-            genresText += genre.name
-            genresText += ", "
-        }
-        return genresText
     }
 
     //TODO: draw like

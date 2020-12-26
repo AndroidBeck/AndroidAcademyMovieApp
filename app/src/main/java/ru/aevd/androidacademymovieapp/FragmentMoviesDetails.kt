@@ -53,7 +53,8 @@ class FragmentMoviesDetails: Fragment() {
                 ageRate?.text = context_it.getString(R.string.age_rate, movie_it.minimumAge)
                 reviewsNumber?.text = context_it.getString(R.string.reviews_number,
                     movie_it.numberOfRatings)
-                genres?.text = gerGenresText(movie_it.genres)
+                genres?.text = movie_it.genres
+                        .joinToString(", ") { genre ->  genre.name }
                 movieLogo?.let {
                     Glide.with(context_it)
                         .load(movie_it.backdrop)
@@ -103,17 +104,6 @@ class FragmentMoviesDetails: Fragment() {
         super.onDestroyView()
     }
 
-    companion object {
-        private const val KEY_MOVIE = "whole movie"
-        fun newInstance(movie: Movie): FragmentMoviesDetails {
-            val args = Bundle()
-            args.putParcelable(KEY_MOVIE, movie)
-            val fragment = FragmentMoviesDetails()
-            fragment.arguments = args
-            return fragment
-        }
-    }
-
     private fun findViews(view: View) {
         name = view.findViewById(R.id.tv_film_name)
         ageRate = view.findViewById(R.id.tv_age_rate)
@@ -134,14 +124,15 @@ class FragmentMoviesDetails: Fragment() {
         actorsRecycler = null
     }
 
-    //TODO: make it more elegant - and remove redundancy
-    private fun gerGenresText(genres: List<Genre>): String {
-        var genresText = ""
-        for(genre in genres) {
-            genresText += genre.name
-            genresText += ", "
+    companion object {
+        private const val KEY_MOVIE = "whole movie"
+        fun newInstance(movie: Movie): FragmentMoviesDetails {
+            val args = Bundle()
+            args.putParcelable(KEY_MOVIE, movie)
+            val fragment = FragmentMoviesDetails()
+            fragment.arguments = args
+            return fragment
         }
-        return genresText
     }
 
 }
