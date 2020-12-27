@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.RatingBar
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -30,6 +31,7 @@ class FragmentMoviesDetails: Fragment() {
     private var description: TextView? = null
     private var movieLogo: ImageView? = null
     private var actorsRecycler: RecyclerView? = null
+    private var ratingBar: RatingBar? = null
 
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
@@ -53,6 +55,7 @@ class FragmentMoviesDetails: Fragment() {
                 ageRate?.text = context_it.getString(R.string.age_rate, movie_it.minimumAge)
                 reviewsNumber?.text = context_it.getString(R.string.reviews_number,
                     movie_it.numberOfRatings)
+                ratingBar?.rating = movie_it.ratings / 2
                 genres?.text = movie_it.genres
                         .joinToString(", ") { genre ->  genre.name }
                 movieLogo?.let {
@@ -115,6 +118,7 @@ class FragmentMoviesDetails: Fragment() {
         description = view.findViewById(R.id.tv_description)
         movieLogo = view.findViewById(R.id.img_logo)
         actorsRecycler = view.findViewById(R.id.rv_actors)
+        ratingBar = view.findViewById(R.id.ratingBar)
     }
 
     private fun clearViews() {
@@ -125,6 +129,7 @@ class FragmentMoviesDetails: Fragment() {
         description = null
         movieLogo = null
         actorsRecycler = null
+        ratingBar = null
     }
 
     companion object {
