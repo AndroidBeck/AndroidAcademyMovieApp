@@ -72,73 +72,31 @@
         tools:visibility="visible"
         tools:ignore="ContentDescription" />
 
-    <ImageView
-        android:id="@+id/img_star1_small"
-        android:layout_width="@dimen/star_small_width_height"
-        android:layout_height="@dimen/star_small_width_height"
+    <RatingBar
+        android:id="@+id/ratingBar"
+        style="@style/rating_bar_small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="6dp"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toBottomOf="@id/img_movie_logo_small"
+        android:transformPivotX="0dp"
+        android:transformPivotY="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_reviews_number"
         app:layout_constraintStart_toStartOf="@id/img_movie_logo_small"
-        app:srcCompat="@drawable/star_icon_empty_small"
-        tools:ignore="ContentDescription" />
-
-    <ImageView
-        android:id="@+id/img_star2_small"
-        android:layout_width="@dimen/star_small_width_height"
-        android:layout_height="@dimen/star_small_width_height"
-        android:layout_marginStart="@dimen/small_star_margin"
-        app:layout_constraintBottom_toBottomOf="@id/img_star1_small"
-        app:layout_constraintStart_toEndOf="@id/img_star1_small"
-        app:layout_constraintTop_toTopOf="@id/img_star1_small"
-        app:srcCompat="@drawable/star_icon_empty_small"
-        tools:ignore="ContentDescription" />
-
-    <ImageView
-        android:id="@+id/img_star3_small"
-        android:layout_width="@dimen/star_small_width_height"
-        android:layout_height="@dimen/star_small_width_height"
-        android:layout_marginStart="@dimen/small_star_margin"
-        app:layout_constraintBottom_toBottomOf="@id/img_star1_small"
-        app:layout_constraintStart_toEndOf="@id/img_star2_small"
-        app:layout_constraintTop_toTopOf="@id/img_star1_small"
-        app:srcCompat="@drawable/star_icon_empty_small"
-        tools:ignore="ContentDescription" />
-
-    <ImageView
-        android:id="@+id/img_star4_small"
-        android:layout_width="@dimen/star_small_width_height"
-        android:layout_height="@dimen/star_small_width_height"
-        android:layout_marginStart="@dimen/small_star_margin"
-        app:layout_constraintBottom_toBottomOf="@id/img_star1_small"
-        app:layout_constraintStart_toEndOf="@id/img_star3_small"
-        app:layout_constraintTop_toTopOf="@id/img_star1_small"
-        app:srcCompat="@drawable/star_icon_empty_small"
-        tools:ignore="ContentDescription" />
-
-    <ImageView
-        android:id="@+id/img_star5_small"
-        android:layout_width="@dimen/star_small_width_height"
-        android:layout_height="@dimen/star_small_width_height"
-        android:layout_marginStart="@dimen/small_star_margin"
-        app:layout_constraintBottom_toBottomOf="@id/img_star1_small"
-        app:layout_constraintStart_toEndOf="@id/img_star4_small"
-        app:layout_constraintTop_toTopOf="@id/img_star1_small"
-        app:srcCompat="@drawable/star_icon_empty_small"
-        tools:ignore="ContentDescription" />
+        app:layout_constraintTop_toTopOf="@+id/tv_reviews_number"
+        tools:rating="3" />
 
     <TextView
         android:id="@+id/tv_reviews_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/start_end_margin"
-        tools:text="@string/reviews_number_tools"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="8dp"
         android:textColor="#6D6D80"
         android:textSize="@dimen/text_size_normal"
-        app:layout_constraintBottom_toBottomOf="@id/img_star1_small"
-        app:layout_constraintStart_toEndOf="@id/img_star5_small"
-        app:layout_constraintTop_toTopOf="@id/img_star1_small"
-        tools:ignore="ContentDescription"/>
+        app:layout_constraintBottom_toBottomOf="@+id/img_movie_logo_small"
+        app:layout_constraintStart_toEndOf="@id/ratingBar"
+        tools:ignore="ContentDescription"
+        tools:text="@string/reviews_number_tools" />
 
     <TextView
         android:id="@+id/tv_genres"
@@ -148,7 +106,7 @@
         android:textColor="@color/color_text_genres"
         android:textSize="@dimen/text_size_small"
         app:layout_constraintBottom_toTopOf="@id/tv_reviews_number"
-        app:layout_constraintStart_toStartOf="@+id/img_star1_small"
+        app:layout_constraintStart_toStartOf="@id/ratingBar"
         tools:text="@string/genres_tools" />
 
     <TextView
@@ -156,14 +114,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/film_name"
-        tools:text="@string/film_name_tools"
         android:textColor="@color/white"
         android:textSize="@dimen/text_size_bigger"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@id/img_movie_logo_small"
-        app:layout_constraintTop_toBottomOf="@id/img_movie_logo_small" />
+        app:layout_constraintTop_toBottomOf="@id/img_movie_logo_small"
+        tools:text="@string/film_name_tools" />
 
     <TextView
         android:id="@+id/tv_film_time_length"

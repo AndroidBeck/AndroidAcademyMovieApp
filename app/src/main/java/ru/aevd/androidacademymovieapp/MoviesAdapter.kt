@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -43,13 +44,7 @@ class MovieViewHolder(itemView: View):  RecyclerView.ViewHolder(itemView) {
     private val name: TextView = itemView.findViewById(R.id.tv_film_name)
     private val movieLogoSmall: ImageView = itemView.findViewById(R.id.img_movie_logo_small)
     private val ageRate: TextView = itemView.findViewById(R.id.tv_age_rate)
-    private val rateStars: Array<ImageView> = arrayOf(
-            itemView.findViewById(R.id.img_star1_small),
-            itemView.findViewById(R.id.img_star2_small),
-            itemView.findViewById(R.id.img_star3_small),
-            itemView.findViewById(R.id.img_star4_small),
-            itemView.findViewById(R.id.img_star5_small)
-    )
+    private val ratingBar: RatingBar = itemView.findViewById(R.id.ratingBar)
     private val reviewsNumber: TextView = itemView.findViewById(R.id.tv_reviews_number)
     private val durationInMinutes: TextView = itemView.findViewById(R.id.tv_film_time_length)
     private val genres: TextView = itemView.findViewById(R.id.tv_genres)
@@ -57,26 +52,27 @@ class MovieViewHolder(itemView: View):  RecyclerView.ViewHolder(itemView) {
     fun onBind(movie: Movie) {
         name.text = movie.title
         ageRate.text = context.getString(R.string.age_rate, movie.minimumAge)
-        reviewsNumber.text = context.getString(R.string.reviews_number, movie.numberOfRatings)
+        reviewsNumber.text = context.getString(R.string.reviews_number_short, movie.numberOfRatings)
         durationInMinutes.text = context.getString(R.string.movie_duration_in_minutes,
                 movie.runtime)
         genres.text = movie.genres.joinToString(", ") { genre ->  genre.name }
         drawMovieLogo(movie.poster)
-        fulfillStars(movie.ratings)
+        ratingBar.rating = movie.ratings / 2
+        //fulfillStars(movie.ratings)
     }
 
-    private fun fulfillStars(ratings: Float) {
-        val rateInStars: Float = round(ratings  / 2)
-        for (i in 0..4) {
-            val into = rateStars[i]
-            val starImg = if (rateInStars > i)
-                R.drawable.star_icon_full_small
-            else R.drawable.star_icon_empty_small
-            Glide.with(context)
-                    .load(starImg)
-                    .into(into)
-        }
-    }
+//    private fun fulfillStars(ratings: Float) {
+//        val rateInStars: Float = round(ratings  / 2)
+//        for (i in 0..4) {
+//            val into = rateStars[i]
+//            val starImg = if (rateInStars > i)
+//                R.drawable.star_icon_full_small
+//            else R.drawable.star_icon_empty_small
+//            Glide.with(context)
+//                    .load(starImg)
+//                    .into(into)
+//        }
+//    }
 
     private fun drawMovieLogo(poster: String) {
         val cornerRadius = 30.0f

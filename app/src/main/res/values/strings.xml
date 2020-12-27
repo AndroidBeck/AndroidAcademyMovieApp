@@ -8,6 +8,7 @@
     <string name="age_rate">%1$d+</string>
     <string name="age_rate_tools">13+</string>
     <string name="reviews_number">%1$d Reviews</string>
+    <string name="reviews_number_short">%1$d Rev.</string>
     <string name="reviews_number_tools">125 Reviews</string>
     <string name="movie_duration_in_minutes">%1$d MIN</string>
     <string name="movie_duration_in_minutes_tools">137 MIN</string>
