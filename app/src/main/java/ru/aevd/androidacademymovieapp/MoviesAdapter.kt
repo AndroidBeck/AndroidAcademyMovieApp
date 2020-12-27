@@ -35,6 +35,7 @@ class MoviesAdapter(private val recyclerClickListener: OnMoviesItemClicked):
 
     fun bindMovies(newMovies: List<Movie>) {
         movies = newMovies
+        notifyDataSetChanged()
     }
 
 }
@@ -62,8 +63,8 @@ class MovieViewHolder(itemView: View):  RecyclerView.ViewHolder(itemView) {
     private fun drawMovieLogo(poster: String) {
         val cornerRadius = 30.0f
         val imageOption = RequestOptions()
-//                .placeholder(R.drawable.ic_avatar_placeholder)
-//                .fallback(R.drawable.ic_avatar_placeholder)
+//                .placeholder(R.drawable.gradient_mask)
+//                .fallback(R.drawable.gradient_mask)
                 .transform(
                         CenterInside(),
                         GranularRoundedCorners(

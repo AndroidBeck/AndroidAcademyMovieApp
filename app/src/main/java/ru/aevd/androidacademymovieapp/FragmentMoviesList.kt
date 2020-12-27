@@ -50,7 +50,6 @@ class FragmentMoviesList: Fragment() {
 
     private fun updateData() {
         adapter.bindMovies(movies)
-        adapter.notifyDataSetChanged()
     }
 
     override fun onAttach(context: Context) {

@@ -2,7 +2,6 @@ package ru.aevd.androidacademymovieapp
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,14 +12,12 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import kotlinx.coroutines.*
 import ru.aevd.androidacademymovieapp.data.Movie
 
 class FragmentMoviesDetails: Fragment() {
     private var clickListener: TransactionsFragmentClicks? = null
     private lateinit var actorsAdapter: ActorsAdapter
     private lateinit var layoutManager: RecyclerView.LayoutManager
-    private val coroutineScope = CoroutineScope(Dispatchers.Main)
 
     private var movie: Movie? = null
 
@@ -79,13 +76,7 @@ class FragmentMoviesDetails: Fragment() {
 
     override fun onStart() {
         super.onStart()
-        coroutineScope.launch {
-            try {
-                updateData()
-            } catch (throwable: Throwable) {
-                Log.e("ActorsAdapter", "SomeErrors")
-            }
-        }
+        updateData()
     }
 
     private fun updateData() {
@@ -106,7 +97,6 @@ class FragmentMoviesDetails: Fragment() {
 
     override fun onDestroyView() {
         clearViews()
-        coroutineScope.cancel()
         super.onDestroyView()
     }
 
