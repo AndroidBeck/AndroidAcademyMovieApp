@@ -2,7 +2,6 @@ package ru.aevd.androidacademymovieapp
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -44,13 +43,8 @@ class FragmentMoviesList: Fragment() {
     override fun onStart() {
         super.onStart()
         coroutineScope.launch {
-            try {
-                movies = loadMovies(requireContext())
-                updateData()
-            } catch (throwable: Throwable) {
-                Log.e("Fragment ML", ".. failed", throwable)
-            }
-
+            movies = loadMovies(requireContext())
+            updateData()
         }
     }
 

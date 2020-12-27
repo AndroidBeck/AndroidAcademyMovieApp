@@ -12,7 +12,6 @@ import com.bumptech.glide.load.resource.bitmap.CenterInside
 import com.bumptech.glide.load.resource.bitmap.GranularRoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import ru.aevd.androidacademymovieapp.data.Movie
-import kotlin.math.round
 
 class MoviesAdapter(private val recyclerClickListener: OnMoviesItemClicked):
         RecyclerView.Adapter<MovieViewHolder>() {
@@ -56,23 +55,9 @@ class MovieViewHolder(itemView: View):  RecyclerView.ViewHolder(itemView) {
         durationInMinutes.text = context.getString(R.string.movie_duration_in_minutes,
                 movie.runtime)
         genres.text = movie.genres.joinToString(", ") { genre ->  genre.name }
-        drawMovieLogo(movie.poster)
         ratingBar.rating = movie.ratings / 2
-        //fulfillStars(movie.ratings)
+        drawMovieLogo(movie.poster)
     }
-
-//    private fun fulfillStars(ratings: Float) {
-//        val rateInStars: Float = round(ratings  / 2)
-//        for (i in 0..4) {
-//            val into = rateStars[i]
-//            val starImg = if (rateInStars > i)
-//                R.drawable.star_icon_full_small
-//            else R.drawable.star_icon_empty_small
-//            Glide.with(context)
-//                    .load(starImg)
-//                    .into(into)
-//        }
-//    }
 
     private fun drawMovieLogo(poster: String) {
         val cornerRadius = 30.0f

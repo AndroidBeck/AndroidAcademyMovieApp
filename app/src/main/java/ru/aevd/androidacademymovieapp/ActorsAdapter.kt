@@ -1,6 +1,5 @@
 package ru.aevd.androidacademymovieapp
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,33 +16,20 @@ class ActorsAdapter: RecyclerView.Adapter<ActorViewHolder>() {
     private var actors: List<Actor> = listOf()
 
     override fun getItemViewType(position: Int): Int {
-        Log.d("ActorsAdapter", "getItemViewType: enter method")
         return when (actors.size) {
-            0 -> {
-                Log.d("ActorsAdapter", "getItemViewType: EmptyActorViewHolder")
-                VIEW_TYPE_EMPTY
-            }
-            else -> {
-                Log.d("ActorsAdapter", "getItemViewType: DataActorViewHolder")
-                VIEW_TYPE_ACTORS
-            }
+            0 -> VIEW_TYPE_EMPTY
+            else -> VIEW_TYPE_ACTORS
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActorViewHolder {
         return when(viewType) {
-            VIEW_TYPE_ACTORS -> {
-                Log.d("ActorsAdapter", "onCreateViewHolder: DataActorViewHolder")
+            VIEW_TYPE_ACTORS ->
                 DataActorViewHolder(LayoutInflater.from(parent.context)
                         .inflate(R.layout.view_holder_actor, parent, false))
-            }
-            else -> {
-                Log.d("ActorsAdapter", "onCreateViewHolder: EmptyActorViewHolder")
+            else ->
                 EmptyActorViewHolder(LayoutInflater.from(parent.context)
                         .inflate(R.layout.view_holder_actor_empty, parent, false))
-            }
-
-
         }
     }
 
@@ -51,11 +37,8 @@ class ActorsAdapter: RecyclerView.Adapter<ActorViewHolder>() {
         when (holder) {
             is DataActorViewHolder -> {
                 holder.onBind(actors[position])
-                Log.d("ActorsAdapter", "onBindViewHolder: DataActorViewHolder")
             }
-            is EmptyActorViewHolder -> {/* nothing to bind */
-                Log.d("ActorsAdapter", "onBindViewHolder: EmptyActorViewHolder")
-            }
+            is EmptyActorViewHolder -> {/* nothing to bind */ }
         }
     }
 
@@ -67,7 +50,6 @@ class ActorsAdapter: RecyclerView.Adapter<ActorViewHolder>() {
     fun bindActors(newActors: List<Actor>) {
         actors = newActors
         notifyDataSetChanged()
-        Log.d("ActorsAdapter", "bindActors" + actors.size)
     }
 
 }
