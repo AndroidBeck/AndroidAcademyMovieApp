@@ -2,6 +2,7 @@ package ru.aevd.androidacademymovieapp
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kotlinx.coroutines.*
-import ru.aevd.androidacademymovieapp.data.Genre
 import ru.aevd.androidacademymovieapp.data.Movie
 
 class FragmentMoviesDetails: Fragment() {
@@ -77,13 +77,16 @@ class FragmentMoviesDetails: Fragment() {
     override fun onStart() {
         super.onStart()
         coroutineScope.launch {
-            updateData()
+            try {
+                updateData()
+            } catch (throwable: Throwable) {
+                Log.e("ActorsAdapter", "SomeErrors")
+            }
         }
     }
 
     private fun updateData() {
         movie?.actors?.let { actorsAdapter.bindActors(it) }
-        actorsAdapter.notifyDataSetChanged()
     }
 
     override fun onAttach(context: Context) {

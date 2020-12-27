@@ -25,4 +25,5 @@
     <string name="actor2_name_tools">Chris Evans</string>
     <string name="actor3_name_tools">Mark Ruffalo</string>>
     <string name="actor4_name_tools">Chris Hemsworth</string>
+    <string name="no_actors_text">There is no actors right now</string>
 </resources>
