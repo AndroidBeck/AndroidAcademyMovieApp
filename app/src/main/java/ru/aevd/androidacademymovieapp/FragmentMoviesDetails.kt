@@ -69,7 +69,6 @@ class FragmentMoviesDetails: Fragment() {
                 false)
         actorsRecycler?.layoutManager = layoutManager
         actorsRecycler?.adapter = actorsAdapter
-
         //Performance optimization
         actorsRecycler?.setHasFixedSize(true)
     }
