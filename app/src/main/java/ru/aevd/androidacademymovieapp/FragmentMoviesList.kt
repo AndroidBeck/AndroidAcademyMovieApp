@@ -31,7 +31,7 @@ class FragmentMoviesList: Fragment() {
         recycler.layoutManager = GridLayoutManager(requireContext(), 2)
         recycler.adapter = adapter
         //Performance optimization
-        recycler.setHasFixedSize(true)
+        //recycler.setHasFixedSize(true)
     }
 
     private val recyclerClickListener = object: OnMoviesItemClicked {

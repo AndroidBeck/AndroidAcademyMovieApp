@@ -50,6 +50,7 @@ class MovieViewHolder(itemView: View):  RecyclerView.ViewHolder(itemView) {
     private val genres: TextView = itemView.findViewById(R.id.tv_genres)
 
     fun onBind(movie: Movie) {
+        drawMovieLogo(movie.poster)
         name.text = movie.title
         ageRate.text = context.getString(R.string.age_rate, movie.minimumAge)
         reviewsNumber.text = context.getString(R.string.reviews_number_short, movie.numberOfRatings)
@@ -57,7 +58,6 @@ class MovieViewHolder(itemView: View):  RecyclerView.ViewHolder(itemView) {
                 movie.runtime)
         genres.text = movie.genres.joinToString(", ") { genre ->  genre.name }
         ratingBar.rating = movie.ratings / 2
-        drawMovieLogo(movie.poster)
     }
 
     private fun drawMovieLogo(poster: String) {
