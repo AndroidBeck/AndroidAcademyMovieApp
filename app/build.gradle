@@ -45,6 +45,7 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview-selection:1.1.0-rc03"
     // Library to download and show images into ImageViews
     implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
     //Add new in hw5
     //implementation "androidx.fragment:fragment-ktx:1.2.5"
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.1"

@@ -8,7 +8,7 @@ import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.CenterInside
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.GranularRoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import ru.aevd.androidacademymovieapp.data.Movie
@@ -63,10 +63,9 @@ class MovieViewHolder(itemView: View):  RecyclerView.ViewHolder(itemView) {
     private fun drawMovieLogo(poster: String) {
         val cornerRadius = 30.0f
         val imageOption = RequestOptions()
-//                .placeholder(R.drawable.gradient_mask)
-//                .fallback(R.drawable.gradient_mask)
+                .placeholder(R.drawable.movie_shape)
                 .transform(
-                        CenterInside(),
+                        CenterCrop(),
                         GranularRoundedCorners(
                                 cornerRadius, cornerRadius, 0f, 0f)
                 )
