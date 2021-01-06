@@ -10,7 +10,6 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.*
-import ru.aevd.androidacademymovieapp.data.loadMovies
 import ru.aevd.androidacademymovieapp.data.Movie
 
 class FragmentMoviesList: Fragment() {
@@ -19,7 +18,6 @@ class FragmentMoviesList: Fragment() {
     private var clickListener: TransactionsFragmentClicks? = null
     private lateinit var adapter: MoviesAdapter
     private val coroutineScope = CoroutineScope(Dispatchers.Main)
-    private var movies: List<Movie> = listOf()
 
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
@@ -32,6 +30,8 @@ class FragmentMoviesList: Fragment() {
         adapter = MoviesAdapter(recyclerClickListener)
         recycler.layoutManager = GridLayoutManager(requireContext(), 2)
         recycler.adapter = adapter
+        //observe some liveData using  ViewModel
+        viewModel.movies.observe(this.viewLifecycleOwner, this::updateAdapter)
     }
 
     private val recyclerClickListener = object: OnMoviesItemClicked {
@@ -40,16 +40,8 @@ class FragmentMoviesList: Fragment() {
         }
     }
 
-    override fun onStart() {
-        super.onStart()
-        coroutineScope.launch {
-            movies = loadMovies(requireContext())
-            updateData()
-        }
-    }
-
-    private fun updateData() {
-        adapter.bindMovies(movies)
+    private fun updateAdapter(moviesList: List<Movie>) {
+        adapter.bindMovies(moviesList)
     }
 
     override fun onAttach(context: Context) {

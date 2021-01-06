@@ -3,6 +3,7 @@ package ru.aevd.androidacademymovieapp
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import ru.aevd.androidacademymovieapp.data.Movie
+import ru.aevd.androidacademymovieapp.data
 
 class MoviesListViewModel: ViewModel() {
     private val _mutableState = MutableLiveData<State>(State.Default())
@@ -13,7 +14,7 @@ class MoviesListViewModel: ViewModel() {
 
     fun loadMovies() {
         _mutableState.value = State.Loading()
-
+        _mutableMovies = loadMovies()
         _mutableState.value = State.Default()
     }
 
