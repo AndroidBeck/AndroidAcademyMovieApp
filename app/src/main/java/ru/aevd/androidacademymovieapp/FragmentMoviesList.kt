@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.*
@@ -14,6 +15,7 @@ import ru.aevd.androidacademymovieapp.data.Movie
 
 class FragmentMoviesList: Fragment() {
 
+    private val viewModel: MoviesListViewModel by viewModels { ViewModelFactory() }
     private var clickListener: TransactionsFragmentClicks? = null
     private lateinit var adapter: MoviesAdapter
     private val coroutineScope = CoroutineScope(Dispatchers.Main)
