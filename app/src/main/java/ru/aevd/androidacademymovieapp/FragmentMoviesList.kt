@@ -11,10 +11,18 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.*
 import ru.aevd.androidacademymovieapp.data.Movie
+import ru.aevd.androidacademymovieapp.viewmodels.MoviesListViewModel
+import ru.aevd.androidacademymovieapp.viewmodels.MoviesListViewModelFactory
 
 class FragmentMoviesList: Fragment() {
 
-    private val viewModel: MoviesListViewModel by viewModels { ViewModelFactory() }
+    private val viewModel: MoviesListViewModel by viewModels {
+        MoviesListViewModelFactory(
+                GetMoviesUsingContextUseCase(
+                        MoviePersistent(requireContext().applicationContext)
+                )
+        )
+    }
     private var clickListener: TransactionsFragmentClicks? = null
     private lateinit var adapter: MoviesAdapter
     private val coroutineScope = CoroutineScope(Dispatchers.Main)
