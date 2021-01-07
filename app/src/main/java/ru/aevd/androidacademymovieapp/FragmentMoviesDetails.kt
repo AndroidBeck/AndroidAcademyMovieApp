@@ -19,7 +19,9 @@ import ru.aevd.androidacademymovieapp.viewmodels.MoviesDetailsViewModelFactory
 
 class FragmentMoviesDetails: Fragment() {
     private val viewModel: MoviesDetailsViewModel by viewModels {
-        MoviesDetailsViewModelFactory(movie!!)
+        MoviesDetailsViewModelFactory(
+                requireNotNull(movie)
+        )
     }
     private var clickListener: TransactionsFragmentClicks? = null
     private lateinit var actorsAdapter: ActorsAdapter
