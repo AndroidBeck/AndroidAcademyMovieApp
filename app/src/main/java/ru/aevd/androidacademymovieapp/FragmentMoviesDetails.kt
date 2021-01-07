@@ -50,7 +50,11 @@ class FragmentMoviesDetails: Fragment() {
         }
         findViews(view)
         movie = arguments?.getParcelable(KEY_MOVIE)
-        viewModel.movie.observe(this.viewLifecycleOwner, this::setViews)
+        viewModel.movie.observe(this.viewLifecycleOwner) {
+            setViews(it)
+            setAdapter()
+            bindActors(it)
+        }
     }
 
     private fun setViews(movie: Movie) {
@@ -67,8 +71,6 @@ class FragmentMoviesDetails: Fragment() {
                     .load(movie.backdrop)
                     .into(it)
         }
-        setAdapter()
-        bindActors(movie)
     }
 
     private fun setAdapter() {
