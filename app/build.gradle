@@ -32,6 +32,14 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    flavorDimensions "serverType"
+    productFlavors {
+        prod {
+            dimension "serverType"
+            buildConfigField "String", "BASE_URL", "\"https://api.themoviedb.org/3/\""
+        }
+    }
 }
 
 dependencies {
