@@ -37,13 +37,15 @@ android {
     productFlavors {
         prod {
             dimension "serverType"
+            buildConfigField "String", "API_KEY", "\"dabd3c0c727815f7c80ed545b298933b\""
+            buildConfigField "String", "API_KEY_QUERY_PARAM", "\"api_key\""
             buildConfigField "String", "BASE_URL", "\"https://api.themoviedb.org/3/\""
+            buildConfigField "String", "BASE_IMG_URL", "\"http://image.tmdb.org/t/p/\""
         }
     }
 }
 
 dependencies {
-
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.3.2'
     implementation 'androidx.appcompat:appcompat:1.2.0'
