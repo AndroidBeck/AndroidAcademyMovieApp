@@ -3,9 +3,9 @@ package ru.aevd.androidacademymovieapp.network
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.QueryMap
-import ru.aevd.androidacademymovieapp.network.response.MovieActorsResponse
-import ru.aevd.androidacademymovieapp.network.response.MovieDetailsResponse
-import ru.aevd.androidacademymovieapp.network.response.MoviesResponse
+import ru.aevd.androidacademymovieapp.network.responses.MovieActorsResponse
+import ru.aevd.androidacademymovieapp.network.responses.MovieDetailsResponse
+import ru.aevd.androidacademymovieapp.network.responses.MoviesResponse
 
 /**
  * Movies api of themoviedb.org

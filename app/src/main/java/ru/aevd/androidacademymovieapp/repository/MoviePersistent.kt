@@ -1,4 +1,4 @@
-package ru.aevd.androidacademymovieapp
+package ru.aevd.androidacademymovieapp.repository
 
 import android.content.Context
 import ru.aevd.androidacademymovieapp.data.Movie

@@ -12,9 +12,9 @@ import retrofit2.Retrofit
 import ru.aevd.androidacademymovieapp.BuildConfig
 import ru.aevd.androidacademymovieapp.data.Actor
 import ru.aevd.androidacademymovieapp.data.Movie
-import ru.aevd.androidacademymovieapp.network.response.MovieActorsResponse
-import ru.aevd.androidacademymovieapp.network.response.MovieDetailsResponse
-import ru.aevd.androidacademymovieapp.network.response.MoviesResponseResultItem
+import ru.aevd.androidacademymovieapp.network.responses.MovieActorsResponse
+import ru.aevd.androidacademymovieapp.network.responses.MovieDetailsResponse
+import ru.aevd.androidacademymovieapp.network.responses.MoviesResponseResultItem
 
 class NetworkOperations {
     private val coroutineContext = Job() + Dispatchers.IO

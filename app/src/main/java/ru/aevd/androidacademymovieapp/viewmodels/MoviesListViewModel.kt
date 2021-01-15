@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import ru.aevd.androidacademymovieapp.GetMoviesUseCase
+import ru.aevd.androidacademymovieapp.repository.GetMoviesUseCase
 import ru.aevd.androidacademymovieapp.data.Movie
 
 @Suppress("unused")

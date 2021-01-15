@@ -2,7 +2,7 @@ package ru.aevd.androidacademymovieapp.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import ru.aevd.androidacademymovieapp.GetMoviesUseCase
+import ru.aevd.androidacademymovieapp.repository.GetMoviesUseCase
 
 class MoviesListViewModelFactory(
         private val getMoviesUseCase: GetMoviesUseCase

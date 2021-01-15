@@ -1,4 +1,4 @@
-package ru.aevd.androidacademymovieapp
+package ru.aevd.androidacademymovieapp.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.GranularRoundedCorners
 import com.bumptech.glide.request.RequestOptions
+import ru.aevd.androidacademymovieapp.R
 import ru.aevd.androidacademymovieapp.data.Movie
 
 class MoviesAdapter(private val recyclerClickListener: OnMoviesItemClicked):
@@ -54,7 +55,8 @@ class MovieViewHolder(itemView: View):  RecyclerView.ViewHolder(itemView) {
         name.text = movie.title
         ageRate.text = context.getString(R.string.age_rate, movie.minimumAge)
         reviewsNumber.text = context.getString(R.string.reviews_number_short, movie.numberOfRatings)
-        durationInMinutes.text = context.getString(R.string.movie_duration_in_minutes,
+        durationInMinutes.text = context.getString(
+            R.string.movie_duration_in_minutes,
                 movie.runtime)
         genres.text = movie.genres.joinToString(", ") { genre ->  genre.name }
         ratingBar.rating = movie.ratings / 2

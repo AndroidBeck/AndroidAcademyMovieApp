@@ -1,4 +1,4 @@
-package ru.aevd.androidacademymovieapp
+package ru.aevd.androidacademymovieapp.ui.fragments
 
 import android.content.Context
 import android.os.Bundle
@@ -10,8 +10,12 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.*
+import ru.aevd.androidacademymovieapp.*
 import ru.aevd.androidacademymovieapp.data.Movie
 import ru.aevd.androidacademymovieapp.network.NetworkOperations
+import ru.aevd.androidacademymovieapp.repository.GetMoviesFromNetwork
+import ru.aevd.androidacademymovieapp.ui.adapters.MoviesAdapter
+import ru.aevd.androidacademymovieapp.ui.adapters.OnMoviesItemClicked
 import ru.aevd.androidacademymovieapp.viewmodels.MoviesListViewModel
 import ru.aevd.androidacademymovieapp.viewmodels.MoviesListViewModelFactory
 

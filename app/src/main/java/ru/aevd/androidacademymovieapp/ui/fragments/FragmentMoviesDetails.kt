@@ -1,4 +1,4 @@
-package ru.aevd.androidacademymovieapp
+package ru.aevd.androidacademymovieapp.ui.fragments
 
 import android.content.Context
 import android.os.Bundle
@@ -13,6 +13,9 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import ru.aevd.androidacademymovieapp.ui.adapters.ActorsAdapter
+import ru.aevd.androidacademymovieapp.R
+import ru.aevd.androidacademymovieapp.TransactionsFragmentClicks
 import ru.aevd.androidacademymovieapp.data.Movie
 import ru.aevd.androidacademymovieapp.viewmodels.MoviesDetailsViewModel
 import ru.aevd.androidacademymovieapp.viewmodels.MoviesDetailsViewModelFactory
@@ -63,7 +66,8 @@ class FragmentMoviesDetails: Fragment() {
         name?.text = movie.title
         description?.text = movie.overview
         ageRate?.text = getString(R.string.age_rate, movie.minimumAge)
-        reviewsNumber?.text = getString(R.string.reviews_number,
+        reviewsNumber?.text = getString(
+            R.string.reviews_number,
                 movie.numberOfRatings)
         ratingBar?.rating = movie.ratings / 2
         genres?.text = movie.genres

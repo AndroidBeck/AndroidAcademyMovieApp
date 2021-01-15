@@ -1,4 +1,4 @@
-package ru.aevd.androidacademymovieapp
+package ru.aevd.androidacademymovieapp.ui.adapters
 
 import ru.aevd.androidacademymovieapp.data.Movie
 
