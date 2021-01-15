@@ -3,6 +3,11 @@ package ru.aevd.androidacademymovieapp.network.responses
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+/** Not used params:
+ * genreIds: List<Int>, originalLanguage: String, originalTitle: String, video: Boolean,
+ * releaseDate: String, popularity: Double, voteAverage: Double
+ */
+
 @Serializable
 data class MoviesResponseResultItem(
     @SerialName("id")
@@ -21,15 +26,5 @@ data class MoviesResponseResultItem(
     val numberOfRatings: Int,
     @SerialName("adult")
     val adult: Boolean,
-
-    /* Not used params
-    val genreIds: List<Int>,
-    val originalLanguage: String,
-    val originalTitle: String,
-    val video: Boolean,
-    val releaseDate: String,
-    val popularity: Double,
-    val voteAverage: Double
-     */
 )
 

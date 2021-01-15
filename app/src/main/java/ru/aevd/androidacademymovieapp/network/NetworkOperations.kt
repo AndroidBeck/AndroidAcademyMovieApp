@@ -21,6 +21,7 @@ class NetworkOperations {
 
     //TODO 5: ? add exceptionHandler
     suspend fun loadMovies(): List<Movie> = withContext(coroutineContext) {
+        //TODO: move page and language to API
         val page  = "1"
         val language = "en-US"
         val options: Map<String, String> = mapOf("page" to page, "language" to language)
@@ -115,10 +116,10 @@ private fun createActorsFromApiResponse(actorsResp: MovieActorsResponse): List<A
 private fun getImgPathUrl(imgSizePath: String, imgPath: String?) =
     "${BuildConfig.BASE_IMG_URL}${imgSizePath}${imgPath}"
 
-/*
-"poster_sizes":["w92","w154","w185","w342","w500","w780","original"]
-"backdrop_sizes":["w300","w780","w1280","original"]
-"profile_sizes":["w45","w185","h632","original"], (w500 also works)
+/**
+ * "poster_sizes":["w92","w154","w185","w342","w500","w780","original"]
+ * "backdrop_sizes":["w300","w780","w1280","original"]
+ * "profile_sizes":["w45","w185","h632","original"] (w500 also works)
  */
 private const val posterSizePath = "w500"
 private const val backDropSizePath = "w780"

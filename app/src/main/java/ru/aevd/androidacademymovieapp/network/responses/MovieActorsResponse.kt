@@ -9,6 +9,11 @@ data class MovieActorsResponse (
     val cast: List<CastItem>
 )
 
+/** Not used params:
+ * castId: Int, character: String, gender: Int, creditId: String, knownForDepartment: String,
+ * originalName: String, popularity: Double, adult: Boolean, order: Int
+ */
+
 @Serializable
 data class CastItem(
         @SerialName("id")
@@ -17,16 +22,4 @@ data class CastItem(
         val name: String,
         @SerialName("profile_path")
         val profilePath: String?
-
-        /* Not used params
-        val castId: Int,
-        val character: String,
-        val gender: Int,
-        val creditId: String,
-        val knownForDepartment: String,
-        val originalName: String,
-        val popularity: Double,
-        val adult: Boolean,
-        val order: Int
-         */
 )

@@ -4,6 +4,13 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import ru.aevd.androidacademymovieapp.data.Genre
 
+/** Not used params:
+ * originalLanguage: String, imdbId: String, video: Boolean, title: String, backdropPath: String,
+ * revenue: Int, popularity: Double, voteCount: Int, budget: Int, overview: String,
+ * originalTitle: String, posterPath: String, releaseDate: String, voteAverage: Double,
+ * adult: Boolean, homepage: String, status: String
+ */
+
 @Serializable
 data class MovieDetailsResponse (
         @SerialName("id")
@@ -12,24 +19,4 @@ data class MovieDetailsResponse (
         val runtime: Int,
         @SerialName("genres")
         val genres: List<Genre>
-
-        /* Not used params
-        val originalLanguage: String,
-        val imdbId: String,
-        val video: Boolean,
-        val title: String,
-        val backdropPath: String,
-        val revenue: Int,
-        val popularity: Double,
-        val voteCount: Int,
-        val budget: Int,
-        val overview: String,
-        val originalTitle: String,
-        val posterPath: String,
-        val releaseDate: String,
-        val voteAverage: Double,
-        val adult: Boolean,
-        val homepage: String,
-        val status: String
-        */
 )
