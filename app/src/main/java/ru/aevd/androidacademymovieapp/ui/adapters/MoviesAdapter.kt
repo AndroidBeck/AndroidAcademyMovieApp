@@ -65,16 +65,15 @@ class MovieViewHolder(itemView: View):  RecyclerView.ViewHolder(itemView) {
     private fun drawMovieLogo(poster: String) {
         val cornerRadius = 30.0f
         val imageOption = RequestOptions()
-                .placeholder(R.drawable.movie_shape)
-                .transform(
-                        CenterCrop(),
-                        GranularRoundedCorners(
-                                cornerRadius, cornerRadius, 0f, 0f)
-                )
+            .placeholder(R.drawable.movie_shape)
+            .transform(
+                CenterCrop(),
+                GranularRoundedCorners(cornerRadius, cornerRadius, 0f, 0f)
+            )
         Glide.with(context)
-                .load(poster)
-                .apply(imageOption)
-                .into(movieLogoSmall)
+            .load(poster)
+            .apply(imageOption)
+            .into(movieLogoSmall)
     }
 
 }

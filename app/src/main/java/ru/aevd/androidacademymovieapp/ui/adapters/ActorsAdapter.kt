@@ -68,6 +68,7 @@ private class DataActorViewHolder(itemView: View): ActorViewHolder(itemView) {
 
         val cornerRadius = 30
         val imageOption = RequestOptions()
+                .placeholder(R.drawable.actor_placeholder)
                 .transform(
                         CenterCrop(),
                         RoundedCorners(cornerRadius)
