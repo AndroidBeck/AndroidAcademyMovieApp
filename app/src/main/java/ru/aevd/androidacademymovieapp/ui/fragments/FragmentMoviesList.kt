@@ -5,11 +5,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.coroutines.*
 import ru.aevd.androidacademymovieapp.*
 import ru.aevd.androidacademymovieapp.entities.Movie
 import ru.aevd.androidacademymovieapp.repository.GetMoviesFromNetwork
@@ -18,6 +19,7 @@ import ru.aevd.androidacademymovieapp.ui.adapters.MoviesAdapter
 import ru.aevd.androidacademymovieapp.ui.adapters.OnMoviesItemClicked
 import ru.aevd.androidacademymovieapp.viewmodels.MoviesListViewModel
 import ru.aevd.androidacademymovieapp.viewmodels.MoviesListViewModelFactory
+import ru.aevd.androidacademymovieapp.viewmodels.State
 
 class FragmentMoviesList: Fragment() {
 
@@ -32,9 +34,10 @@ class FragmentMoviesList: Fragment() {
         )
     }
 
-    private var clickListener: TransactionsFragmentClicks? = null
+    private var recycler: RecyclerView? = null
     private lateinit var adapter: MoviesAdapter
-    private val coroutineScope = CoroutineScope(Dispatchers.Main)
+    private var clickListener: TransactionsFragmentClicks? = null
+    private var progressBar: ProgressBar? = null
 
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
@@ -43,12 +46,13 @@ class FragmentMoviesList: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val recycler: RecyclerView = view.findViewById(R.id.rv_movies)
+        findViews(view)
         adapter = MoviesAdapter(recyclerClickListener)
-        recycler.layoutManager = GridLayoutManager(requireContext(), 2)
-        recycler.adapter = adapter
+        recycler?.layoutManager = GridLayoutManager(requireContext(), 2)
+        recycler?.adapter = adapter
         //observe some liveData using  ViewModel
         viewModel.movies.observe(this.viewLifecycleOwner, this::updateAdapter)
+        viewModel.state.observe(this.viewLifecycleOwner, this::showLoading)
     }
 
     private val recyclerClickListener = object: OnMoviesItemClicked {
@@ -59,6 +63,11 @@ class FragmentMoviesList: Fragment() {
 
     private fun updateAdapter(moviesList: List<Movie>) {
         adapter.bindMovies(moviesList)
+    }
+
+    private fun showLoading(state: State) {
+        progressBar?.isVisible = state == State.Loading
+        recycler?.isVisible = state == State.Ready
     }
 
     override fun onAttach(context: Context) {
@@ -74,8 +83,18 @@ class FragmentMoviesList: Fragment() {
     }
 
     override fun onDestroyView() {
-        coroutineScope.cancel()
+        clearViews()
         super.onDestroyView()
+    }
+
+    private fun findViews(view: View) {
+        progressBar = view.findViewById(R.id.pb_loading)
+        recycler = view.findViewById(R.id.rv_movies)
+    }
+
+    private fun clearViews() {
+        progressBar = null
+        recycler = null
     }
 
 }
