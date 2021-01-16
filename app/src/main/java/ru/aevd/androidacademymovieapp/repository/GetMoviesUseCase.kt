@@ -1,6 +1,6 @@
 package ru.aevd.androidacademymovieapp.repository
 
-import ru.aevd.androidacademymovieapp.data.Movie
+import ru.aevd.androidacademymovieapp.entities.Movie
 import ru.aevd.androidacademymovieapp.network.NetworkOperations
 
 interface GetMoviesUseCase {

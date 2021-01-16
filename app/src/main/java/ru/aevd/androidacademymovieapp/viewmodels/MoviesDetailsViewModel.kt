@@ -2,7 +2,7 @@ package ru.aevd.androidacademymovieapp.viewmodels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import ru.aevd.androidacademymovieapp.data.Movie
+import ru.aevd.androidacademymovieapp.entities.Movie
 
 class MoviesDetailsViewModel(movie: Movie): ViewModel() {
     private val _movie = MutableLiveData(movie)

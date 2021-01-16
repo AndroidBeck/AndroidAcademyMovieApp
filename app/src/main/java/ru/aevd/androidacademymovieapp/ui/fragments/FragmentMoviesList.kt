@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.*
 import ru.aevd.androidacademymovieapp.*
-import ru.aevd.androidacademymovieapp.data.Movie
+import ru.aevd.androidacademymovieapp.entities.Movie
 import ru.aevd.androidacademymovieapp.network.NetworkOperations
 import ru.aevd.androidacademymovieapp.repository.GetMoviesFromNetwork
 import ru.aevd.androidacademymovieapp.ui.adapters.MoviesAdapter

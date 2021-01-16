@@ -16,7 +16,7 @@ import com.bumptech.glide.Glide
 import ru.aevd.androidacademymovieapp.ui.adapters.ActorsAdapter
 import ru.aevd.androidacademymovieapp.R
 import ru.aevd.androidacademymovieapp.TransactionsFragmentClicks
-import ru.aevd.androidacademymovieapp.data.Movie
+import ru.aevd.androidacademymovieapp.entities.Movie
 import ru.aevd.androidacademymovieapp.viewmodels.MoviesDetailsViewModel
 import ru.aevd.androidacademymovieapp.viewmodels.MoviesDetailsViewModelFactory
 

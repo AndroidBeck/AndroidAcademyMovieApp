@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class MovieActorsResponse (
     @SerialName("cast")
-    val cast: List<CastItem>
+    val cast: List<ActorNetModel>
 )
 
 /** Not used params:
@@ -15,7 +15,7 @@ data class MovieActorsResponse (
  */
 
 @Serializable
-data class CastItem(
+data class ActorNetModel(
         @SerialName("id")
         val id: Int,
         @SerialName("name")

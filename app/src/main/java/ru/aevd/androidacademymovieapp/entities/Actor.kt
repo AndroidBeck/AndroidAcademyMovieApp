@@ -1,8 +1,7 @@
-package ru.aevd.androidacademymovieapp.data
+package ru.aevd.androidacademymovieapp.entities
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
-import kotlinx.serialization.Serializable
 
 @Parcelize
 data class Actor(

@@ -10,8 +10,10 @@ import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import ru.aevd.androidacademymovieapp.BuildConfig
-import ru.aevd.androidacademymovieapp.data.Actor
-import ru.aevd.androidacademymovieapp.data.Movie
+import ru.aevd.androidacademymovieapp.entities.Actor
+import ru.aevd.androidacademymovieapp.entities.Genre
+import ru.aevd.androidacademymovieapp.entities.Movie
+import ru.aevd.androidacademymovieapp.network.responses.GenreNetModel
 import ru.aevd.androidacademymovieapp.network.responses.MovieActorsResponse
 import ru.aevd.androidacademymovieapp.network.responses.MovieDetailsResponse
 import ru.aevd.androidacademymovieapp.network.responses.MoviesResponseResultItem
@@ -96,21 +98,32 @@ private fun createMovieFromApiResponses(
             numberOfRatings = movieResp.numberOfRatings,
             minimumAge = if (movieResp.adult) 16 else 13,
             runtime = movieDetailsResp.runtime,
-            genres = movieDetailsResp.genres,
+            genres = createGenresFromNetModel(movieDetailsResp.genres),
             actors = createActorsFromApiResponse(actorsResp)
     )
 }
 
 private fun createActorsFromApiResponse(actorsResp: MovieActorsResponse): List<Actor> {
     val actors: MutableList<Actor> = mutableListOf()
-    for(castItem in actorsResp.cast) {
+    for(actorNetModel in actorsResp.cast) {
         actors.add(Actor(
-                id = castItem.id,
-                name = castItem.name,
-                picture = getImgPathUrl(profileSizePath, castItem.profilePath)
+                id = actorNetModel.id,
+                name = actorNetModel.name,
+                picture = getImgPathUrl(profileSizePath, actorNetModel.profilePath)
         ))
     }
     return actors
+}
+
+private fun createGenresFromNetModel(genresNetModel: List<GenreNetModel>): List<Genre> {
+    val genres: MutableList<Genre> = mutableListOf()
+    for (genreNetModel in genresNetModel) {
+        genres.add(Genre(
+                id = genreNetModel.id,
+                name = genreNetModel.name
+        ))
+    }
+    return genres
 }
 
 private fun getImgPathUrl(imgSizePath: String, imgPath: String?) =

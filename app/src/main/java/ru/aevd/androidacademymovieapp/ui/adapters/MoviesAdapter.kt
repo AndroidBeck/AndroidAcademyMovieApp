@@ -12,7 +12,7 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.GranularRoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import ru.aevd.androidacademymovieapp.R
-import ru.aevd.androidacademymovieapp.data.Movie
+import ru.aevd.androidacademymovieapp.entities.Movie
 
 class MoviesAdapter(private val recyclerClickListener: OnMoviesItemClicked):
         RecyclerView.Adapter<MovieViewHolder>() {

@@ -1,4 +1,4 @@
-package ru.aevd.androidacademymovieapp.data
+package ru.aevd.androidacademymovieapp.repository
 
 import android.content.Context
 import kotlinx.coroutines.Dispatchers
@@ -7,6 +7,9 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
+import ru.aevd.androidacademymovieapp.entities.Actor
+import ru.aevd.androidacademymovieapp.entities.Genre
+import ru.aevd.androidacademymovieapp.entities.Movie
 
 
 private val jsonFormat = Json { ignoreUnknownKeys = true }

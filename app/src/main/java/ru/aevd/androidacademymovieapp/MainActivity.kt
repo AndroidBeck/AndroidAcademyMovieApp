@@ -2,7 +2,7 @@ package ru.aevd.androidacademymovieapp
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import ru.aevd.androidacademymovieapp.data.Movie
+import ru.aevd.androidacademymovieapp.entities.Movie
 import ru.aevd.androidacademymovieapp.ui.fragments.FragmentMoviesDetails
 import ru.aevd.androidacademymovieapp.ui.fragments.FragmentMoviesList
 

@@ -2,7 +2,6 @@ package ru.aevd.androidacademymovieapp.network.responses
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import ru.aevd.androidacademymovieapp.data.Genre
 
 /** Not used params:
  * originalLanguage: String, imdbId: String, video: Boolean, title: String, backdropPath: String,
@@ -18,5 +17,13 @@ data class MovieDetailsResponse (
         @SerialName("runtime")
         val runtime: Int,
         @SerialName("genres")
-        val genres: List<Genre>
+        val genres: List<GenreNetModel>
+)
+
+@Serializable
+data class GenreNetModel(
+        @SerialName("id")
+        val id: Int,
+        @SerialName("name")
+        val name: String
 )
