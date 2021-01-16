@@ -1,7 +1,6 @@
 package ru.aevd.androidacademymovieapp.repository
 
 import ru.aevd.androidacademymovieapp.entities.Movie
-import ru.aevd.androidacademymovieapp.network.NetworkOperations
 
 interface GetMoviesUseCase {
     suspend fun getMovies(): List<Movie>
@@ -14,7 +13,7 @@ class GetMoviesFromAssets(
 }
 
 class GetMoviesFromNetwork(
-    private val networkOperations: NetworkOperations
+    private val networkLoad: NetworkLoad
     ): GetMoviesUseCase {
-    override suspend fun getMovies(): List<Movie> = networkOperations.loadMovies()
+    override suspend fun getMovies(): List<Movie> = networkLoad.loadMovies()
 }

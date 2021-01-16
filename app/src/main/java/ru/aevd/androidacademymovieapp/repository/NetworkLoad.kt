@@ -1,24 +1,19 @@
-package ru.aevd.androidacademymovieapp.network
+package ru.aevd.androidacademymovieapp.repository
 
-import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import kotlinx.coroutines.*
-import kotlinx.serialization.json.Json
-import okhttp3.Interceptor
-import okhttp3.MediaType.Companion.toMediaType
-import okhttp3.OkHttpClient
-import okhttp3.Response
-import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Retrofit
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.withContext
 import ru.aevd.androidacademymovieapp.BuildConfig
 import ru.aevd.androidacademymovieapp.entities.Actor
 import ru.aevd.androidacademymovieapp.entities.Genre
 import ru.aevd.androidacademymovieapp.entities.Movie
+import ru.aevd.androidacademymovieapp.network.RetrofitModule
 import ru.aevd.androidacademymovieapp.network.responses.GenreNetModel
 import ru.aevd.androidacademymovieapp.network.responses.MovieActorsResponse
 import ru.aevd.androidacademymovieapp.network.responses.MovieDetailsResponse
 import ru.aevd.androidacademymovieapp.network.responses.MoviesResponseResultItem
 
-class NetworkOperations {
+class NetworkLoad {
     private val coroutineContext = Job() + Dispatchers.IO
 
     //TODO 5: ? add exceptionHandler
@@ -33,54 +28,14 @@ class NetworkOperations {
             val movieDetailsResponse = RetrofitModule.moviesApi.getMovieDetails(movieResponse.id)
             val actorsResponse = RetrofitModule.moviesApi.getMovieActors(movieResponse.id)
             val movie = createMovieFromApiResponses(
-                movieResp = movieResponse,
-                movieDetailsResp = movieDetailsResponse,
-                actorsResp = actorsResponse
+                    movieResp = movieResponse,
+                    movieDetailsResp = movieDetailsResponse,
+                    actorsResp = actorsResponse
             )
             movies.add(movie)
         }
         movies
     }
-}
-
-private class ApiKeyInterceptor: Interceptor {
-    override fun intercept(chain: Interceptor.Chain): Response {
-        val originalRequest = chain.request()
-        val originalRequestUrl = originalRequest.url
-        val url = originalRequestUrl.newBuilder()
-                .addQueryParameter(BuildConfig.API_KEY_QUERY_PARAM, BuildConfig.API_KEY)
-                .build()
-        val request = originalRequest.newBuilder().url(url).build()
-        return  chain.proceed(request = request)
-    }
-}
-
-private object RetrofitModule {
-    private val json = Json {
-        ignoreUnknownKeys = true
-    }
-
-    val loggingInterceptor = HttpLoggingInterceptor().apply {
-        level = HttpLoggingInterceptor.Level.BODY
-    }
-
-    //TODO 2: remove logging interceptor in prod
-    private val client = OkHttpClient().newBuilder()
-            .addInterceptor(loggingInterceptor)
-            .addNetworkInterceptor(loggingInterceptor)
-            .addInterceptor(ApiKeyInterceptor())
-            .build()
-
-
-    @Suppress("EXPERIMENTAL_API_USAGE")
-    private val retrofit: Retrofit = Retrofit.Builder()
-        .client(client)
-        .baseUrl(BuildConfig.BASE_URL)
-        .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
-        .build()
-
-    //TODO: you can do it better - watch in the end of the lecture
-    val moviesApi: MoviesApi = retrofit.create(MoviesApi::class.java)
 }
 
 private fun createMovieFromApiResponses(
@@ -127,7 +82,7 @@ private fun createGenresFromNetModel(genresNetModel: List<GenreNetModel>): List<
 }
 
 private fun getImgPathUrl(imgSizePath: String, imgPath: String?) =
-    "${BuildConfig.BASE_IMG_URL}${imgSizePath}${imgPath}"
+        "${BuildConfig.BASE_IMG_URL}${imgSizePath}${imgPath}"
 
 /**
  * "poster_sizes":["w92","w154","w185","w342","w500","w780","original"]
