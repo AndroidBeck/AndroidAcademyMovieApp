@@ -19,7 +19,6 @@ object RetrofitModule {
         level = HttpLoggingInterceptor.Level.BODY
     }
 
-    //TODO 2: remove logging interceptor in prod
     private val client = OkHttpClient().newBuilder()
             .addInterceptor(loggingInterceptor)
             .addNetworkInterceptor(loggingInterceptor)
@@ -33,7 +32,6 @@ object RetrofitModule {
             .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
             .build()
 
-    //TODO: you can do it better - watch in the end of the lecture
     val moviesApi: MoviesApi = retrofit.create(MoviesApi::class.java)
 }
 

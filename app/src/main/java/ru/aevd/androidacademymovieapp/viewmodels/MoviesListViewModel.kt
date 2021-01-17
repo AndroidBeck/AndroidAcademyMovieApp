@@ -11,7 +11,6 @@ import ru.aevd.androidacademymovieapp.repository.GetMoviesUseCase
 import ru.aevd.androidacademymovieapp.entities.Movie
 import java.lang.Exception
 
-@Suppress("unused")
 class MoviesListViewModel(
         private val getMoviesUseCase: GetMoviesUseCase
         ): ViewModel() {
@@ -26,7 +25,7 @@ class MoviesListViewModel(
     val movies get() = _movies
 
     fun loadMovies() {
-        viewModelScope.launch() {
+        viewModelScope.launch {
             _state.value = State.Loading
             try {
                 _movies.value = getMoviesUseCase.getMovies()
@@ -35,7 +34,6 @@ class MoviesListViewModel(
                 _state.value = State.Failed
                 handleExceptions(e)
             }
-            //if (movies.value.isEmpty()) _moviesResult.value = LoadMoviesResult.EmptyResult
         }
     }
 
@@ -52,18 +50,6 @@ class MoviesListViewModel(
             else -> LoadMoviesResult.Error.Other
         }
     }
-
-    /*
-    private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
-        Log.e("ViewModel", "Coroutine exception", throwable)
-        when (throwable) {
-            is java.io.IOException -> _moviesResult.value = MoviesResult.Error.IO
-            is HttpException -> _moviesResult.value = MoviesResult.Error.HTTP
-            is SerializationException -> _moviesResult.value = MoviesResult.Error.Serialization
-            else -> MoviesResult.Error.Other
-        }
-    }
-     */
 
 }
 

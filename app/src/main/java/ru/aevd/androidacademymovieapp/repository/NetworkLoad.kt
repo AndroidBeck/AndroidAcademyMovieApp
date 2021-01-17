@@ -16,11 +16,10 @@ import ru.aevd.androidacademymovieapp.network.responses.MoviesResponseResultItem
 class NetworkLoad {
     private val coroutineContext = Job() + Dispatchers.IO
 
-    //TODO 5: ? add exceptionHandler
     suspend fun loadMovies(): List<Movie> = withContext(coroutineContext) {
         val movies: MutableList<Movie> = mutableListOf()
-        val moviesListResponse = RetrofitModule.moviesApi.getMovies().results
-        for (movieResponse in moviesListResponse) {
+        val moviesListResponseResults = RetrofitModule.moviesApi.getMovies().results
+        for (movieResponse in moviesListResponseResults) {
             val movieDetailsResponse = RetrofitModule.moviesApi.getMovieDetails(movieResponse.id)
             val actorsResponse = RetrofitModule.moviesApi.getMovieActors(movieResponse.id)
             val movie = createMovieFromApiResponses(

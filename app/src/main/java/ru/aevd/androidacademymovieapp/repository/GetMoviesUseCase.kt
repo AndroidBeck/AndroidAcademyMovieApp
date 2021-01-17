@@ -6,6 +6,7 @@ interface GetMoviesUseCase {
     suspend fun getMovies(): List<Movie>
 }
 
+@Suppress("unused")
 class GetMoviesFromAssets(
     private val moviePersistent: MoviePersistent
     ): GetMoviesUseCase {
