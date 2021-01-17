@@ -27,4 +27,11 @@
     <string name="actor3_name_tools">Mark Ruffalo</string>>
     <string name="actor4_name_tools">Chris Hemsworth</string>
     <string name="no_actors_text">There is no actors..</string>
+
+    <string name="reload_button_text">Reload</string>
+    <string name="load_error_unknown">Unknown Error</string>
+    <string name="load_error_serialization">Serialization Error</string>
+    <string name="load_error_http">HTTP Error</string>
+    <string name="load_error_io">IO Error</string>
+    <string name="load_error">Load error</string>
 </resources>
