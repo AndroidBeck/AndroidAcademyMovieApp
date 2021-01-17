@@ -2,7 +2,7 @@ package ru.aevd.androidacademymovieapp.network
 
 import retrofit2.http.GET
 import retrofit2.http.Path
-import retrofit2.http.QueryMap
+import retrofit2.http.Query
 import ru.aevd.androidacademymovieapp.network.responses.MovieActorsResponse
 import ru.aevd.androidacademymovieapp.network.responses.MovieDetailsResponse
 import ru.aevd.androidacademymovieapp.network.responses.MoviesResponse
@@ -15,7 +15,8 @@ interface MoviesApi {
 
     @GET("movie/popular")
     suspend fun getMovies(
-            @QueryMap options: Map<String, String>
+            @Query("page") page: Int  = 1,
+            @Query("language") language: String = "en-US"
     ): MoviesResponse
 
     @GET("movie/{movie_id}")

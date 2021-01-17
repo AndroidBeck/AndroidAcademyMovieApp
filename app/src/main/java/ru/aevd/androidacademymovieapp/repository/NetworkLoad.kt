@@ -18,12 +18,8 @@ class NetworkLoad {
 
     //TODO 5: ? add exceptionHandler
     suspend fun loadMovies(): List<Movie> = withContext(coroutineContext) {
-        //TODO: move page and language to API
-        val page  = "1"
-        val language = "en-US"
-        val options: Map<String, String> = mapOf("page" to page, "language" to language)
         val movies: MutableList<Movie> = mutableListOf()
-        val moviesListResponse = RetrofitModule.moviesApi.getMovies(options = options).results
+        val moviesListResponse = RetrofitModule.moviesApi.getMovies().results
         for (movieResponse in moviesListResponse) {
             val movieDetailsResponse = RetrofitModule.moviesApi.getMovieDetails(movieResponse.id)
             val actorsResponse = RetrofitModule.moviesApi.getMovieActors(movieResponse.id)
