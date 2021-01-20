@@ -15,15 +15,15 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ru.aevd.androidacademymovieapp.*
-import ru.aevd.androidacademymovieapp.entities.Movie
-import ru.aevd.androidacademymovieapp.repository.GetMoviesFromNetwork
-import ru.aevd.androidacademymovieapp.repository.NetworkLoad
+import ru.aevd.androidacademymovieapp.domain.entities.Movie
+import ru.aevd.androidacademymovieapp.domain.GetMoviesFromNetwork
+import ru.aevd.androidacademymovieapp.domain.NetworkLoad
 import ru.aevd.androidacademymovieapp.ui.adapters.MoviesAdapter
 import ru.aevd.androidacademymovieapp.ui.adapters.OnMoviesItemClicked
-import ru.aevd.androidacademymovieapp.viewmodels.MoviesListViewModel
-import ru.aevd.androidacademymovieapp.viewmodels.MoviesListViewModelFactory
-import ru.aevd.androidacademymovieapp.viewmodels.LoadMoviesResult
-import ru.aevd.androidacademymovieapp.viewmodels.State
+import ru.aevd.androidacademymovieapp.ui.viewmodels.MoviesListViewModel
+import ru.aevd.androidacademymovieapp.ui.viewmodels.MoviesListViewModelFactory
+import ru.aevd.androidacademymovieapp.ui.viewmodels.LoadMoviesResult
+import ru.aevd.androidacademymovieapp.ui.viewmodels.State
 
 class FragmentMoviesList: Fragment() {
 

@@ -1,11 +1,11 @@
-package ru.aevd.androidacademymovieapp.network
+package ru.aevd.androidacademymovieapp.api
 
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
-import ru.aevd.androidacademymovieapp.network.responses.MovieActorsResponse
-import ru.aevd.androidacademymovieapp.network.responses.MovieDetailsResponse
-import ru.aevd.androidacademymovieapp.network.responses.MoviesResponse
+import ru.aevd.androidacademymovieapp.api.responses.MovieActorsResponse
+import ru.aevd.androidacademymovieapp.api.responses.MovieDetailsResponse
+import ru.aevd.androidacademymovieapp.api.responses.MoviesResponse
 
 /**
  * Movies api of themoviedb.org

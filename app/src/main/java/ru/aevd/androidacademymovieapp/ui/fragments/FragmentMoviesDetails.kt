@@ -16,9 +16,9 @@ import com.bumptech.glide.Glide
 import ru.aevd.androidacademymovieapp.ui.adapters.ActorsAdapter
 import ru.aevd.androidacademymovieapp.R
 import ru.aevd.androidacademymovieapp.TransactionsFragmentClicks
-import ru.aevd.androidacademymovieapp.entities.Movie
-import ru.aevd.androidacademymovieapp.viewmodels.MoviesDetailsViewModel
-import ru.aevd.androidacademymovieapp.viewmodels.MoviesDetailsViewModelFactory
+import ru.aevd.androidacademymovieapp.domain.entities.Movie
+import ru.aevd.androidacademymovieapp.ui.viewmodels.MoviesDetailsViewModel
+import ru.aevd.androidacademymovieapp.ui.viewmodels.MoviesDetailsViewModelFactory
 
 class FragmentMoviesDetails: Fragment() {
     private val viewModel: MoviesDetailsViewModel by viewModels {

@@ -1,4 +1,4 @@
-package ru.aevd.androidacademymovieapp.entities
+package ru.aevd.androidacademymovieapp.domain.entities
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

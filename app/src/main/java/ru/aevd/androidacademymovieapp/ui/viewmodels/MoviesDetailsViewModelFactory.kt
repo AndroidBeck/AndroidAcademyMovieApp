@@ -1,8 +1,8 @@
-package ru.aevd.androidacademymovieapp.viewmodels
+package ru.aevd.androidacademymovieapp.ui.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import ru.aevd.androidacademymovieapp.entities.Movie
+import ru.aevd.androidacademymovieapp.domain.entities.Movie
 
 class MoviesDetailsViewModelFactory(
         private val movie: Movie

@@ -1,4 +1,4 @@
-package ru.aevd.androidacademymovieapp.network.responses
+package ru.aevd.androidacademymovieapp.api.responses
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

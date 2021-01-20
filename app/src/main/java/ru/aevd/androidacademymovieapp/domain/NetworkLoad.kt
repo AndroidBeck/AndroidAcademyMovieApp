@@ -1,17 +1,17 @@
-package ru.aevd.androidacademymovieapp.repository
+package ru.aevd.androidacademymovieapp.domain
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.withContext
 import ru.aevd.androidacademymovieapp.BuildConfig
-import ru.aevd.androidacademymovieapp.entities.Actor
-import ru.aevd.androidacademymovieapp.entities.Genre
-import ru.aevd.androidacademymovieapp.entities.Movie
-import ru.aevd.androidacademymovieapp.network.RetrofitModule
-import ru.aevd.androidacademymovieapp.network.responses.GenreNetModel
-import ru.aevd.androidacademymovieapp.network.responses.MovieActorsResponse
-import ru.aevd.androidacademymovieapp.network.responses.MovieDetailsResponse
-import ru.aevd.androidacademymovieapp.network.responses.MoviesResponseResultItem
+import ru.aevd.androidacademymovieapp.domain.entities.Actor
+import ru.aevd.androidacademymovieapp.domain.entities.Genre
+import ru.aevd.androidacademymovieapp.domain.entities.Movie
+import ru.aevd.androidacademymovieapp.api.RetrofitModule
+import ru.aevd.androidacademymovieapp.api.responses.GenreNetModel
+import ru.aevd.androidacademymovieapp.api.responses.MovieActorsResponse
+import ru.aevd.androidacademymovieapp.api.responses.MovieDetailsResponse
+import ru.aevd.androidacademymovieapp.api.responses.MoviesResponseResultItem
 
 class NetworkLoad {
     private val coroutineContext = Job() + Dispatchers.IO

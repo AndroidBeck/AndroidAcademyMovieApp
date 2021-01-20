@@ -1,6 +1,6 @@
-package ru.aevd.androidacademymovieapp.repository
+package ru.aevd.androidacademymovieapp.domain
 
-import ru.aevd.androidacademymovieapp.entities.Movie
+import ru.aevd.androidacademymovieapp.domain.entities.Movie
 
 interface GetMoviesUseCase {
     suspend fun getMovies(): List<Movie>

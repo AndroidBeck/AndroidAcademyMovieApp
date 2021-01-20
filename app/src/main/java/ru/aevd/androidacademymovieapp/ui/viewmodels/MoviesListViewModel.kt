@@ -1,4 +1,4 @@
-package ru.aevd.androidacademymovieapp.viewmodels
+package ru.aevd.androidacademymovieapp.ui.viewmodels
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
@@ -7,8 +7,8 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import kotlinx.serialization.SerializationException
 import retrofit2.HttpException
-import ru.aevd.androidacademymovieapp.repository.GetMoviesUseCase
-import ru.aevd.androidacademymovieapp.entities.Movie
+import ru.aevd.androidacademymovieapp.domain.GetMoviesUseCase
+import ru.aevd.androidacademymovieapp.domain.entities.Movie
 import java.lang.Exception
 
 class MoviesListViewModel(

@@ -11,7 +11,7 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import ru.aevd.androidacademymovieapp.R
-import ru.aevd.androidacademymovieapp.entities.Actor
+import ru.aevd.androidacademymovieapp.domain.entities.Actor
 
 class ActorsAdapter: RecyclerView.Adapter<ActorViewHolder>() {
     private var actors: List<Actor> = listOf()

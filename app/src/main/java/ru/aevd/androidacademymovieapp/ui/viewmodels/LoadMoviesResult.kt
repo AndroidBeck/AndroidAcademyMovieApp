@@ -1,4 +1,4 @@
-package ru.aevd.androidacademymovieapp.viewmodels
+package ru.aevd.androidacademymovieapp.ui.viewmodels
 
 sealed class LoadMoviesResult {
     object OK: LoadMoviesResult()
