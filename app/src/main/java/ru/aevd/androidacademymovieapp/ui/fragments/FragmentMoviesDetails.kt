@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import ru.aevd.androidacademymovieapp.ui.adapters.ActorsAdapter
 import ru.aevd.androidacademymovieapp.R
-import ru.aevd.androidacademymovieapp.TransactionsFragmentClicks
+import ru.aevd.androidacademymovieapp.ui.TransactionsFragmentClicks
 import ru.aevd.androidacademymovieapp.domain.entities.Movie
 import ru.aevd.androidacademymovieapp.ui.viewmodels.MoviesDetailsViewModel
 import ru.aevd.androidacademymovieapp.ui.viewmodels.MoviesDetailsViewModelFactory

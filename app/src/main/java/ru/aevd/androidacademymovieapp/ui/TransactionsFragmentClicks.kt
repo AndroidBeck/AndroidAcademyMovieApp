@@ -1,4 +1,4 @@
-package ru.aevd.androidacademymovieapp
+package ru.aevd.androidacademymovieapp.ui
 
 import ru.aevd.androidacademymovieapp.domain.entities.Movie
 

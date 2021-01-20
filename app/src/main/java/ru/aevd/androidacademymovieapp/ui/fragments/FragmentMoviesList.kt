@@ -18,6 +18,7 @@ import ru.aevd.androidacademymovieapp.*
 import ru.aevd.androidacademymovieapp.domain.entities.Movie
 import ru.aevd.androidacademymovieapp.domain.GetMoviesFromNetwork
 import ru.aevd.androidacademymovieapp.domain.NetworkLoad
+import ru.aevd.androidacademymovieapp.ui.TransactionsFragmentClicks
 import ru.aevd.androidacademymovieapp.ui.adapters.MoviesAdapter
 import ru.aevd.androidacademymovieapp.ui.adapters.OnMoviesItemClicked
 import ru.aevd.androidacademymovieapp.ui.viewmodels.MoviesListViewModel
