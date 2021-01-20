@@ -7,12 +7,12 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import kotlinx.serialization.SerializationException
 import retrofit2.HttpException
-import ru.aevd.androidacademymovieapp.domain.GetMoviesUseCase
+import ru.aevd.androidacademymovieapp.domain.MoviesRepository
 import ru.aevd.androidacademymovieapp.domain.entities.Movie
 import java.lang.Exception
 
 class MoviesListViewModel(
-        private val getMoviesUseCase: GetMoviesUseCase
+        private val moviesRepository: MoviesRepository
         ): ViewModel() {
 
     private val _state = MutableLiveData<State>(State.Success)
@@ -28,7 +28,7 @@ class MoviesListViewModel(
         viewModelScope.launch {
             _state.value = State.Loading
             try {
-                _movies.value = getMoviesUseCase.getMovies()
+                _movies.value = moviesRepository.getMovies()
                 _state.value = State.Success
             } catch (e: Exception) {
                 _state.value = State.Failed
