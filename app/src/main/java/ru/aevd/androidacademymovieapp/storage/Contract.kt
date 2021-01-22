@@ -2,7 +2,7 @@ package ru.aevd.androidacademymovieapp.storage
 
 import android.provider.BaseColumns
 
-object MoviesContract {
+object Contract {
 
     const val DATABASE_NAME = "MoviesDb.db"
 
