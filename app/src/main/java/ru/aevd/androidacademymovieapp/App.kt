@@ -4,4 +4,6 @@ import android.app.Application
 
 class App: Application() {
 
+    //val MoviesRepository by lazy { MoviesRepository(this) }
+    //val appContext = this.applicationContext
 }
