@@ -1,9 +1,6 @@
 package ru.aevd.androidacademymovieapp.storage.entities
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.Index
-import androidx.room.PrimaryKey
+import androidx.room.*
 import ru.aevd.androidacademymovieapp.domain.entities.Actor
 import ru.aevd.androidacademymovieapp.domain.entities.Genre
 import ru.aevd.androidacademymovieapp.storage.MoviesContract
@@ -32,5 +29,13 @@ data class MovieEntity (
     @ColumnInfo(name = MoviesContract.Movies.COLUMN_NAME_MIN_AGE)
     val minimumAge: Int,
     @ColumnInfo(name = MoviesContract.Movies.COLUMN_NAME_RUNTIME)
-    val runtime: Int
+    val runtime: Int,
+    @Relation(
+        parentColumn = MoviesContract.Movies.COLUMN_NAME_ID,
+        entityColumn = MoviesContract.Genres.COLUMN_NAME_MOVIE_ID)
+    val genres: List<GenreEntity>,
+    @Relation(
+        parentColumn = MoviesContract.Movies.COLUMN_NAME_ID,
+        entityColumn = MoviesContract.Actors.COLUMN_NAME_MOVIE_ID)
+    val actors: List<ActorEntity>
 )

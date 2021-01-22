@@ -1,6 +1,7 @@
 package ru.aevd.androidacademymovieapp.storage.entities
 
 import androidx.room.*
+import androidx.room.ForeignKey.CASCADE
 import ru.aevd.androidacademymovieapp.storage.MoviesContract
 
 @Entity(
@@ -9,7 +10,7 @@ import ru.aevd.androidacademymovieapp.storage.MoviesContract
         entity = MovieEntity::class,
         parentColumns = arrayOf(MoviesContract.Genres.COLUMN_NAME_ID),
         childColumns = arrayOf(MoviesContract.Genres.COLUMN_NAME_MOVIE_ID),
-        onDelete = ForeignKey.CASCADE
+        onDelete = CASCADE
     )]
 )
 data class ActorEntity (
