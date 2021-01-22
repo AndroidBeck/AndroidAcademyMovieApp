@@ -5,22 +5,19 @@ import androidx.room.ForeignKey.CASCADE
 import ru.aevd.androidacademymovieapp.storage.MoviesContract
 
 @Entity(
-    tableName = MoviesContract.Actors.TABLE_NAME,
+    tableName = MoviesContract.Genres.TABLE_NAME,
     foreignKeys = [ForeignKey(
-        entity = MovieEntity::class,
+        entity = MovieDb::class,
         parentColumns = arrayOf(MoviesContract.Genres.COLUMN_NAME_ID),
         childColumns = arrayOf(MoviesContract.Genres.COLUMN_NAME_MOVIE_ID),
         onDelete = CASCADE
     )]
 )
-data class ActorEntity (
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = MoviesContract.Actors.COLUMN_NAME_ID)
+data class GenreDb(
+    @ColumnInfo(name = MoviesContract.Genres.COLUMN_NAME_ID)
     val id: Int,
-    @ColumnInfo(name = MoviesContract.Actors.COLUMN_NAME_NAME)
+    @ColumnInfo(name = MoviesContract.Genres.COLUMN_NAME_NAME)
     val name: String,
-    @ColumnInfo(name = MoviesContract.Actors.COLUMN_NAME_PICTURE)
-    val picture: String,
-    @ColumnInfo(name = MoviesContract.Actors.COLUMN_NAME_MOVIE_ID)
+    @ColumnInfo(name = MoviesContract.Genres.COLUMN_NAME_MOVIE_ID)
     val movieId: Long
 )

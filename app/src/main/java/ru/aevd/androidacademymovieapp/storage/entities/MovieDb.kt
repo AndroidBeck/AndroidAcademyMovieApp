@@ -1,8 +1,6 @@
 package ru.aevd.androidacademymovieapp.storage.entities
 
 import androidx.room.*
-import ru.aevd.androidacademymovieapp.domain.entities.Actor
-import ru.aevd.androidacademymovieapp.domain.entities.Genre
 import ru.aevd.androidacademymovieapp.storage.MoviesContract
 
 //TODO 1: indexes: add genres, actors ? or use foreign keys
@@ -10,7 +8,7 @@ import ru.aevd.androidacademymovieapp.storage.MoviesContract
     tableName = MoviesContract.Movies.TABLE_NAME,
     indices = [Index(MoviesContract.Movies.COLUMN_NAME_ID)]
 )
-data class MovieEntity (
+data class MovieDb (
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = MoviesContract.Movies.COLUMN_NAME_ID)
     val id: Long = 0,
@@ -33,9 +31,9 @@ data class MovieEntity (
     @Relation(
         parentColumn = MoviesContract.Movies.COLUMN_NAME_ID,
         entityColumn = MoviesContract.Genres.COLUMN_NAME_MOVIE_ID)
-    val genres: List<GenreEntity>,
+    val genres: List<GenreDb>,
     @Relation(
         parentColumn = MoviesContract.Movies.COLUMN_NAME_ID,
         entityColumn = MoviesContract.Actors.COLUMN_NAME_MOVIE_ID)
-    val actors: List<ActorEntity>
+    val actors: List<ActorDb>
 )
