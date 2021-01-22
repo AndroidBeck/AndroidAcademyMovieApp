@@ -31,7 +31,12 @@ data class MovieDb (
     @Relation(
         parentColumn = MoviesContract.Movies.COLUMN_NAME_ID,
         entityColumn = MoviesContract.Genres.COLUMN_NAME_MOVIE_ID)
-    val genres: List<GenreDb>,
+    val genres: List<GenreDb>
+)
+
+data class MovieWithActorsDb (
+    @Embedded
+    val movieDb: MovieDb,
     @Relation(
         parentColumn = MoviesContract.Movies.COLUMN_NAME_ID,
         entityColumn = MoviesContract.Actors.COLUMN_NAME_MOVIE_ID)

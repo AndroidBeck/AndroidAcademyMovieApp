@@ -14,7 +14,7 @@ import ru.aevd.androidacademymovieapp.storage.MoviesContract
     )]
 )
 data class ActorDb (
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     @ColumnInfo(name = MoviesContract.Actors.COLUMN_NAME_ID)
     val id: Int,
     @ColumnInfo(name = MoviesContract.Actors.COLUMN_NAME_NAME)

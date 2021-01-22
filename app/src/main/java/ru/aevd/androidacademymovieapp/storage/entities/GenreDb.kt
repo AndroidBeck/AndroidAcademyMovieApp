@@ -14,6 +14,7 @@ import ru.aevd.androidacademymovieapp.storage.MoviesContract
     )]
 )
 data class GenreDb(
+    @PrimaryKey
     @ColumnInfo(name = MoviesContract.Genres.COLUMN_NAME_ID)
     val id: Int,
     @ColumnInfo(name = MoviesContract.Genres.COLUMN_NAME_NAME)
