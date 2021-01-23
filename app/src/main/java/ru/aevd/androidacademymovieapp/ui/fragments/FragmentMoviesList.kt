@@ -16,8 +16,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ru.aevd.androidacademymovieapp.*
 import ru.aevd.androidacademymovieapp.domain.entities.Movie
-import ru.aevd.androidacademymovieapp.domain.MoviesFromNetwork
-import ru.aevd.androidacademymovieapp.domain.NetworkLoad
 import ru.aevd.androidacademymovieapp.ui.TransactionsFragmentClicks
 import ru.aevd.androidacademymovieapp.ui.adapters.MoviesAdapter
 import ru.aevd.androidacademymovieapp.ui.adapters.OnMoviesItemClicked
@@ -30,8 +28,7 @@ class FragmentMoviesList: Fragment() {
 
     private val viewModel: MoviesListViewModel by viewModels {
         MoviesListViewModelFactory(
-            MoviesFromNetwork(NetworkLoad())
-//            GetMoviesFromAssets(MoviePersistent(requireContext().applicationContext)
+           appContext = requireContext().applicationContext
         )
     }
 
