@@ -2,6 +2,7 @@ package ru.aevd.androidacademymovieapp.storage
 
 import androidx.room.*
 import ru.aevd.androidacademymovieapp.storage.entities.MovieDb
+import ru.aevd.androidacademymovieapp.storage.entities.MovieWithActorsDb
 
 @Dao
 interface MoviesDao {
@@ -11,6 +12,9 @@ interface MoviesDao {
 
     @Query("SELECT * FROM movies ORDER BY _id ASC")
     suspend fun getAllMovies(): List<MovieDb>
+
+    @Query("SELECT * FROM movies ORDER BY _id ASC")
+    suspend fun getAllMoviesWithActors(): List<MovieWithActorsDb>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertMovie(movieDb: MovieDb)

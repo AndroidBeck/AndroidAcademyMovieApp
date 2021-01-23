@@ -28,7 +28,7 @@ class MoviesListViewModel(
         viewModelScope.launch {
             _state.value = State.Loading
             try {
-                _movies.value = moviesRepository.getMovies()
+                _movies.value = moviesRepository.getMoviesFromNet()
                 _state.value = State.Success
             } catch (e: Exception) {
                 _state.value = State.Failed
