@@ -12,8 +12,8 @@ import ru.aevd.androidacademymovieapp.domain.entities.Movie
 import java.lang.Exception
 
 class MoviesListViewModel(
-        private val moviesRepository: MoviesRepository
-        ): ViewModel() {
+    private val repository: MoviesRepository
+): ViewModel() {
 
     private val _state = MutableLiveData<State>(State.Success)
     val state get() = _state
@@ -28,7 +28,7 @@ class MoviesListViewModel(
         viewModelScope.launch {
             _state.value = State.Loading
             try {
-                _movies.value = moviesRepository.getMoviesFromNet()
+                _movies.value = repository.getMoviesFromNet()
                 _state.value = State.Success
             } catch (e: Exception) {
                 _state.value = State.Failed
