@@ -28,15 +28,24 @@ data class MovieDb (
     val minimumAge: Int,
     @ColumnInfo(name = Contract.Movies.COLUMN_NAME_RUNTIME)
     val runtime: Int,
+)
+
+data class MovieWithGenresDb(
+    @Embedded
+    val movieDb: MovieDb,
     @Relation(
         parentColumn = Contract.Movies.COLUMN_NAME_ID,
         entityColumn = Contract.Genres.COLUMN_NAME_MOVIE_ID)
     val genres: List<GenreDb>
 )
 
-data class MovieWithActorsDb (
+data class MovieWithGenresAndActorsDb (
     @Embedded
-    val movieDb: MovieDb,
+    val mDb: MovieDb,
+    @Relation(
+            parentColumn = Contract.Movies.COLUMN_NAME_ID,
+            entityColumn = Contract.Genres.COLUMN_NAME_MOVIE_ID)
+    val genres: List<GenreDb>,
     @Relation(
         parentColumn = Contract.Movies.COLUMN_NAME_ID,
         entityColumn = Contract.Actors.COLUMN_NAME_MOVIE_ID)
