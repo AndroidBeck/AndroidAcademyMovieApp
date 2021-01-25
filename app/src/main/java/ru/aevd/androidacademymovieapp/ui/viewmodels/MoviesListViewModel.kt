@@ -26,10 +26,25 @@ class MoviesListViewModel(
 
     fun loadMovies() {
         viewModelScope.launch {
+            try {
+                Log.d("MoviesListViewModel", "Loading from db")
+                val localMovies = repository.getMoviesFromDb()
+                Log.d("MoviesListViewModel", "Loading from db finished")
+                if(localMovies.isNotEmpty()) {
+                    _movies.value = localMovies
+                    Log.d("MoviesListViewModel", "Set values from db")
+                }
+            } catch (e: Exception) {
+                Log.e("MoviesListViewModel", "Error loading from db : $e", e)
+            }
+
             _state.value = State.Loading
             try {
-                _movies.value = repository.getMoviesFromNet()
+                val remoteMovies = repository.getMoviesFromNet()
                 _state.value = State.Success
+                _movies.value = remoteMovies
+
+                repository.saveMoviesToDb(remoteMovies)
             } catch (e: Exception) {
                 _state.value = State.Failed
                 handleExceptions(e)

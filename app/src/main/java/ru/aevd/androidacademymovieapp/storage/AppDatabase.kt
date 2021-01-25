@@ -1,6 +1,7 @@
 package ru.aevd.androidacademymovieapp.storage
 
 import android.content.Context
+import android.util.Log
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -18,13 +19,18 @@ abstract class AppDatabase: RoomDatabase() {
 
     companion object {
 
-        fun createDb(appContext: Context) = Room.databaseBuilder(
-            appContext,
-            AppDatabase::class.java,
-            Contract.DATABASE_NAME
-        )
-            .fallbackToDestructiveMigration()
-            .build()
+        fun createDb(appContext: Context): AppDatabase {
+            Log.d("AppDatabase", "Start creating db")
+            val db = Room.databaseBuilder(
+                    appContext,
+                    AppDatabase::class.java,
+                    Contract.DATABASE_NAME
+            )
+                    .fallbackToDestructiveMigration()
+                    .build()
+            Log.d("AppDatabase", "Db created")
+            return db
+        }
     }
 
 }
