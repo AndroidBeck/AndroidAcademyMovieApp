@@ -32,9 +32,16 @@ class DefaultMoviesRepository(private val appContext: Context): MoviesRepository
     }
 
     override suspend fun saveMoviesToDb(movies: List<Movie>) {
-        db.moviesDao.insertMovies(movies.map { movieEntityToDb(it) })
+        val mwaDb = movies.map { movieEntityToDb(it) }
+        val moviesDb: List<MovieDb> = mwaDb.map { it.mDb }
+        val genresListDb: List<GenreDb> = (mwaDb.map { it.genres }).flatten()
+        val actorsListDb: List<ActorDb> = (mwaDb.map { it.actors }).flatten()
+        db.moviesDao.insertMoviesWithGenresAndActors(
+            moviesDb,
+            genresListDb,
+            actorsListDb
+        )
     }
-
 
 }
 

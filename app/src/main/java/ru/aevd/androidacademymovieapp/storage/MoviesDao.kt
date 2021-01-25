@@ -1,6 +1,8 @@
 package ru.aevd.androidacademymovieapp.storage
 
 import androidx.room.*
+import ru.aevd.androidacademymovieapp.storage.entities.ActorDb
+import ru.aevd.androidacademymovieapp.storage.entities.GenreDb
 import ru.aevd.androidacademymovieapp.storage.entities.MovieDb
 import ru.aevd.androidacademymovieapp.storage.entities.MovieWithGenresAndActorsDb
 
@@ -21,7 +23,11 @@ interface MoviesDao {
 //    suspend fun insertMovie(movieDb: MovieDb)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertMovies(moviesDb: List<MovieWithGenresAndActorsDb>) //: List<Long>
+    suspend fun insertMoviesWithGenresAndActors(
+        moviesDb: List<MovieDb>,
+        genresDb: List<GenreDb>,
+        actorsDb: List<ActorDb>
+    ) //: List<Long>
 
 //    @Query("DELETE FROM movies WHERE _id == :id")
 //    suspend fun deleteMovieById(id: Long)
