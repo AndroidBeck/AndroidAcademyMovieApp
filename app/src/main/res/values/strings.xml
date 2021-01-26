@@ -34,4 +34,5 @@
     <string name="load_error_http">HTTP Error</string>
     <string name="load_error_io">IO Error</string>
     <string name="load_error">Load error</string>
+    <string name="load_error_network">Network Error</string>
 </resources>

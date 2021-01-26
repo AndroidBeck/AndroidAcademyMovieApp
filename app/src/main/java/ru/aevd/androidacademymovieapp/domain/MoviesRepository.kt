@@ -11,7 +11,7 @@ import ru.aevd.androidacademymovieapp.storage.entities.*
 
 interface MoviesRepository {
     suspend fun getMoviesFromAssets(): List<Movie>
-    suspend fun getMoviesFromNet(): List<Movie>
+    suspend fun getMoviesResultFromNet(): Result<List<Movie>>
     suspend fun getMoviesFromDb(): List<Movie>
     suspend fun saveMoviesToDb(movies: List<Movie>)
 }
@@ -24,7 +24,8 @@ class DefaultMoviesRepository(private val appContext: Context): MoviesRepository
     //Use JsonLoad
     override suspend fun getMoviesFromAssets(): List<Movie> = loadMovies(appContext)
 
-    override suspend fun getMoviesFromNet(): List<Movie> = networkLoad.loadMovies()
+    override suspend fun getMoviesResultFromNet(): Result<List<Movie>> =
+        networkLoad.loadMoviesResult()
 
     override suspend fun getMoviesFromDb(): List<Movie> = withContext(Dispatchers.IO) {
         db.moviesDao.getAllMoviesWithGenresAndActors()

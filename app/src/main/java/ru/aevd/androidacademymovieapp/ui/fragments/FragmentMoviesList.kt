@@ -15,13 +15,14 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ru.aevd.androidacademymovieapp.*
+import ru.aevd.androidacademymovieapp.domain.Result
 import ru.aevd.androidacademymovieapp.domain.entities.Movie
 import ru.aevd.androidacademymovieapp.ui.TransactionsFragmentClicks
 import ru.aevd.androidacademymovieapp.ui.adapters.MoviesAdapter
 import ru.aevd.androidacademymovieapp.ui.adapters.OnMoviesItemClicked
+import ru.aevd.androidacademymovieapp.ui.viewmodels.ErrorMessage
 import ru.aevd.androidacademymovieapp.ui.viewmodels.MoviesListViewModel
 import ru.aevd.androidacademymovieapp.ui.viewmodels.MoviesListViewModelFactory
-import ru.aevd.androidacademymovieapp.ui.viewmodels.LoadMoviesResult
 import ru.aevd.androidacademymovieapp.ui.viewmodels.State
 
 class FragmentMoviesList: Fragment() {
@@ -54,15 +55,14 @@ class FragmentMoviesList: Fragment() {
         //observe some liveData using  ViewModel
         viewModel.movies.observe(this.viewLifecycleOwner, this::updateAdapter)
         viewModel.state.observe(this.viewLifecycleOwner, this::showLoading)
-        viewModel.moviesResult.observe(this.viewLifecycleOwner, this::setErrorText)
+        viewModel.errorMessage.observe(this.viewLifecycleOwner, this::setErrorText)
     }
 
-    private fun setErrorText(moviesResult: LoadMoviesResult) {
-        Log.d("FragmentMoviesList", "result = $moviesResult")
-        errorMessage?.text = when(moviesResult) {
-            LoadMoviesResult.Error.IO -> getString(R.string.load_error_io)
-            LoadMoviesResult.Error.HTTP -> getString(R.string.load_error_http)
-            LoadMoviesResult.Error.Serialization -> getString(R.string.load_error_serialization)
+    private fun setErrorText(errorMsg: ErrorMessage) {
+        Log.d("FragmentMoviesList", "setErrorText(), result = $errorMsg")
+        errorMessage?.text = when(errorMsg) {
+            is ErrorMessage.NetworkError -> getString(R.string.load_error_network)
+            is ErrorMessage.SerializationError -> getString(R.string.load_error_serialization)
             else -> getString(R.string.load_error_unknown)
         }
     }
@@ -70,12 +70,13 @@ class FragmentMoviesList: Fragment() {
     private fun showLoading(state: State) {
         Log.d("FragmentMoviesList", "showLoading(), result = $state")
         progressBar?.isVisible = state == State.Loading
-        recycler?.isVisible = state == State.Success
+        recycler?.isVisible = true//state == State.Success
         errorMessage?.isVisible = state == State.Failed
         reloadButton?.isVisible = state == State.Failed
     }
 
     private fun updateAdapter(moviesList: List<Movie>) {
+        Log.d("FragmentMoviesList", "updateAdapters(), moviesList = $moviesList")
         adapter.bindMovies(moviesList)
     }
 

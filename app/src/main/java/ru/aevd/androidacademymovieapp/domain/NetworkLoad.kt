@@ -1,8 +1,9 @@
 package ru.aevd.androidacademymovieapp.domain
 
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.withContext
+import android.util.Log
+import kotlinx.coroutines.*
+import kotlinx.serialization.SerializationException
+import retrofit2.HttpException
 import ru.aevd.androidacademymovieapp.BuildConfig
 import ru.aevd.androidacademymovieapp.domain.entities.Actor
 import ru.aevd.androidacademymovieapp.domain.entities.Genre
@@ -12,25 +13,43 @@ import ru.aevd.androidacademymovieapp.api.responses.GenreNetModel
 import ru.aevd.androidacademymovieapp.api.responses.MovieActorsResponse
 import ru.aevd.androidacademymovieapp.api.responses.MovieDetailsResponse
 import ru.aevd.androidacademymovieapp.api.responses.MoviesResponseResultItem
+import java.lang.Exception
 
 class NetworkLoad {
-    private val coroutineContext = Job() + Dispatchers.IO
 
-    suspend fun loadMovies(): List<Movie> = withContext(coroutineContext) {
+    private val coroutineContext = Job() + Dispatchers.IO
+    suspend fun loadMoviesResult(): Result<List<Movie>> = withContext(coroutineContext) {
+        Log.d(TAG, "Start loading movies")
         val movies: MutableList<Movie> = mutableListOf()
-        val moviesListResponseResults = RetrofitModule.moviesApi.getMovies().results
-        for (movieResponse in moviesListResponseResults) {
-            val movieDetailsResponse = RetrofitModule.moviesApi.getMovieDetails(movieResponse.id)
-            val actorsResponse = RetrofitModule.moviesApi.getMovieActors(movieResponse.id)
-            val movie = createMovieFromApiResponses(
-                    movieResp = movieResponse,
-                    movieDetailsResp = movieDetailsResponse,
-                    actorsResp = actorsResponse
-            )
-            movies.add(movie)
+        try {
+            val moviesListResponseResults = RetrofitModule.moviesApi.getMovies().results
+            Log.d(TAG, "Start loading details")
+            for (movieResponse in moviesListResponseResults) {
+                val movieDetailsResponse = RetrofitModule.moviesApi.getMovieDetails(movieResponse.id)
+                val actorsResponse = RetrofitModule.moviesApi.getMovieActors(movieResponse.id)
+                val movie = createMovieFromApiResponses(
+                        movieResp = movieResponse,
+                        movieDetailsResp = movieDetailsResponse,
+                        actorsResp = actorsResponse
+                )
+                movies.add(movie)
+            }
+            Log.d(TAG, "Network loading finished")
+            Result.Success(movies)
+        } catch (e: Exception) {
+            Result.Error(e)
         }
-        movies
     }
+
+//    private fun handleExceptions(e: Exception) {
+//        Log.e("NetworkLoad", "Handling exception: $e", e)
+//        when (e) {
+//            is java.io.IOException -> Result.Error.IO
+//            is HttpException -> Result.Error.HTTP
+//            is SerializationException -> Result.Error.Serialization
+//            else -> Result.Error.Other
+//        }
+//    }
 }
 
 private fun createMovieFromApiResponses(
@@ -88,4 +107,4 @@ private const val posterSizePath = "w500"
 private const val backDropSizePath = "w780"
 private const val profileSizePath = "w185"
 
-//private val TAG = NetworkOperations::class.java.simpleName
+private val TAG = NetworkLoad::class.java.simpleName

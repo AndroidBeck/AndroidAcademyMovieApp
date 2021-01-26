@@ -8,6 +8,7 @@ import kotlinx.coroutines.launch
 import kotlinx.serialization.SerializationException
 import retrofit2.HttpException
 import ru.aevd.androidacademymovieapp.domain.MoviesRepository
+import ru.aevd.androidacademymovieapp.domain.Result
 import ru.aevd.androidacademymovieapp.domain.entities.Movie
 import java.lang.Exception
 
@@ -18,14 +19,15 @@ class MoviesListViewModel(
     private val _state = MutableLiveData<State>(State.Success)
     val state get() = _state
 
-    private val _moviesResult = MutableLiveData<LoadMoviesResult>(LoadMoviesResult.OK)
-    val moviesResult get() = _moviesResult
-
     private val _movies = MutableLiveData<List<Movie>>(emptyList())
     val movies get() = _movies
 
+    private val _errorMessage = MutableLiveData<ErrorMessage>()
+    val errorMessage get() = _errorMessage
+
     fun loadMovies() {
         viewModelScope.launch {
+            //Get data from Db
             try {
                 Log.d("MoviesListViewModel", "Loading from db")
                 val localMovies = repository.getMoviesFromDb()
@@ -38,16 +40,16 @@ class MoviesListViewModel(
                 Log.e("MoviesListViewModel", "Error loading from db : $e", e)
             }
 
+            //Load data from network
             _state.value = State.Loading
-            try {
-                val remoteMovies = repository.getMoviesFromNet()
+            val remoteMoviesResult = repository.getMoviesResultFromNet()
+            if (remoteMoviesResult is Result.Success) {
+                _movies.value = remoteMoviesResult.data
+                repository.saveMoviesToDb(remoteMoviesResult.data)
                 _state.value = State.Success
-                _movies.value = remoteMovies
-
-                repository.saveMoviesToDb(remoteMovies)
-            } catch (e: Exception) {
+            } else if (remoteMoviesResult is Result.Error) {
                 _state.value = State.Failed
-                handleExceptions(e)
+                setErrorMessage(remoteMoviesResult.e)
             }
         }
     }
@@ -56,16 +58,20 @@ class MoviesListViewModel(
         loadMovies()
     }
 
-    private fun handleExceptions(e: Exception) {
-        Log.e("MoviesListViewModel", "Coroutine exception: $e", e)
-        _moviesResult.value = when (e) {
-            is java.io.IOException -> LoadMoviesResult.Error.IO
-            is HttpException -> LoadMoviesResult.Error.HTTP
-            is SerializationException -> LoadMoviesResult.Error.Serialization
-            else -> LoadMoviesResult.Error.Other
+    private fun setErrorMessage(e: Exception) {
+        _errorMessage.value = when (e) {
+            is java.io.IOException, is HttpException -> ErrorMessage.NetworkError
+            is SerializationException -> ErrorMessage.SerializationError
+            else -> ErrorMessage.OtherError
         }
     }
 
+}
+
+sealed class ErrorMessage {
+    object NetworkError: ErrorMessage()
+    object SerializationError: ErrorMessage()
+    object OtherError: ErrorMessage()
 }
 
 sealed class State {
@@ -73,3 +79,5 @@ sealed class State {
     object Success : State()
     object Failed: State()
 }
+
+
