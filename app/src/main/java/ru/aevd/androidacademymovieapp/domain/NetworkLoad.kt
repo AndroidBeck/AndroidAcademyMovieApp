@@ -10,7 +10,6 @@ import ru.aevd.androidacademymovieapp.api.responses.GenreNetModel
 import ru.aevd.androidacademymovieapp.api.responses.MovieActorsResponse
 import ru.aevd.androidacademymovieapp.api.responses.MovieDetailsResponse
 import ru.aevd.androidacademymovieapp.api.responses.MoviesResponseResultItem
-import java.lang.Exception
 
 class NetworkLoad {
 

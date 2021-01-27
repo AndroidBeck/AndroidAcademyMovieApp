@@ -4,7 +4,6 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import ru.aevd.androidacademymovieapp.App
-import ru.aevd.androidacademymovieapp.domain.MoviesRepository
 
 class MoviesListViewModelFactory(
     private val appContext: Context
