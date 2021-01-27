@@ -13,7 +13,7 @@ class MoviesListViewModel(
 ): ViewModel() {
 
     private val _state = MutableLiveData<State>(State.Success)
-    private val _movies = MutableLiveData<List<Movie>>(emptyList())
+    private val _movies = MutableLiveData<List<Movie>>()
     private val _errorMessage = MutableLiveData<String>()
 
     val state get() = _state

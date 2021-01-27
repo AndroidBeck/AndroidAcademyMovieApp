@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ProgressBar
-import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -36,7 +35,6 @@ class FragmentMoviesList: Fragment() {
     private lateinit var adapter: MoviesAdapter
     private var clickListener: TransactionsFragmentClicks? = null
     private var progressBar: ProgressBar? = null
-    private var errorMessage: TextView? = null
     private var reloadButton: Button? = null
 
     override fun onCreateView(inflater: LayoutInflater,
@@ -59,15 +57,13 @@ class FragmentMoviesList: Fragment() {
 
     private fun showErrorMsg(errorMsg: String) {
         Log.d("FragmentMoviesList", "setErrorText(), result = $errorMsg")
-        errorMessage?.text = errorMsg
         Toast.makeText(context, errorMsg, Toast.LENGTH_SHORT).show()
     }
 
     private fun showLoading(state: State) {
         Log.d("FragmentMoviesList", "showLoading(), result = $state")
         progressBar?.isVisible = state == State.Loading
-        recycler?.isVisible = true//state == State.Success
-        errorMessage?.isVisible = state == State.Failed
+        recycler?.isVisible = true //state == State.Success
         reloadButton?.isVisible = state == State.Failed
     }
 
@@ -102,14 +98,12 @@ class FragmentMoviesList: Fragment() {
     private fun findViews(view: View) {
         progressBar = view.findViewById(R.id.pb_loading)
         recycler = view.findViewById(R.id.rv_movies)
-        errorMessage = view.findViewById(R.id.tv_errorMessage)
         reloadButton = view.findViewById(R.id.but_reload)
     }
 
     private fun clearViews() {
         progressBar = null
         recycler = null
-        errorMessage = null
         reloadButton = null
     }
 

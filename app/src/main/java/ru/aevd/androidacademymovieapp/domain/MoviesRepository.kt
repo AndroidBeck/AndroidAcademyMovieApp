@@ -45,7 +45,7 @@ class DefaultMoviesRepository(private val appContext: Context): MoviesRepository
                 .map { movieDbToEntity(it) }
         if (movies.isNotEmpty()) Result.Success(movies)
         else {
-            val message = appContext.getString(R.string.load_error_db)
+            val message = appContext.getString(R.string.db_error_no_movies)
             Result.Error(message)
         }
     }
@@ -63,7 +63,7 @@ class DefaultMoviesRepository(private val appContext: Context): MoviesRepository
     }
 
     private fun setErrorMessage(e: Exception): String {
-        Log.e("MoviesRepository", "Handling exception: $e", e)
+        Log.e(TAG, "Handling exception: $e", e)
         return when (e) {
             is HttpException -> appContext.getString(R.string.load_error_http)
             is java.io.IOException -> appContext.getString(R.string.load_error_io)
@@ -127,3 +127,5 @@ fun actorEntityToDb(actor: Actor, movieId: Int) = ActorDb(
     picture = actor.picture,
     movieId = movieId.toLong()
 )
+
+private val TAG = DefaultMoviesRepository::class.java.simpleName
