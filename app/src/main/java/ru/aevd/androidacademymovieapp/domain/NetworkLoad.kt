@@ -1,9 +1,6 @@
 package ru.aevd.androidacademymovieapp.domain
 
 import android.util.Log
-import kotlinx.coroutines.*
-import kotlinx.serialization.SerializationException
-import retrofit2.HttpException
 import ru.aevd.androidacademymovieapp.BuildConfig
 import ru.aevd.androidacademymovieapp.domain.entities.Actor
 import ru.aevd.androidacademymovieapp.domain.entities.Genre
@@ -17,39 +14,25 @@ import java.lang.Exception
 
 class NetworkLoad {
 
-    private val coroutineContext = Job() + Dispatchers.IO
-    suspend fun loadMoviesResult(): Result<List<Movie>> = withContext(coroutineContext) {
+    suspend fun loadMovies(): List<Movie> {
         Log.d(TAG, "Start loading movies")
         val movies: MutableList<Movie> = mutableListOf()
-        try {
-            val moviesListResponseResults = RetrofitModule.moviesApi.getMovies().results
-            Log.d(TAG, "Start loading details")
-            for (movieResponse in moviesListResponseResults) {
-                val movieDetailsResponse = RetrofitModule.moviesApi.getMovieDetails(movieResponse.id)
-                val actorsResponse = RetrofitModule.moviesApi.getMovieActors(movieResponse.id)
-                val movie = createMovieFromApiResponses(
-                        movieResp = movieResponse,
-                        movieDetailsResp = movieDetailsResponse,
-                        actorsResp = actorsResponse
-                )
-                movies.add(movie)
-            }
-            Log.d(TAG, "Network loading finished")
-            Result.Success(movies)
-        } catch (e: Exception) {
-            Result.Error(e)
+        val moviesListResponseResults = RetrofitModule.moviesApi.getMovies().results
+        Log.d(TAG, "Start loading details")
+        for (movieResponse in moviesListResponseResults) {
+            val movieDetailsResponse = RetrofitModule.moviesApi.getMovieDetails(movieResponse.id)
+            val actorsResponse = RetrofitModule.moviesApi.getMovieActors(movieResponse.id)
+            val movie = createMovieFromApiResponses(
+                    movieResp = movieResponse,
+                    movieDetailsResp = movieDetailsResponse,
+                    actorsResp = actorsResponse
+            )
+            movies.add(movie)
         }
+        Log.d(TAG, "Network loading finished")
+        return movies
     }
 
-//    private fun handleExceptions(e: Exception) {
-//        Log.e("NetworkLoad", "Handling exception: $e", e)
-//        when (e) {
-//            is java.io.IOException -> Result.Error.IO
-//            is HttpException -> Result.Error.HTTP
-//            is SerializationException -> Result.Error.Serialization
-//            else -> Result.Error.Other
-//        }
-//    }
 }
 
 private fun createMovieFromApiResponses(

@@ -9,18 +9,9 @@ import ru.aevd.androidacademymovieapp.storage.entities.MovieWithGenresAndActorsD
 @Dao
 interface MoviesDao {
 
-//    @Query("SELECT * FROM movies WHERE _id == :id")
-//    suspend fun getMovieById(id: Long): MovieDb
-//
-//    @Query("SELECT * FROM movies ORDER BY _id ASC")
-//    suspend fun getAllMovies(): List<MovieDb>
-
     //ORDER BY _id ASC
     @Transaction @Query("SELECT * FROM movies")
     suspend fun getAllMoviesWithGenresAndActors(): List<MovieWithGenresAndActorsDb>
-
-//    @Insert(onConflict = OnConflictStrategy.REPLACE)
-//    suspend fun insertMovie(movieDb: MovieDb)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertMoviesWithGenresAndActors(
@@ -29,11 +20,21 @@ interface MoviesDao {
         actorsDb: List<ActorDb>
     ) //: List<Long>
 
+    @Transaction @Query("DELETE FROM movies")
+    suspend fun deleteAllMovies()
+
+//    @Query("SELECT * FROM movies WHERE _id == :id")
+//    suspend fun getMovieById(id: Long): MovieDb
+//
+//    @Query("SELECT * FROM movies ORDER BY _id ASC")
+//    suspend fun getAllMovies(): List<MovieDb>
+
+//    @Insert(onConflict = OnConflictStrategy.REPLACE)
+//    suspend fun insertMovie(movieDb: MovieDb)
+
 //    @Query("DELETE FROM movies WHERE _id == :id")
 //    suspend fun deleteMovieById(id: Long)
 
-    @Transaction @Query("DELETE FROM movies")
-    suspend fun deleteAllMovies()
 
 //    @Transaction
 //    suspend fun clearAndCacheMovies(moviesDb: List<MovieWithGenresAndActorsDb>) {

@@ -1,8 +1,12 @@
 package ru.aevd.androidacademymovieapp.domain
 
 import android.content.Context
+import android.util.Log
+import com.bumptech.glide.load.HttpException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import kotlinx.serialization.SerializationException
+import ru.aevd.androidacademymovieapp.R
 import ru.aevd.androidacademymovieapp.domain.entities.Actor
 import ru.aevd.androidacademymovieapp.domain.entities.Genre
 import ru.aevd.androidacademymovieapp.domain.entities.Movie
@@ -12,7 +16,7 @@ import ru.aevd.androidacademymovieapp.storage.entities.*
 interface MoviesRepository {
     suspend fun getMoviesFromAssets(): List<Movie>
     suspend fun getMoviesResultFromNet(): Result<List<Movie>>
-    suspend fun getMoviesFromDb(): List<Movie>
+    suspend fun getMoviesResultFromDb(): Result<List<Movie>>
     suspend fun saveMoviesToDb(movies: List<Movie>)
 }
 
@@ -25,14 +29,28 @@ class DefaultMoviesRepository(private val appContext: Context): MoviesRepository
     override suspend fun getMoviesFromAssets(): List<Movie> = loadMovies(appContext)
 
     override suspend fun getMoviesResultFromNet(): Result<List<Movie>> =
-        networkLoad.loadMoviesResult()
-
-    override suspend fun getMoviesFromDb(): List<Movie> = withContext(Dispatchers.IO) {
-        db.moviesDao.getAllMoviesWithGenresAndActors()
-            .map { movieDbToEntity(it) }
+            withContext(Dispatchers.IO) {
+        try {
+            val movies = networkLoad.loadMovies()
+            Result.Success(movies)
+        } catch (e: Exception) {
+            val message = setErrorMessage(e)
+            Result.Error(message)
+        }
     }
 
-    override suspend fun saveMoviesToDb(movies: List<Movie>) {
+    override suspend fun getMoviesResultFromDb(): Result<List<Movie>> =
+            withContext(Dispatchers.IO) {
+        val movies = db.moviesDao.getAllMoviesWithGenresAndActors()
+                .map { movieDbToEntity(it) }
+        if (movies.isNotEmpty()) Result.Success(movies)
+        else {
+            val message = appContext.getString(R.string.load_error_db)
+            Result.Error(message)
+        }
+    }
+
+    override suspend fun saveMoviesToDb(movies: List<Movie>) = withContext(Dispatchers.IO) {
         val mwaDb = movies.map { movieEntityToDb(it) }
         val moviesDb: List<MovieDb> = mwaDb.map { it.mDb }
         val genresListDb: List<GenreDb> = (mwaDb.map { it.genres }).flatten()
@@ -42,6 +60,16 @@ class DefaultMoviesRepository(private val appContext: Context): MoviesRepository
             genresListDb,
             actorsListDb
         )
+    }
+
+    private fun setErrorMessage(e: Exception): String {
+        Log.e("MoviesRepository", "Handling exception: $e", e)
+        return when (e) {
+            is HttpException -> appContext.getString(R.string.load_error_http)
+            is java.io.IOException -> appContext.getString(R.string.load_error_io)
+            is SerializationException -> appContext.getString(R.string.load_error_serialization)
+            else -> appContext.getString(R.string.load_error_unknown)
+        }
     }
 
 }

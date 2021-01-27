@@ -9,18 +9,17 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ru.aevd.androidacademymovieapp.*
-import ru.aevd.androidacademymovieapp.domain.Result
 import ru.aevd.androidacademymovieapp.domain.entities.Movie
 import ru.aevd.androidacademymovieapp.ui.TransactionsFragmentClicks
 import ru.aevd.androidacademymovieapp.ui.adapters.MoviesAdapter
 import ru.aevd.androidacademymovieapp.ui.adapters.OnMoviesItemClicked
-import ru.aevd.androidacademymovieapp.ui.viewmodels.ErrorMessage
 import ru.aevd.androidacademymovieapp.ui.viewmodels.MoviesListViewModel
 import ru.aevd.androidacademymovieapp.ui.viewmodels.MoviesListViewModelFactory
 import ru.aevd.androidacademymovieapp.ui.viewmodels.State
@@ -55,16 +54,13 @@ class FragmentMoviesList: Fragment() {
         //observe some liveData using  ViewModel
         viewModel.movies.observe(this.viewLifecycleOwner, this::updateAdapter)
         viewModel.state.observe(this.viewLifecycleOwner, this::showLoading)
-        viewModel.errorMessage.observe(this.viewLifecycleOwner, this::setErrorText)
+        viewModel.errorMessage.observe(this.viewLifecycleOwner, this::showErrorMsg)
     }
 
-    private fun setErrorText(errorMsg: ErrorMessage) {
+    private fun showErrorMsg(errorMsg: String) {
         Log.d("FragmentMoviesList", "setErrorText(), result = $errorMsg")
-        errorMessage?.text = when(errorMsg) {
-            is ErrorMessage.NetworkError -> getString(R.string.load_error_network)
-            is ErrorMessage.SerializationError -> getString(R.string.load_error_serialization)
-            else -> getString(R.string.load_error_unknown)
-        }
+        errorMessage?.text = errorMsg
+        Toast.makeText(context, errorMsg, Toast.LENGTH_SHORT).show()
     }
 
     private fun showLoading(state: State) {
