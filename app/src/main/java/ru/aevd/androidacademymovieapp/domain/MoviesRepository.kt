@@ -28,8 +28,7 @@ class DefaultMoviesRepository(private val appContext: Context): MoviesRepository
     //Use JsonLoad
     override suspend fun getMoviesFromAssets(): List<Movie> = loadMovies(appContext)
 
-    override suspend fun getMoviesResultFromNet(): Result<List<Movie>> =
-            withContext(Dispatchers.IO) {
+    override suspend fun getMoviesResultFromNet(): Result<List<Movie>> = withContext(Dispatchers.IO) {
         try {
             val movies = networkLoad.loadMovies()
             Result.Success(movies)
@@ -39,10 +38,9 @@ class DefaultMoviesRepository(private val appContext: Context): MoviesRepository
         }
     }
 
-    override suspend fun getMoviesResultFromDb(): Result<List<Movie>> =
-            withContext(Dispatchers.IO) {
+    override suspend fun getMoviesResultFromDb(): Result<List<Movie>> = withContext(Dispatchers.IO) {
         val movies = db.moviesDao.getAllMoviesWithGenresAndActors()
-                .map { movieDbToEntity(it) }
+            .map { movieDbToEntity(it) }
         if (movies.isNotEmpty()) Result.Success(movies)
         else {
             val message = appContext.getString(R.string.db_error_no_movies)
