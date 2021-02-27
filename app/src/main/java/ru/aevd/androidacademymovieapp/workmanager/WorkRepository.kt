@@ -1,5 +1,6 @@
 package ru.aevd.androidacademymovieapp.workmanager
 
+import android.os.Build
 import androidx.work.Constraints
 import androidx.work.NetworkType
 import androidx.work.OneTimeWorkRequest
@@ -13,16 +14,24 @@ class WorkRepository {
 //        .setInitialDelay(10L, TimeUnit.SECONDS)
 //        .build()
 
+//    val downloadWork = OneTimeWorkRequest.Builder(MyWorker::class.java)
+//        .setConstraints(constraints)
+//        .setInputData(inputData)
+//        .build()
+
     private val constraints = Constraints.Builder()
         .setRequiredNetworkType(NetworkType.UNMETERED) //CONNECTED, UNMETERED
         .setRequiresCharging(true)
+        .apply {
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                setRequiresDeviceIdle(true)
+        }
         .build()
 
-    val downloadWork = OneTimeWorkRequest.Builder(MyWorker::class.java)
+    val periodicDownloadWork = PeriodicWorkRequest.Builder(MyWorker::class.java, 8, TimeUnit.HOURS)
         .setConstraints(constraints)
-        //.setInputData(inputData)
+        .setInitialDelay(1, TimeUnit.HOURS)
         .build()
-
-//    val periodicUploadWork = PeriodicWorkRequest.Builder(MyWorker::class.java, 15, TimeUnit.MINUTES)
-//        .build()
 }
+
+const val PERIODIC_WORK_NAME = "Download Movies"

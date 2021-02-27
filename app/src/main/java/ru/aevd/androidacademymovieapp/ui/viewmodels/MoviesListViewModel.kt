@@ -3,18 +3,14 @@ package ru.aevd.androidacademymovieapp.ui.viewmodels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.work.WorkManager
 import kotlinx.coroutines.launch
 import ru.aevd.androidacademymovieapp.domain.MoviesRepository
 import ru.aevd.androidacademymovieapp.domain.Result
 import ru.aevd.androidacademymovieapp.domain.entities.Movie
-import ru.aevd.androidacademymovieapp.workmanager.WorkRepository
 
 class MoviesListViewModel(
     private val repository: MoviesRepository
 ): ViewModel() {
-
-    private val workRepository = WorkRepository()
 
     private val _state = MutableLiveData<State>(State.Success)
     private val _movies = MutableLiveData<List<Movie>>()
@@ -26,7 +22,7 @@ class MoviesListViewModel(
 
     fun loadMovies()  = viewModelScope.launch {
         loadMoviesFromDb()
-        loadMoviesFromNetwork()
+        syncMoviesFromNet()
     }
 
     private suspend fun loadMoviesFromDb() {
@@ -36,7 +32,7 @@ class MoviesListViewModel(
         }
     }
 
-    private suspend fun loadMoviesFromNetwork() {
+    private suspend fun syncMoviesFromNet() {
         _state.value = State.Loading
         val remoteMoviesResult = repository.getMoviesResultFromNet()
         if (remoteMoviesResult is Result.Success) {
