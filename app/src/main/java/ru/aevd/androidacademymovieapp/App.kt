@@ -13,7 +13,7 @@ class App: Application(), Configuration.Provider {
 
     val moviesRepository by lazy { DefaultMoviesRepository(this) }
 
-    private val workManager =  WorkManager.getInstance(this)
+    //private val workManager =  WorkManager.getInstance(this)
     private val workRepository = WorkRepository()
 
     override fun getWorkManagerConfiguration(): Configuration = Configuration.Builder()
@@ -22,7 +22,7 @@ class App: Application(), Configuration.Provider {
 
     override fun onCreate() {
         super.onCreate()
-        workManager.enqueueUniquePeriodicWork(
+        WorkManager.getInstance(this).enqueueUniquePeriodicWork(
             PERIODIC_WORK_NAME,
             ExistingPeriodicWorkPolicy.REPLACE,
             workRepository.periodicDownloadWork
