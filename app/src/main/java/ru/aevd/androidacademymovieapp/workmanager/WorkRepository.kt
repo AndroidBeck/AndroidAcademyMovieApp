@@ -28,10 +28,16 @@ class WorkRepository {
         }
         .build()
 
-    val periodicDownloadWork = PeriodicWorkRequest.Builder(MyWorker::class.java, 8, TimeUnit.HOURS)
+    val periodicDownloadWork = PeriodicWorkRequest
+        //.Builder(MyWorker::class.java, 8, TimeUnit.HOURS)
+        //.setConstraints(constraints)
+        //.setInitialDelay(1, TimeUnit.HOURS)
+        .Builder(MyWorker::class.java, 60, TimeUnit.SECONDS)
+        .addTag(WORK_MANAGER_TAG)
         .setConstraints(constraints)
-        .setInitialDelay(1, TimeUnit.HOURS)
+        .setInitialDelay(50, TimeUnit.SECONDS)
         .build()
 }
 
-const val PERIODIC_WORK_NAME = "Download Movies"
+const val PERIODIC_WORK_NAME = "Periodic Download Work"
+const val WORK_MANAGER_TAG = "WorkManager"

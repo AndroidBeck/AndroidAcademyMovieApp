@@ -17,7 +17,7 @@ class App: Application(), Configuration.Provider {
     private val workRepository = WorkRepository()
 
     override fun getWorkManagerConfiguration(): Configuration = Configuration.Builder()
-        .setMinimumLoggingLevel(Log.VERBOSE)
+        .setMinimumLoggingLevel(Log.DEBUG)
         .build()
 
     override fun onCreate() {
