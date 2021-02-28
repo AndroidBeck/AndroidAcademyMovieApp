@@ -8,9 +8,9 @@ import ru.aevd.androidacademymovieapp.App
 
 class MyWorker(appContext: Context, params: WorkerParameters): CoroutineWorker(appContext, params) {
     private val repository = (appContext as App).moviesRepository
+
     override suspend fun doWork(): Result {
         return try {
-            // Do hard work and publishProgress
             Log.d("MyWorker", "Work manager start periodic downloading..")
             val remoteMoviesResult = repository.getMoviesResultFromNet()
             if (remoteMoviesResult is ru.aevd.androidacademymovieapp.domain.Result.Success) {
