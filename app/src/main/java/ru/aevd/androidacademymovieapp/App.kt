@@ -13,7 +13,6 @@ class App: Application(), Configuration.Provider {
 
     val moviesRepository by lazy { DefaultMoviesRepository(this) }
 
-    //private val workManager =  WorkManager.getInstance(this)
     private val workRepository = WorkRepository()
 
     override fun getWorkManagerConfiguration(): Configuration = Configuration.Builder()
@@ -27,6 +26,7 @@ class App: Application(), Configuration.Provider {
             ExistingPeriodicWorkPolicy.REPLACE,
             workRepository.periodicDownloadWork
         )
+        //WorkManager.getInstance(this).enqueue(workRepository.delayedRequest)
     }
 
 }

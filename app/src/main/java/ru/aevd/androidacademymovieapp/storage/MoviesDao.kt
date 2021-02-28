@@ -1,6 +1,7 @@
 package ru.aevd.androidacademymovieapp.storage
 
 import androidx.room.*
+import kotlinx.coroutines.flow.Flow
 import ru.aevd.androidacademymovieapp.storage.entities.ActorDb
 import ru.aevd.androidacademymovieapp.storage.entities.GenreDb
 import ru.aevd.androidacademymovieapp.storage.entities.MovieDb
@@ -11,7 +12,7 @@ interface MoviesDao {
 
     //ORDER BY _id ASC
     @Transaction @Query("SELECT * FROM movies")
-    suspend fun getAllMoviesWithGenresAndActors(): List<MovieWithGenresAndActorsDb>
+    fun getAllMoviesWithGenresAndActorsFlow(): Flow<List<MovieWithGenresAndActorsDb>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertMoviesWithGenresAndActors(
