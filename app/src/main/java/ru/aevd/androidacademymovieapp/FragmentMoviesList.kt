@@ -5,12 +5,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class FragmentMoviesList: Fragment() {
 
     private var clickListener: TransactionsFragmentClicks? = null
+    private lateinit var adapter: MoviesAdapter
 
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
@@ -19,9 +21,28 @@ class FragmentMoviesList: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.findViewById<View>(R.id.movies_list_item_1).apply {
-            setOnClickListener { clickListener?.showDetails() }
+        val recycler: RecyclerView = view.findViewById(R.id.rv_movies)
+        adapter = MoviesAdapter(recyclerClickListener)
+        recycler.layoutManager = GridLayoutManager(requireContext(), 2)
+        recycler.adapter = adapter
+        //Performance optimization
+        recycler.setHasFixedSize(true)
+    }
+
+    private val recyclerClickListener = object: OnMoviesItemClicked {
+        override fun onClick(movie_id: Long) {
+            clickListener?.showMovieDetails(movie_id)
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        updateData()
+    }
+
+    private fun updateData() {
+        adapter.bindMovies(MoviesDataSource().movies)
+        adapter.notifyDataSetChanged()
     }
 
     override fun onAttach(context: Context) {

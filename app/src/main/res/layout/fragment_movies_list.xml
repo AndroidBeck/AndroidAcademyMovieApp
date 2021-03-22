@@ -1,38 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/black">
+    android:layout_height="match_parent"
+    android:background="@color/background_color" >
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tv_movies_list"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/black"
-        android:padding="@dimen/start_end_margin">
+        android:layout_marginStart="@dimen/start_end_margin"
+        android:layout_marginTop="@dimen/start_end_margin"
+        android:drawablePadding="8dp"
+        android:text="@string/movies_list"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_bigger"
+        app:drawableStartCompat="@drawable/aim"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tv_movies_list"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/movies_list"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_size_bigger"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:drawableStartCompat="@drawable/aim"
-            android:drawablePadding="8dp"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_movies"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/background_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_movies_list"
+        tools:itemCount="2"
+        tools:listitem="@layout/view_holder_movie" />
 
-        <include
-            android:id="@+id/movies_list_item_1"
-            layout="@layout/movies_list_item"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:layout_constraintStart_toStartOf="@+id/tv_movies_list"
-            app:layout_constraintTop_toBottomOf="@+id/tv_movies_list" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
