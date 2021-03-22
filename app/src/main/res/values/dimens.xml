@@ -8,4 +8,6 @@
     <dimen name="text_size_large">40sp</dimen>
     <dimen name="logo_height">298dp</dimen>
     <dimen name="film_name_top_margin">254dp</dimen>
+    <dimen name="small_star_margin">2dp</dimen>
+    <dimen name="padding_movies_list_item_shape">2dp</dimen>
 </resources>
