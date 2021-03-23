@@ -16,14 +16,14 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ru.aevd.androidacademymovieapp.*
 import ru.aevd.androidacademymovieapp.domain.entities.Movie
-import ru.aevd.androidacademymovieapp.ui.TransactionsFragmentClicks
+import ru.aevd.androidacademymovieapp.ui.FragmentClickListener
 import ru.aevd.androidacademymovieapp.ui.adapters.MoviesAdapter
 import ru.aevd.androidacademymovieapp.ui.adapters.OnMoviesItemClicked
 import ru.aevd.androidacademymovieapp.ui.viewmodels.MoviesListViewModel
 import ru.aevd.androidacademymovieapp.ui.viewmodels.MoviesListViewModelFactory
 import ru.aevd.androidacademymovieapp.ui.viewmodels.State
 
-class FragmentMoviesList: Fragment() {
+class MoviesListFragment: Fragment() {
 
     private val viewModel: MoviesListViewModel by viewModels {
         MoviesListViewModelFactory(
@@ -33,7 +33,7 @@ class FragmentMoviesList: Fragment() {
 
     private var recycler: RecyclerView? = null
     private lateinit var adapter: MoviesAdapter
-    private var clickListener: TransactionsFragmentClicks? = null
+    private var clickListener: FragmentClickListener? = null
     private var progressBar: ProgressBar? = null
     private var reloadButton: Button? = null
 
@@ -74,13 +74,13 @@ class FragmentMoviesList: Fragment() {
 
     private val recyclerClickListener = object: OnMoviesItemClicked {
         override fun onClick(movie: Movie) {
-            clickListener?.showMovieDetails(movie)
+            clickListener?.onShowDetailsClick(movie)
         }
     }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is TransactionsFragmentClicks) {
+        if (context is FragmentClickListener) {
             clickListener = context
         }
     }
