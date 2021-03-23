@@ -20,5 +20,15 @@
     <dimen name="actor_avatar_height">80dp</dimen>
     <dimen name="img_movie_logo_small_width">166dp</dimen>
     <dimen name="img_movie_logo_small_height">246dp</dimen>
+    <dimen name="tv_age_rate_bottom_margin">16dp</dimen>
+    <dimen name="tv_genres_top_margin">4dp</dimen>
+    <dimen name="tv_description_top_margin">4dp</dimen>
+    <dimen name="tv_cast_top_margin">24dp</dimen>
+    <dimen name="rv_actors_start_end_margin">8dp</dimen>
+    <dimen name="rv_actors_start_top_margin">6dp</dimen>
+    <dimen name="rv_actors_start_bottom_margin">8dp</dimen>
+    <dimen name="tv_reviews_number_top_margin">4dp</dimen>
+    <dimen name="tv_storyline_top_margin">24dp</dimen>
+    <dimen name="tv_back_drawable_padding">8dp</dimen>
 
 </resources>
