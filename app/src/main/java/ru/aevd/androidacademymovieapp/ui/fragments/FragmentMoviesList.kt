@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ProgressBar
-import android.widget.TextView
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -16,22 +16,18 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ru.aevd.androidacademymovieapp.*
 import ru.aevd.androidacademymovieapp.domain.entities.Movie
-import ru.aevd.androidacademymovieapp.domain.MoviesFromNetwork
-import ru.aevd.androidacademymovieapp.domain.NetworkLoad
 import ru.aevd.androidacademymovieapp.ui.TransactionsFragmentClicks
 import ru.aevd.androidacademymovieapp.ui.adapters.MoviesAdapter
 import ru.aevd.androidacademymovieapp.ui.adapters.OnMoviesItemClicked
 import ru.aevd.androidacademymovieapp.ui.viewmodels.MoviesListViewModel
 import ru.aevd.androidacademymovieapp.ui.viewmodels.MoviesListViewModelFactory
-import ru.aevd.androidacademymovieapp.ui.viewmodels.LoadMoviesResult
 import ru.aevd.androidacademymovieapp.ui.viewmodels.State
 
 class FragmentMoviesList: Fragment() {
 
     private val viewModel: MoviesListViewModel by viewModels {
         MoviesListViewModelFactory(
-            MoviesFromNetwork(NetworkLoad())
-//            GetMoviesFromAssets(MoviePersistent(requireContext().applicationContext)
+           appContext = requireContext().applicationContext
         )
     }
 
@@ -39,7 +35,6 @@ class FragmentMoviesList: Fragment() {
     private lateinit var adapter: MoviesAdapter
     private var clickListener: TransactionsFragmentClicks? = null
     private var progressBar: ProgressBar? = null
-    private var errorMessage: TextView? = null
     private var reloadButton: Button? = null
 
     override fun onCreateView(inflater: LayoutInflater,
@@ -57,28 +52,23 @@ class FragmentMoviesList: Fragment() {
         //observe some liveData using  ViewModel
         viewModel.movies.observe(this.viewLifecycleOwner, this::updateAdapter)
         viewModel.state.observe(this.viewLifecycleOwner, this::showLoading)
-        viewModel.moviesResult.observe(this.viewLifecycleOwner, this::setErrorText)
+        viewModel.errorMessage.observe(this.viewLifecycleOwner, this::showErrorMsg)
     }
 
-    private fun setErrorText(moviesResult: LoadMoviesResult) {
-        Log.d("FragmentMoviesList", "result = $moviesResult")
-        errorMessage?.text = when(moviesResult) {
-            LoadMoviesResult.Error.IO -> getString(R.string.load_error_io)
-            LoadMoviesResult.Error.HTTP -> getString(R.string.load_error_http)
-            LoadMoviesResult.Error.Serialization -> getString(R.string.load_error_serialization)
-            else -> getString(R.string.load_error_unknown)
-        }
+    private fun showErrorMsg(errorMsg: String) {
+        Log.d("FragmentMoviesList", "setErrorText(), result = $errorMsg")
+        Toast.makeText(context, errorMsg, Toast.LENGTH_SHORT).show()
     }
 
     private fun showLoading(state: State) {
         Log.d("FragmentMoviesList", "showLoading(), result = $state")
         progressBar?.isVisible = state == State.Loading
-        recycler?.isVisible = state == State.Success
-        errorMessage?.isVisible = state == State.Failed
+        recycler?.isVisible = true //state == State.Success
         reloadButton?.isVisible = state == State.Failed
     }
 
     private fun updateAdapter(moviesList: List<Movie>) {
+        Log.d("FragmentMoviesList", "updateAdapters(), moviesList = $moviesList")
         adapter.bindMovies(moviesList)
     }
 
@@ -108,14 +98,12 @@ class FragmentMoviesList: Fragment() {
     private fun findViews(view: View) {
         progressBar = view.findViewById(R.id.pb_loading)
         recycler = view.findViewById(R.id.rv_movies)
-        errorMessage = view.findViewById(R.id.tv_errorMessage)
         reloadButton = view.findViewById(R.id.but_reload)
     }
 
     private fun clearViews() {
         progressBar = null
         recycler = null
-        errorMessage = null
         reloadButton = null
     }
 

@@ -1,8 +1,6 @@
 package ru.aevd.androidacademymovieapp.domain
 
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.withContext
+import android.util.Log
 import ru.aevd.androidacademymovieapp.BuildConfig
 import ru.aevd.androidacademymovieapp.domain.entities.Actor
 import ru.aevd.androidacademymovieapp.domain.entities.Genre
@@ -14,11 +12,12 @@ import ru.aevd.androidacademymovieapp.api.responses.MovieDetailsResponse
 import ru.aevd.androidacademymovieapp.api.responses.MoviesResponseResultItem
 
 class NetworkLoad {
-    private val coroutineContext = Job() + Dispatchers.IO
 
-    suspend fun loadMovies(): List<Movie> = withContext(coroutineContext) {
+    suspend fun loadMovies(): List<Movie> {
+        Log.d(TAG, "Start loading movies")
         val movies: MutableList<Movie> = mutableListOf()
         val moviesListResponseResults = RetrofitModule.moviesApi.getMovies().results
+        Log.d(TAG, "Start loading details")
         for (movieResponse in moviesListResponseResults) {
             val movieDetailsResponse = RetrofitModule.moviesApi.getMovieDetails(movieResponse.id)
             val actorsResponse = RetrofitModule.moviesApi.getMovieActors(movieResponse.id)
@@ -29,8 +28,10 @@ class NetworkLoad {
             )
             movies.add(movie)
         }
-        movies
+        Log.d(TAG, "Network loading finished")
+        return movies
     }
+
 }
 
 private fun createMovieFromApiResponses(
@@ -88,4 +89,4 @@ private const val posterSizePath = "w500"
 private const val backDropSizePath = "w780"
 private const val profileSizePath = "w185"
 
-//private val TAG = NetworkOperations::class.java.simpleName
+private val TAG = NetworkLoad::class.java.simpleName
