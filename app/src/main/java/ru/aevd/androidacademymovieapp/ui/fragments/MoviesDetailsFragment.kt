@@ -81,12 +81,12 @@ class MoviesDetailsFragment: Fragment() {
 
     private fun setAdapter() {
         actorsAdapter = ActorsAdapter()
-        layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL,
-                false)
-        actorsRecycler?.layoutManager = layoutManager
-        actorsRecycler?.adapter = actorsAdapter
-        //Performance optimization
-        actorsRecycler?.setHasFixedSize(true)
+        actorsRecycler?.apply {
+            this.adapter = actorsAdapter
+            this.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+            //Performance optimization
+            this.setHasFixedSize(true)
+        }
     }
 
     private fun bindActors(movie: Movie) {
