@@ -1,6 +1,8 @@
 package ru.aevd.androidacademymovieapp
 
+import ru.aevd.androidacademymovieapp.data.Movie
+
 interface TransactionsFragmentClicks {
-    fun showMovieDetails(movie_id: Long)
+    fun showMovieDetails(movie: Movie)
     fun navigateBack()
 }

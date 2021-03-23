@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="rating_bar_small" parent="Widget.AppCompat.RatingBar.Small">
+        <item name="android:progressTint">@color/color_star_full</item>
+        <item name="android:secondaryProgressTint">@color/color_star_full</item>
+        <item name="android:backgroundTint">@color/color_star_empty</item>
+        <item name="android:progressBackgroundTint">@color/color_star_empty</item>
+        <item name="android:numStars">5</item>
+        <item name="android:rating">0</item>
+        <item name="android:stepSize">0.1</item>
+        <item name="android:isIndicator">true</item>
+    </style>
+</resources>
