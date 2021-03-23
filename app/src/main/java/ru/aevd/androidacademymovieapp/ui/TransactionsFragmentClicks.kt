@@ -1,6 +1,6 @@
-package ru.aevd.androidacademymovieapp
+package ru.aevd.androidacademymovieapp.ui
 
-import ru.aevd.androidacademymovieapp.data.Movie
+import ru.aevd.androidacademymovieapp.domain.entities.Movie
 
 interface TransactionsFragmentClicks {
     fun showMovieDetails(movie: Movie)

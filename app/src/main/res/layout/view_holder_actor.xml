@@ -18,13 +18,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ContentDescription"
-        tools:src="@drawable/tools_actor_avatar_new" />
+        tools:src="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/actor_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        tools:text="@string/actor1_name_tools"
+        tools:text="@tools:sample/full_names"
         android:textSize="@dimen/text_size_normal"
         android:textColor="@color/color_actor_name"
         app:layout_constraintEnd_toEndOf="@+id/img_actor"

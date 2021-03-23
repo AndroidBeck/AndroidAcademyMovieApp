@@ -1,8 +1,7 @@
-package ru.aevd.androidacademymovieapp
+package ru.aevd.androidacademymovieapp.domain
 
 import android.content.Context
-import ru.aevd.androidacademymovieapp.data.Movie
-import ru.aevd.androidacademymovieapp.data.loadMovies
+import ru.aevd.androidacademymovieapp.domain.entities.Movie
 
 class MoviePersistent(private val context: Context) {
     suspend fun loadMovies(): List<Movie> = loadMovies(context)

@@ -1,4 +1,4 @@
-package ru.aevd.androidacademymovieapp
+package ru.aevd.androidacademymovieapp.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +10,8 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
-import ru.aevd.androidacademymovieapp.data.Actor
+import ru.aevd.androidacademymovieapp.R
+import ru.aevd.androidacademymovieapp.domain.entities.Actor
 
 class ActorsAdapter: RecyclerView.Adapter<ActorViewHolder>() {
     private var actors: List<Actor> = listOf()
@@ -67,6 +68,7 @@ private class DataActorViewHolder(itemView: View): ActorViewHolder(itemView) {
 
         val cornerRadius = 30
         val imageOption = RequestOptions()
+                .placeholder(R.drawable.actor_placeholder)
                 .transform(
                         CenterCrop(),
                         RoundedCorners(cornerRadius)

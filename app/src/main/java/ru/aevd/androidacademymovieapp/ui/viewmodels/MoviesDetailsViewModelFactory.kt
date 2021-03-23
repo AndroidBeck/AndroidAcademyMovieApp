@@ -1,15 +1,15 @@
-package ru.aevd.androidacademymovieapp.viewmodels
+package ru.aevd.androidacademymovieapp.ui.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import ru.aevd.androidacademymovieapp.GetMoviesUseCase
+import ru.aevd.androidacademymovieapp.domain.entities.Movie
 
-class MoviesListViewModelFactory(
-        private val getMoviesUseCase: GetMoviesUseCase
+class MoviesDetailsViewModelFactory(
+        private val movie: Movie
         ): ViewModelProvider.Factory {
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T = when(modelClass) {
-        MoviesListViewModel::class.java -> MoviesListViewModel(getMoviesUseCase)
+        MoviesDetailsViewModel::class.java -> MoviesDetailsViewModel(movie)
         else -> throw IllegalArgumentException("$modelClass is not registered ViewModel")
     } as T
 }
