@@ -9,12 +9,20 @@ import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import ru.aevd.androidacademymovieapp.data.Movie
+import ru.aevd.androidacademymovieapp.viewmodels.MoviesDetailsViewModel
+import ru.aevd.androidacademymovieapp.viewmodels.MoviesDetailsViewModelFactory
 
 class FragmentMoviesDetails: Fragment() {
+    private val viewModel: MoviesDetailsViewModel by viewModels {
+        MoviesDetailsViewModelFactory(
+                requireNotNull(movie)
+        )
+    }
     private var clickListener: TransactionsFragmentClicks? = null
     private lateinit var actorsAdapter: ActorsAdapter
     private lateinit var layoutManager: RecyclerView.LayoutManager
@@ -42,28 +50,32 @@ class FragmentMoviesDetails: Fragment() {
                 clickListener?.navigateBack()
             }
         }
-
         findViews(view)
         movie = arguments?.getParcelable(KEY_MOVIE)
-        movie?.let { movie_it ->
-            context?.let { context_it ->
-                name?.text = movie_it.title
-                description?.text = movie_it.overview
-                ageRate?.text = context_it.getString(R.string.age_rate, movie_it.minimumAge)
-                reviewsNumber?.text = context_it.getString(R.string.reviews_number,
-                    movie_it.numberOfRatings)
-                ratingBar?.rating = movie_it.ratings / 2
-                genres?.text = movie_it.genres
-                        .joinToString(", ") { genre ->  genre.name }
-                movieLogo?.let {
-                    Glide.with(context_it)
-                        .load(movie_it.backdrop)
-                        .into(it)
-                }
-            }
+        viewModel.movie.observe(this.viewLifecycleOwner) {
+            setViews(it)
+            setAdapter()
+            bindActors(it)
         }
+    }
 
-        //Create recyclerView with actors
+    private fun setViews(movie: Movie) {
+        name?.text = movie.title
+        description?.text = movie.overview
+        ageRate?.text = getString(R.string.age_rate, movie.minimumAge)
+        reviewsNumber?.text = getString(R.string.reviews_number,
+                movie.numberOfRatings)
+        ratingBar?.rating = movie.ratings / 2
+        genres?.text = movie.genres
+                .joinToString(", ") { genre ->  genre.name }
+        movieLogo?.let {
+            Glide.with(requireContext())
+                    .load(movie.backdrop)
+                    .into(it)
+        }
+    }
+
+    private fun setAdapter() {
         actorsAdapter = ActorsAdapter()
         layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL,
                 false)
@@ -73,13 +85,8 @@ class FragmentMoviesDetails: Fragment() {
         actorsRecycler?.setHasFixedSize(true)
     }
 
-    override fun onStart() {
-        super.onStart()
-        updateData()
-    }
-
-    private fun updateData() {
-        movie?.actors?.let { actorsAdapter.bindActors(it) }
+    private fun bindActors(movie: Movie) {
+        actorsAdapter.bindActors(movie.actors)
     }
 
     override fun onAttach(context: Context) {
