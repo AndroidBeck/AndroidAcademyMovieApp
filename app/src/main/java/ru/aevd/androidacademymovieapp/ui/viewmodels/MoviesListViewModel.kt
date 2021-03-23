@@ -2,37 +2,29 @@ package ru.aevd.androidacademymovieapp.ui.viewmodels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import ru.aevd.androidacademymovieapp.domain.MoviesRepository
 import ru.aevd.androidacademymovieapp.domain.Result
-import ru.aevd.androidacademymovieapp.domain.entities.Movie
 
 class MoviesListViewModel(
     private val repository: MoviesRepository
 ): ViewModel() {
 
+    private val _movies = repository.getMoviesFlowFromDb().asLiveData()
     private val _state = MutableLiveData<State>(State.Success)
-    private val _movies = MutableLiveData<List<Movie>>()
     private val _errorMessage = MutableLiveData<String>()
 
-    val state get() = _state
     val movies get() = _movies
+    val state get() = _state
     val errorMessage get() = _errorMessage
 
     fun loadMovies()  = viewModelScope.launch {
-        //Load data from Db
-        val localMoviesResult = repository.getMoviesResultFromDb()
-        if(localMoviesResult is Result.Success) {
-            _movies.value = localMoviesResult.data
-        }
-
-        //Load data from network
         _state.value = State.Loading
         val remoteMoviesResult = repository.getMoviesResultFromNet()
         if (remoteMoviesResult is Result.Success) {
-            _movies.value = remoteMoviesResult.data
-            //Save data to db
+            //Save data to db. Because we use Flow it will be async loaded into UI from db
             repository.saveMoviesToDb(remoteMoviesResult.data)
             _state.value = State.Success
         } else if (remoteMoviesResult is Result.Error) {

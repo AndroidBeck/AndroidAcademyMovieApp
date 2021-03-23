@@ -4,6 +4,8 @@ import android.content.Context
 import android.util.Log
 import com.bumptech.glide.load.HttpException
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.SerializationException
 import ru.aevd.androidacademymovieapp.R
@@ -16,7 +18,7 @@ import ru.aevd.androidacademymovieapp.storage.entities.*
 interface MoviesRepository {
     suspend fun getMoviesFromAssets(): List<Movie>
     suspend fun getMoviesResultFromNet(): Result<List<Movie>>
-    suspend fun getMoviesResultFromDb(): Result<List<Movie>>
+    fun getMoviesFlowFromDb(): Flow<List<Movie>>
     suspend fun saveMoviesToDb(movies: List<Movie>)
 }
 
@@ -28,8 +30,7 @@ class DefaultMoviesRepository(private val appContext: Context): MoviesRepository
     //Use JsonLoad
     override suspend fun getMoviesFromAssets(): List<Movie> = loadMovies(appContext)
 
-    override suspend fun getMoviesResultFromNet(): Result<List<Movie>> =
-            withContext(Dispatchers.IO) {
+    override suspend fun getMoviesResultFromNet(): Result<List<Movie>> = withContext(Dispatchers.IO) {
         try {
             val movies = networkLoad.loadMovies()
             Result.Success(movies)
@@ -39,16 +40,8 @@ class DefaultMoviesRepository(private val appContext: Context): MoviesRepository
         }
     }
 
-    override suspend fun getMoviesResultFromDb(): Result<List<Movie>> =
-            withContext(Dispatchers.IO) {
-        val movies = db.moviesDao.getAllMoviesWithGenresAndActors()
-                .map { movieDbToEntity(it) }
-        if (movies.isNotEmpty()) Result.Success(movies)
-        else {
-            val message = appContext.getString(R.string.db_error_no_movies)
-            Result.Error(message)
-        }
-    }
+    override fun getMoviesFlowFromDb() = db.moviesDao.getAllMoviesWithGenresAndActorsFlow()
+            .map { movies -> movies.map {movie -> movieDbToEntity(movie) } }
 
     override suspend fun saveMoviesToDb(movies: List<Movie>) = withContext(Dispatchers.IO) {
         val mwaDb = movies.map { movieEntityToDb(it) }
