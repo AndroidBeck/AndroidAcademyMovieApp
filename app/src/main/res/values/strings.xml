@@ -29,12 +29,10 @@
     <string name="no_actors_text">There is no actors..</string>
 
     <string name="reload_button_text">Reload</string>
-    <string name="load_error_unknown">Unknown Error</string>
-    <string name="load_error_serialization">Serialization Error</string>
-    <string name="load_error_http">HTTP Error</string>
-    <string name="load_error_io">IO Error</string>
-    <string name="load_error">Load error</string>
-    <string name="load_error_network">Network Error</string>
+    <string name="load_error_unknown">Sorry, something went wrong..</string>
+    <string name="load_error_serialization">Sorry, error occurred while getting some data</string>
+    <string name="load_error_http">Incorrect response from server</string>
+    <string name="load_error_io">Loading error. Please, check out internet connection</string>
 
     <string name="db_error_no_movies">Error loading from db</string>
 </resources>

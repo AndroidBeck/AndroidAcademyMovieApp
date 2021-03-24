@@ -28,7 +28,6 @@ class MoviesDetailsFragment: Fragment() {
     }
     private var clickListener: FragmentClickListener? = null
     private lateinit var actorsAdapter: ActorsAdapter
-    private lateinit var layoutManager: RecyclerView.LayoutManager
 
     private var movie: Movie? = null
 
