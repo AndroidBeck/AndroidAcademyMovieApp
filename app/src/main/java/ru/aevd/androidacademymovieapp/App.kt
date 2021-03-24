@@ -26,7 +26,6 @@ class App: Application(), Configuration.Provider {
             ExistingPeriodicWorkPolicy.REPLACE,
             workRepository.periodicDownloadWork
         )
-        //WorkManager.getInstance(this).enqueue(workRepository.delayedRequest)
     }
 
 }
