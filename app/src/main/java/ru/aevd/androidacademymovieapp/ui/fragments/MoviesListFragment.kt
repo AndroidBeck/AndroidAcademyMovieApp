@@ -57,19 +57,15 @@ class MoviesListFragment: Fragment() {
     }
 
     private fun showErrorMsg(errorMsg: String) {
-        Log.d("FragmentMoviesList", "setErrorText(), result = $errorMsg")
         Toast.makeText(context, errorMsg, Toast.LENGTH_SHORT).show()
     }
 
     private fun showLoading(state: State) {
-        Log.d("FragmentMoviesList", "showLoading(), result = $state")
         progressBar?.isVisible = state == State.Loading
-        recycler?.isVisible = true //state == State.Success
         reloadButton?.isVisible = state == State.Failed
     }
 
     private fun updateAdapter(moviesList: List<Movie>) {
-        Log.d("FragmentMoviesList", "updateAdapters(), moviesList = $moviesList")
         adapter.bindMovies(moviesList)
     }
 

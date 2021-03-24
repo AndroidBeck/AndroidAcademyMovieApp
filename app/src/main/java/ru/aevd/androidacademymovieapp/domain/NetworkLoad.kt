@@ -1,23 +1,20 @@
 package ru.aevd.androidacademymovieapp.domain
 
-import android.util.Log
 import ru.aevd.androidacademymovieapp.BuildConfig
-import ru.aevd.androidacademymovieapp.domain.entities.Actor
-import ru.aevd.androidacademymovieapp.domain.entities.Genre
-import ru.aevd.androidacademymovieapp.domain.entities.Movie
 import ru.aevd.androidacademymovieapp.api.RetrofitModule
 import ru.aevd.androidacademymovieapp.api.responses.GenreNetModel
 import ru.aevd.androidacademymovieapp.api.responses.MovieActorsResponse
 import ru.aevd.androidacademymovieapp.api.responses.MovieDetailsResponse
 import ru.aevd.androidacademymovieapp.api.responses.MoviesResponseResultItem
+import ru.aevd.androidacademymovieapp.domain.entities.Actor
+import ru.aevd.androidacademymovieapp.domain.entities.Genre
+import ru.aevd.androidacademymovieapp.domain.entities.Movie
 
 class NetworkLoad {
 
     suspend fun loadMovies(): List<Movie> {
-        Log.d(TAG, "Start loading movies")
         val movies: MutableList<Movie> = mutableListOf()
         val moviesListResponseResults = RetrofitModule.moviesApi.getMovies().results
-        Log.d(TAG, "Start loading details")
         for (movieResponse in moviesListResponseResults) {
             val movieDetailsResponse = RetrofitModule.moviesApi.getMovieDetails(movieResponse.id)
             val actorsResponse = RetrofitModule.moviesApi.getMovieActors(movieResponse.id)
@@ -28,7 +25,6 @@ class NetworkLoad {
             )
             movies.add(movie)
         }
-        Log.d(TAG, "Network loading finished")
         return movies
     }
 
@@ -88,5 +84,3 @@ private fun getImgPathUrl(imgSizePath: String, imgPath: String?) =
 private const val posterSizePath = "w500"
 private const val backDropSizePath = "w780"
 private const val profileSizePath = "w185"
-
-private val TAG = NetworkLoad::class.java.simpleName
