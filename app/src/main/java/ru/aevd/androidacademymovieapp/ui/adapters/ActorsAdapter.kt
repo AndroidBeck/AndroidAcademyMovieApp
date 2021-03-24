@@ -65,14 +65,13 @@ private class DataActorViewHolder(itemView: View): ActorViewHolder(itemView) {
 
     fun onBind(actor: Actor) {
         actorName.text = actor.name
-
-        val cornerRadius = 30
+        val cornerRadius = context.resources.getDimensionPixelSize(R.dimen.actor_img_corner_radius)
         val imageOption = RequestOptions()
-                .placeholder(R.drawable.actor_placeholder)
-                .transform(
-                        CenterCrop(),
-                        RoundedCorners(cornerRadius)
-                )
+            .placeholder(R.drawable.actor_placeholder)
+            .transform(
+                CenterCrop(),
+                RoundedCorners(cornerRadius)
+            )
         Glide.with(context)
                 .load(actor.picture)
                 .apply(imageOption)

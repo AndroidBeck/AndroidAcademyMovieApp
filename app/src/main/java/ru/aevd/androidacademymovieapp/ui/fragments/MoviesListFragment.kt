@@ -18,7 +18,7 @@ import ru.aevd.androidacademymovieapp.*
 import ru.aevd.androidacademymovieapp.domain.entities.Movie
 import ru.aevd.androidacademymovieapp.ui.FragmentClickListener
 import ru.aevd.androidacademymovieapp.ui.adapters.MoviesAdapter
-import ru.aevd.androidacademymovieapp.ui.adapters.OnMoviesItemClicked
+import ru.aevd.androidacademymovieapp.ui.adapters.MoviesItemClickListener
 import ru.aevd.androidacademymovieapp.ui.viewmodels.MoviesListViewModel
 import ru.aevd.androidacademymovieapp.ui.viewmodels.MoviesListViewModelFactory
 import ru.aevd.androidacademymovieapp.ui.viewmodels.State
@@ -47,7 +47,8 @@ class MoviesListFragment: Fragment() {
         findViews(view)
         reloadButton?.setOnClickListener { viewModel.loadMovies() }
         adapter = MoviesAdapter(recyclerClickListener)
-        recycler?.layoutManager = GridLayoutManager(requireContext(), 2)
+        val spanCount = resources.getInteger(R.integer.movies_list_fragment_span_count)
+        recycler?.layoutManager = GridLayoutManager(requireContext(), spanCount)
         recycler?.adapter = adapter
         //observe some liveData using  ViewModel
         viewModel.movies.observe(this.viewLifecycleOwner, this::updateAdapter)
@@ -72,7 +73,7 @@ class MoviesListFragment: Fragment() {
         adapter.bindMovies(moviesList)
     }
 
-    private val recyclerClickListener = object: OnMoviesItemClicked {
+    private val recyclerClickListener = object: MoviesItemClickListener {
         override fun onClick(movie: Movie) {
             clickListener?.onShowDetailsClick(movie)
         }

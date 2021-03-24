@@ -31,4 +31,6 @@
     <dimen name="tv_storyline_top_margin">24dp</dimen>
     <dimen name="tv_back_drawable_padding">8dp</dimen>
 
+    <dimen name="actor_img_corner_radius">8dp</dimen>
+    <dimen name="movie_poster_corner_radius">8dp</dimen>
 </resources>
