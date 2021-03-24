@@ -2,7 +2,6 @@ package ru.aevd.androidacademymovieapp.ui.fragments
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,14 +15,14 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ru.aevd.androidacademymovieapp.*
 import ru.aevd.androidacademymovieapp.domain.entities.Movie
-import ru.aevd.androidacademymovieapp.ui.TransactionsFragmentClicks
+import ru.aevd.androidacademymovieapp.ui.FragmentClickListener
 import ru.aevd.androidacademymovieapp.ui.adapters.MoviesAdapter
-import ru.aevd.androidacademymovieapp.ui.adapters.OnMoviesItemClicked
+import ru.aevd.androidacademymovieapp.ui.adapters.MoviesItemClickListener
 import ru.aevd.androidacademymovieapp.ui.viewmodels.MoviesListViewModel
 import ru.aevd.androidacademymovieapp.ui.viewmodels.MoviesListViewModelFactory
 import ru.aevd.androidacademymovieapp.ui.viewmodels.State
 
-class FragmentMoviesList: Fragment() {
+class MoviesListFragment: Fragment() {
 
     private val viewModel: MoviesListViewModel by viewModels {
         MoviesListViewModelFactory(
@@ -33,7 +32,7 @@ class FragmentMoviesList: Fragment() {
 
     private var recycler: RecyclerView? = null
     private lateinit var adapter: MoviesAdapter
-    private var clickListener: TransactionsFragmentClicks? = null
+    private var clickListener: FragmentClickListener? = null
     private var progressBar: ProgressBar? = null
     private var reloadButton: Button? = null
 
@@ -47,7 +46,8 @@ class FragmentMoviesList: Fragment() {
         findViews(view)
         reloadButton?.setOnClickListener { viewModel.loadMovies() }
         adapter = MoviesAdapter(recyclerClickListener)
-        recycler?.layoutManager = GridLayoutManager(requireContext(), 2)
+        val spanCount = resources.getInteger(R.integer.movies_list_fragment_span_count)
+        recycler?.layoutManager = GridLayoutManager(requireContext(), spanCount)
         recycler?.adapter = adapter
         //observe some liveData using  ViewModel
         viewModel.movies.observe(this.viewLifecycleOwner, this::updateAdapter)
@@ -56,31 +56,27 @@ class FragmentMoviesList: Fragment() {
     }
 
     private fun showErrorMsg(errorMsg: String) {
-        Log.d("FragmentMoviesList", "setErrorText(), result = $errorMsg")
         Toast.makeText(context, errorMsg, Toast.LENGTH_SHORT).show()
     }
 
     private fun showLoading(state: State) {
-        Log.d("FragmentMoviesList", "showLoading(), result = $state")
         progressBar?.isVisible = state == State.Loading
-        recycler?.isVisible = true //state == State.Success
         reloadButton?.isVisible = state == State.Failed
     }
 
     private fun updateAdapter(moviesList: List<Movie>) {
-        Log.d("FragmentMoviesList", "updateAdapters(), moviesList = $moviesList")
         adapter.bindMovies(moviesList)
     }
 
-    private val recyclerClickListener = object: OnMoviesItemClicked {
+    private val recyclerClickListener = object: MoviesItemClickListener {
         override fun onClick(movie: Movie) {
-            clickListener?.showMovieDetails(movie)
+            clickListener?.onShowDetailsClick(movie)
         }
     }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is TransactionsFragmentClicks) {
+        if (context is FragmentClickListener) {
             clickListener = context
         }
     }

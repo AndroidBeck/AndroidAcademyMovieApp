@@ -18,4 +18,5 @@
     <color name="color_star_full">#FF3365</color>
     <color name="color_star_empty">#6D6D80</color>
     <color name="color_description_text">#ECECEC</color>
+    <color name="tv_reviews_number_color">#6D6D80</color>
 </resources>

@@ -3,7 +3,6 @@ package ru.aevd.androidacademymovieapp.storage.entities
 import androidx.room.*
 import ru.aevd.androidacademymovieapp.storage.Contract
 
-//TODO 1: indexes: add genres, actors ? or use foreign keys
 @Entity(
     tableName = Contract.Movies.TABLE_NAME,
     indices = [Index(Contract.Movies.COLUMN_NAME_ID)]
@@ -28,15 +27,6 @@ data class MovieDb (
     val minimumAge: Int,
     @ColumnInfo(name = Contract.Movies.COLUMN_NAME_RUNTIME)
     val runtime: Int,
-)
-
-data class MovieWithGenresDb(
-    @Embedded
-    val movieDb: MovieDb,
-    @Relation(
-        parentColumn = Contract.Movies.COLUMN_NAME_ID,
-        entityColumn = Contract.Genres.COLUMN_NAME_MOVIE_ID)
-    val genres: List<GenreDb>
 )
 
 data class MovieWithGenresAndActorsDb (

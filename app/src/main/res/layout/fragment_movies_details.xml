@@ -22,18 +22,18 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline_top2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.25" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline_vertical_50"
+            android:id="@+id/guideline_start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.5" />
+            app:layout_constraintGuide_begin="@dimen/start_end_margin" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="@dimen/start_end_margin" />
 
         <ImageView
             android:id="@+id/img_logo"
@@ -50,55 +50,49 @@
             android:id="@+id/tv_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/start_end_margin"
-            android:drawablePadding="8dp"
+            android:drawablePadding="@dimen/tv_back_drawable_padding"
             android:text="@string/back"
             android:textColor="@color/white_opacity_50"
             android:textSize="@dimen/text_size_normal"
             app:drawableStartCompat="@drawable/button_back"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@id/guideline_start"
             app:layout_constraintTop_toTopOf="@id/guideline_top" />
 
         <TextView
             android:id="@+id/tv_film_name"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/start_end_margin"
             android:layout_marginTop="@dimen/film_name_top_margin"
-            android:layout_marginEnd="@dimen/start_end_margin"
-            tools:text="@string/film_name_tools"
             android:textColor="@color/white"
             android:textSize="@dimen/text_size_large"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toEndOf="@id/guideline_end"
+            app:layout_constraintStart_toStartOf="@id/guideline_start"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/film_name_tools"/>
 
         <TextView
             android:id="@+id/tv_age_rate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/start_end_margin"
-            android:layout_marginTop="228dp"
+            android:layout_marginBottom="@dimen/tv_age_rate_bottom_margin"
             android:text="@string/age_rate"
-            tools:text="@string/age_rate_tools"
             android:textColor="@color/white"
             android:textSize="@dimen/text_size_normal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toTopOf="@id/tv_film_name"
+            app:layout_constraintStart_toStartOf="@id/guideline_start"
+            tools:text="@string/age_rate_tools" />
 
         <TextView
             android:id="@+id/tv_genres"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/start_end_margin"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="@dimen/start_end_margin"
+            android:layout_marginTop="@dimen/tv_genres_top_margin"
             tools:text="@string/genres_tools"
             android:textColor="@color/color_text_genres"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="@dimen/text_size_bigger"
+            app:layout_constraintEnd_toEndOf="@id/guideline_end"
+            app:layout_constraintStart_toStartOf="@id/guideline_start"
             app:layout_constraintTop_toBottomOf="@id/tv_film_name" />
 
         <RatingBar
@@ -106,86 +100,80 @@
             style="@style/rating_bar_small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/start_end_margin"
             android:transformPivotX="0dp"
             android:transformPivotY="0dp"
             app:layout_constraintBottom_toBottomOf="@+id/tv_reviews_number"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@id/guideline_start"
             app:layout_constraintTop_toTopOf="@+id/tv_reviews_number"
-            tools:rating="3" />
+            tools:rating="3.6" />
 
         <TextView
             android:id="@+id/tv_reviews_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/start_end_margin"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="@dimen/tv_reviews_number_top_margin"
             android:text="@string/reviews_number"
             tools:text="@string/reviews_number_tools"
-            android:textColor="#6D6D80"
-            android:textSize="14sp"
+            android:textColor="@color/tv_reviews_number_color"
+            android:textSize="@dimen/text_size_bigger"
             app:layout_constraintStart_toEndOf="@id/ratingBar"
             app:layout_constraintTop_toBottomOf="@+id/tv_genres" />
 
-
         <TextView
             android:id="@+id/tv_storyline"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/start_end_margin"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="@dimen/start_end_margin"
+            android:layout_marginTop="@dimen/tv_storyline_top_margin"
             android:text="@string/storyline"
             android:textColor="@color/color_description_text"
             android:textSize="@dimen/text_size_bigger"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guideline_end"
+            app:layout_constraintStart_toStartOf="@id/guideline_start"
             app:layout_constraintTop_toBottomOf="@+id/tv_reviews_number" />
 
         <TextView
             android:id="@+id/tv_description"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/start_end_margin"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="@dimen/start_end_margin"
+            android:layout_marginTop="@dimen/tv_description_top_margin"
             tools:text="@string/description_tools"
             android:textColor="@color/color_description_text"
             android:textSize="@dimen/text_size_bigger"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guideline_end"
+            app:layout_constraintStart_toStartOf="@id/guideline_start"
             app:layout_constraintTop_toBottomOf="@+id/tv_storyline" />
 
         <TextView
             android:id="@+id/tv_cast"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/start_end_margin"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="@dimen/start_end_margin"
+            android:layout_marginTop="@dimen/tv_cast_top_margin"
             android:text="@string/cast"
             android:textColor="@color/color_description_text"
             android:textSize="@dimen/text_size_bigger"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guideline_end"
+            app:layout_constraintStart_toStartOf="@id/guideline_start"
             app:layout_constraintTop_toBottomOf="@+id/tv_description" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_actors"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="6dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginStart="@dimen/rv_actors_start_end_margin"
+            android:layout_marginTop="@dimen/rv_actors_start_top_margin"
+            android:layout_marginEnd="@dimen/rv_actors_start_end_margin"
+            android:layout_marginBottom="@dimen/rv_actors_start_bottom_margin"
             android:background="@color/background_color"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_cast"
+            app:layout_constraintVertical_bias="0.0"
             tools:itemCount="2"
-            tools:layout_width="match_parent"
             tools:layout_height="wrap_content"
+            tools:layout_width="0dp"
             tools:listitem="@layout/view_holder_actor" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

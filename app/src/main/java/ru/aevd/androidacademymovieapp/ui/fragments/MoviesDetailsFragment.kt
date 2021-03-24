@@ -15,20 +15,19 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import ru.aevd.androidacademymovieapp.ui.adapters.ActorsAdapter
 import ru.aevd.androidacademymovieapp.R
-import ru.aevd.androidacademymovieapp.ui.TransactionsFragmentClicks
+import ru.aevd.androidacademymovieapp.ui.FragmentClickListener
 import ru.aevd.androidacademymovieapp.domain.entities.Movie
 import ru.aevd.androidacademymovieapp.ui.viewmodels.MoviesDetailsViewModel
 import ru.aevd.androidacademymovieapp.ui.viewmodels.MoviesDetailsViewModelFactory
 
-class FragmentMoviesDetails: Fragment() {
+class MoviesDetailsFragment: Fragment() {
     private val viewModel: MoviesDetailsViewModel by viewModels {
         MoviesDetailsViewModelFactory(
                 requireNotNull(movie)
         )
     }
-    private var clickListener: TransactionsFragmentClicks? = null
+    private var clickListener: FragmentClickListener? = null
     private lateinit var actorsAdapter: ActorsAdapter
-    private lateinit var layoutManager: RecyclerView.LayoutManager
 
     private var movie: Movie? = null
 
@@ -50,7 +49,7 @@ class FragmentMoviesDetails: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         view.findViewById<TextView>(R.id.tv_back).apply {
             setOnClickListener {
-                clickListener?.navigateBack()
+                clickListener?.onBackClick()
             }
         }
         findViews(view)
@@ -81,12 +80,12 @@ class FragmentMoviesDetails: Fragment() {
 
     private fun setAdapter() {
         actorsAdapter = ActorsAdapter()
-        layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL,
-                false)
-        actorsRecycler?.layoutManager = layoutManager
-        actorsRecycler?.adapter = actorsAdapter
-        //Performance optimization
-        actorsRecycler?.setHasFixedSize(true)
+        actorsRecycler?.apply {
+            this.adapter = actorsAdapter
+            this.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+            //Performance optimization
+            this.setHasFixedSize(true)
+        }
     }
 
     private fun bindActors(movie: Movie) {
@@ -95,7 +94,7 @@ class FragmentMoviesDetails: Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is TransactionsFragmentClicks) {
+        if (context is FragmentClickListener) {
             clickListener = context
         }
     }
@@ -134,10 +133,10 @@ class FragmentMoviesDetails: Fragment() {
 
     companion object {
         private const val KEY_MOVIE = "whole movie"
-        fun newInstance(movie: Movie): FragmentMoviesDetails {
+        fun newInstance(movie: Movie): MoviesDetailsFragment {
             val args = Bundle()
             args.putParcelable(KEY_MOVIE, movie)
-            val fragment = FragmentMoviesDetails()
+            val fragment = MoviesDetailsFragment()
             fragment.arguments = args
             return fragment
         }

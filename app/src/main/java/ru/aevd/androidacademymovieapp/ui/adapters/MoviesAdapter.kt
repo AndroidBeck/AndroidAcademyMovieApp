@@ -14,7 +14,7 @@ import com.bumptech.glide.request.RequestOptions
 import ru.aevd.androidacademymovieapp.R
 import ru.aevd.androidacademymovieapp.domain.entities.Movie
 
-class MoviesAdapter(private val recyclerClickListener: OnMoviesItemClicked):
+class MoviesAdapter(private val recyclerClickListener: MoviesItemClickListener):
         RecyclerView.Adapter<MovieViewHolder>() {
 
     private var movies: List<Movie> = listOf()
@@ -63,7 +63,7 @@ class MovieViewHolder(itemView: View):  RecyclerView.ViewHolder(itemView) {
     }
 
     private fun drawMovieLogo(poster: String) {
-        val cornerRadius = 30.0f
+        val cornerRadius = context.resources.getDimensionPixelSize(R.dimen.actor_img_corner_radius).toFloat()
         val imageOption = RequestOptions()
             .placeholder(R.drawable.movie_shape)
             .transform(
