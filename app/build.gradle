@@ -26,6 +26,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    buildTypes.each {
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file("local.properties").newDataInputStream())
+        def apiKey = properties.getProperty("API_KEY", "")
+        it.buildConfigField "String", "API_KEY", apiKey
+        it.buildConfigField "String", "API_KEY_QUERY_PARAM", "\"api_key\""
+        it.buildConfigField "String", "BASE_URL", "\"https://api.themoviedb.org/3/\""
+        it.buildConfigField "String", "BASE_IMG_URL", "\"https://image.tmdb.org/t/p/\""
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -34,16 +43,6 @@ android {
         jvmTarget = '1.8'
     }
 
-    flavorDimensions "serverType"
-    productFlavors {
-        prod {
-            dimension "serverType"
-            buildConfigField "String", "API_KEY", "\"dabd3c0c727815f7c80ed545b298933b\""
-            buildConfigField "String", "API_KEY_QUERY_PARAM", "\"api_key\""
-            buildConfigField "String", "BASE_URL", "\"https://api.themoviedb.org/3/\""
-            buildConfigField "String", "BASE_IMG_URL", "\"https://image.tmdb.org/t/p/\""
-        }
-    }
 }
 
 dependencies {
